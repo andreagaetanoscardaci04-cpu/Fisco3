@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { TEMA_SITO, isNuovaPalette } from "../../config/tema.js";
 
 const BASE =
   "inline-flex items-center justify-center gap-2 rounded-md font-semibold leading-tight transition duration-200 disabled:cursor-not-allowed disabled:opacity-60";
@@ -20,7 +21,18 @@ const VARIANTS = {
     "text-white ring-1 ring-inset ring-white/40 hover:bg-white/10 hover:ring-white/70",
 };
 
+// Nuova palette: il blu Fisco3 resta solo su pulsanti, link e focus
+const VARIANTS_NUOVA = {
+  ...VARIANTS,
+  primary: "bg-fisco text-white hover:bg-fisco-hover",
+  secondary:
+    "bg-white text-inchiostro ring-1 ring-inset ring-pietra hover:bg-carta hover:ring-[#CFCBC1]",
+  ghost: "text-fisco hover:bg-fisco-tenue",
+  inverse: "bg-white text-inchiostro hover:bg-carta",
+};
+
 export default function Button({
+  tema = TEMA_SITO,
   to,
   href,
   variant = "primary",
@@ -29,7 +41,8 @@ export default function Button({
   children,
   ...props
 }) {
-  const classes = `${BASE} ${SIZES[size]} ${VARIANTS[variant]} ${className}`;
+  const variants = isNuovaPalette(tema) ? VARIANTS_NUOVA : VARIANTS;
+  const classes = `${BASE} ${SIZES[size]} ${variants[variant]} ${className}`;
 
   if (to) {
     return (

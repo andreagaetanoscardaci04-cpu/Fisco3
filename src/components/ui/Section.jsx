@@ -1,4 +1,5 @@
 import Container from "./Container.jsx";
+import { TEMA_SITO, isNuovaPalette } from "../../config/tema.js";
 
 const BACKGROUNDS = {
   white: "bg-white",
@@ -7,8 +8,22 @@ const BACKGROUNDS = {
   navy: "on-dark bg-navy-900 text-slate-300",
 };
 
+// Ruoli del ritmo delle sezioni (src/config/tema.js), per palette
+const ROLES = {
+  attuale: { carta: "bg-white", pietra: "bg-slate-50" },
+  nuova: {
+    carta: "bg-carta",
+    pietra: "bg-pietra",
+    scuro: "on-dark bg-tonale-scuro text-su-scuro",
+  },
+};
+
+export const sectionBg = (bg, tema = TEMA_SITO) =>
+  (isNuovaPalette(tema) ? ROLES.nuova : ROLES.attuale)[bg] ?? BACKGROUNDS[bg];
+
 export default function Section({
   bg = "white",
+  tema = TEMA_SITO,
   id,
   className = "",
   containerClassName = "",
@@ -18,7 +33,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`py-20 md:py-28 ${BACKGROUNDS[bg]} ${className}`}
+      className={`py-20 md:py-28 ${sectionBg(bg, tema)} ${className}`}
       {...props}
     >
       <Container className={containerClassName}>{children}</Container>

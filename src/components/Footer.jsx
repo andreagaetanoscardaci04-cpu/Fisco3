@@ -13,6 +13,13 @@ import Logo from "./Logo.jsx";
 import { OPEN_COOKIE_SETTINGS } from "./CookieBanner.jsx";
 import { MOBILE_BAR_SPACE } from "./MobileActionBar.jsx";
 import { studio, phoneHref, emailHref } from "../config/studio";
+import { TEMA_SITO, isNuovaPalette } from "../config/tema.js";
+
+// Con la nuova palette CTA finale e footer sono entrambi scuri: il bordo
+// inchiostro-bordo (#1E2D4F) li separa.
+const FOOTER_BG = isNuovaPalette(TEMA_SITO)
+  ? "bg-tonale-scuro text-su-scuro border-t border-inchiostro-bordo"
+  : "bg-navy-950 text-slate-400";
 
 const SOCIALS = [
   { href: studio.socials.instagram, label: "Instagram", Icon: Instagram },
@@ -81,7 +88,7 @@ function MapEmbed() {
 export default function Footer() {
   return (
     <footer
-      className={`on-dark bg-navy-950 pt-20 text-slate-400 ${MOBILE_BAR_SPACE}`}
+      className={`on-dark pt-20 ${FOOTER_BG} ${MOBILE_BAR_SPACE}`}
     >
       <Container>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
