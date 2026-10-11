@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import Container from "./ui/Container.jsx";
+import { OPEN_COOKIE_SETTINGS } from "./CookieBanner.jsx";
+import { MOBILE_BAR_SPACE } from "./MobileActionBar.jsx";
 import { studio, phoneHref, emailHref } from "../config/studio";
 
 const SOCIALS = [
@@ -8,128 +12,177 @@ const SOCIALS = [
   { href: studio.socials.linkedin, label: "LinkedIn", Icon: Linkedin },
 ].filter((s) => s.href);
 
+const PAGES = [
+  { name: "Home", path: "/" },
+  { name: "Richiedi l'analisi gratuita", path: "/consulenze" },
+  { name: "Contabilità", path: "/contabilita" },
+  { name: "Domande frequenti", path: "/faq" },
+];
+
+const mapsSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  studio.address.full,
+)}`;
+
+const FOOTER_LINK = "underline-offset-4 hover:text-bianco hover:underline";
+
+// La mappa di Google si carica solo su richiesta (invia dati a Google)
+function MapEmbed() {
+  const [show, setShow] = useState(false);
+
+  if (show) {
+    return (
+      <iframe
+        src={studio.mapsEmbedUrl}
+        title={`Mappa: ${studio.address.full}`}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        allowFullScreen
+        className="aspect-[4/3] w-full rounded-md border-0"
+      />
+    );
+  }
+
+  return (
+    <div className="rounded-md border border-basalto-tenue p-5">
+      <p className="text-small">
+        La mappa è fornita da Google, che riceverà alcuni dati della tua
+        navigazione.
+      </p>
+      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+        <button type="button" onClick={() => setShow(true)} className="link">
+          Mostra la mappa
+        </button>
+        <a
+          href={mapsSearchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link"
+        >
+          Apri in Google Maps
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export default function Footer() {
   return (
-    <footer className="bg-inchiostro text-bianco pt-20 pb-10">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
-            <Link
-              to="/"
-              className="text-3xl font-bold tracking-tight text-blu"
-            >
-              Fisco<span className="text-bianco">3</span>
-            </Link>
-            <p className="text-basalto-tenue leading-relaxed">
-              Il team di commercialisti che ti mette al centro. Gestione
-              contabile e fiscale semplificata, per farti dormire sonni
-              tranquilli.
+    <footer
+      className={`on-dark border-t border-basalto-tenue bg-inchiostro pt-16 text-pietra md:pt-20 ${MOBILE_BAR_SPACE}`}
+    >
+      <Container>
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-3">
+            <p className="font-serif text-h3-lg font-semibold text-bianco">
+              {studio.brandName}
             </p>
+            <p className="mt-2">
+              {studio.legalName ?? "Studio associato di commercialisti"}
+            </p>
+            {studio.piva && <p className="mt-1">P.IVA {studio.piva}</p>}
             {SOCIALS.length > 0 && (
-              <div className="flex space-x-4">
+              <ul className="mt-6 flex gap-2">
                 {SOCIALS.map(({ href, label, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="p-3 bg-inchiostro rounded-full hover:bg-blu transition-colors"
-                  >
-                    <Icon size={20} />
-                  </a>
+                  <li key={label}>
+                    <a
+                      href={href}
+                      aria-label={label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-11 w-11 items-center justify-center rounded-sm border border-basalto-tenue hover:border-bianco hover:text-bianco"
+                    >
+                      <Icon aria-hidden="true" className="h-5 w-5" />
+                    </a>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
           </div>
 
-          <div>
-            <h4 className="text-lg font-bold mb-6">Link Rapidi</h4>
-            <ul className="space-y-4 text-basalto-tenue">
-              <li>
-                <Link to="/" className="hover:text-bianco transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/consulenze"
-                  className="hover:text-bianco transition-colors"
-                >
-                  Consulenze
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/faq"
-                  className="hover:text-bianco transition-colors"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contabilita"
-                  className="hover:text-bianco transition-colors"
-                >
-                  Contabilità
-                </Link>
-              </li>
-            </ul>
+          <div className="lg:col-span-3">
+            <h2 className="font-sans text-body font-semibold">Contatti</h2>
+            <address className="mt-4 space-y-2 not-italic">
+              <p>{studio.address.full}</p>
+              <p>
+                <a href={phoneHref} className={FOOTER_LINK}>
+                  {studio.phone}
+                </a>
+              </p>
+              <p>
+                <a href={emailHref} className={FOOTER_LINK}>
+                  {studio.email}
+                </a>
+              </p>
+            </address>
+            {studio.openingHours && (
+              <>
+                <h2 className="mt-8 font-sans text-body font-semibold">
+                  Orari
+                </h2>
+                <dl className="mt-4 space-y-1">
+                  {studio.openingHours.map((h) => (
+                    <div key={h.label} className="flex flex-wrap gap-x-2">
+                      <dt>{h.label}:</dt>
+                      <dd>{h.hours}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </>
+            )}
           </div>
 
-          <div>
-            <h4 className="text-lg font-bold mb-6">Contatti</h4>
-            <ul className="space-y-4 text-basalto-tenue">
-              <li className="flex items-center gap-3">
-                <MapPin size={18} className="text-blu" />
-                {studio.address.full}
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-blu" />
-                <a href={phoneHref}>{studio.phone}</a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-blu" />
-                <a href={emailHref}>{studio.email}</a>
-              </li>
+          <nav aria-label="Pagine del sito" className="lg:col-span-3">
+            <h2 className="font-sans text-body font-semibold">Pagine</h2>
+            <ul className="mt-4 space-y-2">
+              {PAGES.map((p) => (
+                <li key={p.path}>
+                  <Link to={p.path} className={FOOTER_LINK}>
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </nav>
 
-          <div className="space-y-4">
-            <h4 className="text-lg font-bold mb-6">Dove siamo</h4>
-            <div className="rounded-md overflow-hidden border border-pietra aspect-square relative group shadow-2xl">
-              <iframe
-                src={studio.mapsEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mappa Fisco3 Catania"
-                className="transition-all duration-500"
-              />
+          <div className="lg:col-span-3">
+            <h2 className="font-sans text-body font-semibold">Dove siamo</h2>
+            <div className="mt-4">
+              <MapEmbed />
             </div>
-            <p className="text-xs text-basalto-tenue italic">
-              Vieni a trovarci nel cuore di Catania.
-            </p>
           </div>
         </div>
 
-        <div className="border-t border-pietra pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-basalto-tenue">
+        <div className="mb-10 mt-12 flex flex-col gap-4 border-t border-basalto-tenue pt-6 text-small md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} {studio.legalName ?? studio.brandName}
+            © {new Date().getFullYear()}{" "}
+            {studio.legalName ?? studio.brandName}
             {studio.piva && ` · P.IVA ${studio.piva}`}
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-bianco transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-bianco transition-colors">
-              Cookie Policy
-            </a>
-          </div>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <li>
+              <Link to="/privacy-policy" className={FOOTER_LINK}>
+                Privacy policy
+              </Link>
+            </li>
+            <li>
+              <Link to="/cookie-policy" className={FOOTER_LINK}>
+                Cookie policy
+              </Link>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() =>
+                  window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS))
+                }
+                className={FOOTER_LINK}
+              >
+                Preferenze cookie
+              </button>
+            </li>
+          </ul>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }
