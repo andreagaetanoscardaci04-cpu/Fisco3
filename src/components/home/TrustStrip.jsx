@@ -41,7 +41,7 @@ export default function TrustStrip({ className = "" }) {
       className={`border-b border-slate-200 bg-white py-5 ${className}`}
     >
       <Container>
-        <ul className="flex flex-col gap-3 text-[15px] font-medium text-slate-700 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-x-10">
+        <ul className="flex flex-col gap-3 text-[15px] font-medium text-slate-700 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-x-8">
           {ITEMS.map(({ Icon, iconClass, text, href }) => {
             const content = (
               <>
