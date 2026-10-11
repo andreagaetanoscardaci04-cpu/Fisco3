@@ -67,8 +67,15 @@ assenti nello scraping iniziale.
 ## Deploy
 
 Il sito è pensato per essere deployato su [Vercel](https://vercel.com/)
-collegando questo repository e puntando il dominio `fisco3.it` al progetto.
-`vercel.json` usa `cleanUrls`: `/faq` viene servito da `dist/faq.html`.
+collegando questo repository e puntando i domini `www.fisco3.it` e `fisco3.it`
+al progetto. `vercel.json` usa `cleanUrls`: `/faq` viene servito da
+`dist/faq.html`.
+
+L'URL unico del sito è `https://www.fisco3.it` (`siteUrl` in `studio.ts`):
+canonical, Open Graph, JSON-LD e sitemap usano quello. `vercel.json`
+reindirizza in modo permanente (308) `fisco3.it` verso `www.fisco3.it`; in
+alternativa lo stesso redirect si può impostare dalla pagina Domains del
+progetto su Vercel.
 
 L'immagine Open Graph (`public/og/fisco3.png`) contiene indirizzo e
 telefono: se cambiano, va rigenerata.

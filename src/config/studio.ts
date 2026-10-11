@@ -47,7 +47,7 @@ const emptyProfessional = (): Professional => ({
 });
 
 export const studio = {
-  siteUrl: "https://fisco3.it",
+  siteUrl: "https://www.fisco3.it", // URL unico: canonical, og, JSON-LD, sitemap
   brandName: "Fisco3",
   studioName: null as string | null, // TODO: es. "Studio Associato Greco ..."
   legalName: null as string | null, // TODO: ragione sociale esatta ("Studio Associato ...")
