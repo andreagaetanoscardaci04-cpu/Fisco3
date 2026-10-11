@@ -41,6 +41,13 @@ export const ROUTES = [
     noindex: true, // TODO: togliere quando c'è il testo ufficiale
   },
   {
+    // pagina interna per scegliere la palette: da rimuovere dopo la scelta
+    path: "/anteprima-colori",
+    title: "Anteprima colori | Fisco3",
+    description: "Confronto tra le varianti di colore del sito.",
+    noindex: true,
+  },
+  {
     path: "/404",
     title: "Pagina non trovata | Fisco3",
     description: "La pagina cercata non esiste.",

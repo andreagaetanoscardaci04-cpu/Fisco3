@@ -11,6 +11,7 @@ import Contabilita from "./pages/Contabilita.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import CookiePolicy from "./pages/CookiePolicy.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import AnteprimaColori from "./pages/AnteprimaColori.jsx";
 import { trackPath } from "./lib/navigation.js";
 import { useSeo } from "./seo/useSeo.js";
 
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/contabilita" element={<Contabilita />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/anteprima-colori" element={<AnteprimaColori />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
