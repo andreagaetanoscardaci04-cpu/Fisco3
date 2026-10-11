@@ -46,7 +46,7 @@ export default function WhyUs({ bg }) {
           <ul className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2">
             {REASONS.map(({ Icon, title, text }) => (
               <li key={title}>
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                <span className="flex h-11 w-11 items-center justify-center rounded-md bg-brand-50 text-brand-600">
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 text-lg font-semibold">{title}</h3>
@@ -57,7 +57,7 @@ export default function WhyUs({ bg }) {
         </div>
 
         <div className="lg:col-span-5">
-          <div className="on-dark rounded-4xl bg-brand-600 p-8 text-brand-50 shadow-elevated md:p-10">
+          <div className="on-dark rounded-lg bg-brand-600 p-8 text-brand-50 shadow-elevated md:p-10">
             <h3 className="text-2xl font-bold tracking-tight">
               Cosa ottieni dalla prima analisi
             </h3>
@@ -65,7 +65,7 @@ export default function WhyUs({ bg }) {
             <ul className="mt-7 space-y-4">
               {ANALYSIS.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white/15">
                     <Check aria-hidden="true" className="h-4 w-4 text-white" />
                   </span>
                   <span className="text-white">{item}</span>

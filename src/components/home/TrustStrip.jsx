@@ -38,7 +38,7 @@ export default function TrustStrip() {
     <section aria-label="Lo studio in breve" className="bg-white pb-6">
       <Container>
         <ul
-          className={`grid gap-y-8 rounded-3xl bg-slate-50 px-6 py-8 ring-1 ring-slate-900/5 md:divide-x md:divide-slate-200 md:px-0 ${
+          className={`grid gap-y-8 rounded-lg bg-slate-50 px-6 py-8 ring-1 ring-slate-900/5 md:divide-x md:divide-slate-200 md:px-0 ${
             items.length === 4
               ? "grid-cols-2 md:grid-cols-4"
               : "grid-cols-1 md:grid-cols-3"

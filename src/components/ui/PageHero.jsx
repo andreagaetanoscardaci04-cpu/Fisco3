@@ -3,7 +3,7 @@ import Container from "./Container.jsx";
 // Intestazione delle pagine interne: etichetta, titolo (con parte blu), testo
 export default function PageHero({ eyebrow, icon: Icon, title, highlight, lead, children }) {
   return (
-    <section className="bg-gradient-to-b from-brand-50/70 to-white pb-12 pt-14 md:pb-16 md:pt-20">
+    <section className="bg-brand-50/60 pb-12 pt-14 md:pb-16 md:pt-20">
       <Container className="reveal text-center">
         {eyebrow && (
           <p className="eyebrow">

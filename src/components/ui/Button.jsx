@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-semibold leading-tight transition duration-200 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-md font-semibold leading-tight transition duration-200 disabled:cursor-not-allowed disabled:opacity-60";
 
 const SIZES = {
   md: "min-h-12 px-6 py-3 text-[15px]",
@@ -10,7 +10,7 @@ const SIZES = {
 
 const VARIANTS = {
   primary:
-    "bg-brand-600 text-white shadow-button hover:bg-brand-700 hover:shadow-none",
+    "bg-brand-600 text-white shadow-button hover:bg-brand-700",
   secondary:
     "bg-white text-slate-900 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 hover:ring-slate-300",
   ghost: "text-brand-600 hover:bg-brand-50",

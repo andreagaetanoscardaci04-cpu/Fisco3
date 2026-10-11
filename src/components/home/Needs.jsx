@@ -31,9 +31,9 @@ export default function Needs({ bg }) {
             <li key={s.slug}>
               <Link
                 to={`/consulenze?tema=${s.slug}`}
-                className="group flex h-full gap-5 rounded-3xl bg-white p-6 shadow-card ring-1 ring-slate-900/5 transition duration-200 hover:-translate-y-0.5 hover:shadow-card-hover md:p-8"
+                className="group flex h-full gap-5 rounded-lg bg-white p-6 shadow-card ring-1 ring-slate-900/5 transition-colors duration-200 hover:ring-brand-300 md:p-8"
               >
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
                   <Icon aria-hidden="true" className="h-7 w-7" />
                 </span>
                 <span className="flex flex-1 flex-col">
@@ -45,10 +45,7 @@ export default function Needs({ bg }) {
                   </span>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-brand-600">
                     {s.ctaLabel}
-                    <ArrowRight
-                      aria-hidden="true"
-                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                    />
+                    <ArrowRight aria-hidden="true" className="h-4 w-4" />
                   </span>
                 </span>
               </Link>

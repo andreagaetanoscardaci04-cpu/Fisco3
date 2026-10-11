@@ -4,7 +4,6 @@ import {
   Briefcase,
   CircleCheck,
   FileText,
-  MapPin,
   Phone,
   ShieldCheck,
 } from "lucide-react";
@@ -35,16 +34,16 @@ function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
   return (
     <Link
       to={to}
-      className="group flex h-full items-center gap-4 rounded-3xl bg-white p-5 shadow-card ring-1 ring-slate-900/5 transition duration-200 hover:-translate-y-0.5 hover:shadow-card-hover md:p-6"
+      className="group flex h-full items-center gap-4 rounded-lg bg-white p-5 shadow-card ring-1 ring-slate-900/5 transition-colors duration-200 hover:ring-brand-300 md:p-6"
     >
       {photo ? (
         <img
           src={photo}
           alt=""
-          className="h-14 w-14 shrink-0 rounded-2xl bg-slate-100 object-cover"
+          className="h-14 w-14 shrink-0 rounded-lg bg-slate-100 object-cover"
         />
       ) : (
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
           <Icon aria-hidden="true" className="h-6 w-6" />
         </span>
       )}
@@ -59,10 +58,7 @@ function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
         )}
         <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
           {cta}
-          <ArrowRight
-            aria-hidden="true"
-            className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-          />
+          <ArrowRight aria-hidden="true" className="h-4 w-4" />
         </span>
       </span>
     </Link>
@@ -97,16 +93,10 @@ function Choices() {
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-white pb-16 pt-14 md:pb-24 md:pt-20">
+    <section className="relative overflow-hidden bg-brand-50/60 pb-16 pt-14 md:pb-24 md:pt-20">
       <Container className="relative">
         <div className="reveal mx-auto max-w-5xl text-center">
-          <p className="eyebrow">
-            <MapPin aria-hidden="true" className="h-4 w-4" />
-            Studio associato
-            <span aria-hidden="true">·</span>
-            Catania
-          </p>
-          <h1 className="mt-6 text-balance text-[2.5rem] font-bold leading-[1.08] tracking-tightest text-slate-900 sm:text-6xl lg:text-[4.25rem]">
+          <h1 className="text-balance text-[2.5rem] font-bold leading-[1.08] tracking-tightest text-slate-900 sm:text-6xl lg:text-[4.25rem]">
             <span className="sm:block">Commercialisti a Catania.</span>{" "}
             <span className="block text-brand-600">
               Il&nbsp;team lo scegli tu.
@@ -149,7 +139,7 @@ export default function Hero() {
 
         <div className="reveal reveal-delay mx-auto mt-14 max-w-5xl md:mt-16">
           {studio.images.team && (
-            <div className="overflow-hidden rounded-4xl bg-slate-100 shadow-elevated ring-1 ring-slate-900/5">
+            <div className="overflow-hidden rounded-lg bg-slate-100 shadow-elevated ring-1 ring-slate-900/5">
               <img
                 src={studio.images.team}
                 srcSet={

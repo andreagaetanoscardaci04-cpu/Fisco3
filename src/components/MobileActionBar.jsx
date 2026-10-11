@@ -7,13 +7,13 @@ export const MOBILE_BAR_SPACE =
   "pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-0";
 
 const ITEM =
-  "flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl px-2 text-sm font-semibold transition-colors";
+  "flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md px-2 text-sm font-semibold transition-colors";
 
 export default function MobileActionBar() {
   return (
     <nav
       aria-label="Contatti rapidi"
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-100 bg-white/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-elevated backdrop-blur lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-100 bg-white px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-elevated lg:hidden"
     >
       <div className="flex gap-2">
         <a

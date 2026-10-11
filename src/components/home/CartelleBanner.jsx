@@ -13,14 +13,10 @@ export default function CartelleBanner() {
   return (
     <section aria-labelledby="cartelle-titolo" className="bg-white pb-20 md:pb-28">
       <Container>
-        <div className="on-dark relative overflow-hidden rounded-4xl bg-navy-900 px-6 py-12 md:px-14 md:py-16">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full border-[48px] border-white/[0.04]"
-          />
-          <div className="relative grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="on-dark rounded-lg bg-navy-900 px-6 py-12 md:px-14 md:py-16">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-brand-200">
+              <p className="inline-flex items-center rounded-md bg-white/10 px-4 py-1.5 text-sm font-semibold text-brand-200">
                 Analisi gratuita
               </p>
               <h2

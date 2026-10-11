@@ -13,7 +13,7 @@ export default function GoogleReviewsBadge() {
       href={profileUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl bg-white px-6 py-4 shadow-card ring-1 ring-slate-900/5 transition hover:shadow-card-hover"
+      className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-white px-6 py-4 shadow-card ring-1 ring-slate-900/5 transition-colors hover:ring-brand-300"
     >
       <span className="text-3xl font-bold text-slate-900">
         {rating.toLocaleString("it-IT")}

@@ -31,16 +31,16 @@ export default function HowItWorks({ bg }) {
       <ol className="relative mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         <span
           aria-hidden="true"
-          className="absolute left-[12.5%] right-[12.5%] top-[3.25rem] hidden h-px bg-gradient-to-r from-brand-200 via-brand-300 to-brand-200 lg:block"
+          className="absolute left-[12.5%] right-[12.5%] top-[3.25rem] hidden h-px bg-brand-200 lg:block"
         />
         {STEPS.map((step, i) => (
           <li
             key={step.title}
-            className="relative rounded-3xl bg-white p-6 text-center shadow-card ring-1 ring-slate-900/5 md:p-7"
+            className="relative rounded-lg bg-white p-6 text-center shadow-card ring-1 ring-slate-900/5 md:p-7"
           >
             <span
               aria-hidden="true"
-              className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white shadow-button"
+              className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-md bg-brand-600 text-lg font-bold text-white shadow-button"
             >
               {i + 1}
             </span>

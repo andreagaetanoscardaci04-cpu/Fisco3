@@ -36,7 +36,7 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-white/95 backdrop-blur transition-shadow duration-300 ${
+      className={`sticky top-0 z-40 bg-white transition-shadow duration-300 ${
         scrolled || menuOpen
           ? "shadow-[0_1px_0_rgba(15,23,42,0.06),0_8px_24px_-12px_rgba(15,23,42,0.15)]"
           : ""
@@ -74,14 +74,14 @@ export default function Header() {
             <Phone aria-hidden="true" className="h-4 w-4 text-brand-600" />
             {studio.phone}
           </a>
-          <Button to="/consulenze" className="!rounded-full !px-6">
+          <Button to="/consulenze" className="!px-6">
             Richiedi consulenza
           </Button>
         </div>
 
         <button
           type="button"
-          className="-mr-2 inline-flex h-12 w-12 items-center justify-center rounded-xl text-slate-900 hover:bg-slate-100 lg:hidden"
+          className="-mr-2 inline-flex h-12 w-12 items-center justify-center rounded-md text-slate-900 hover:bg-slate-100 lg:hidden"
           aria-expanded={menuOpen}
           aria-controls="menu-mobile"
           aria-label={menuOpen ? "Chiudi il menu" : "Apri il menu"}
@@ -108,7 +108,7 @@ export default function Header() {
                   to={link.path}
                   end
                   className={({ isActive }) =>
-                    `flex min-h-12 items-center rounded-xl px-4 text-lg font-medium ${
+                    `flex min-h-12 items-center rounded-md px-4 text-lg font-medium ${
                       isActive
                         ? "bg-brand-50 text-brand-700"
                         : "text-slate-700 hover:bg-slate-50"

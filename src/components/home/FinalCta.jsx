@@ -7,13 +7,9 @@ export default function FinalCta() {
   return (
     <section
       aria-labelledby="cta-titolo"
-      className="on-dark relative overflow-hidden bg-brand-600 py-20 md:py-28"
+      className="on-dark bg-brand-600 py-20 md:py-28"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_50%_0%,rgba(255,255,255,0.16),transparent_70%)]"
-      />
-      <Container className="relative text-center">
+      <Container className="text-center">
         <h2
           id="cta-titolo"
           className="mx-auto max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight md:text-5xl"

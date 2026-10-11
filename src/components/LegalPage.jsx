@@ -12,7 +12,7 @@ export default function LegalPage({ title, children }) {
         <Container className="max-w-3xl">
           <p
             role="note"
-            className="flex gap-3 rounded-2xl bg-red-50 p-5 font-semibold text-red-800 ring-1 ring-red-200"
+            className="flex gap-3 rounded-lg bg-red-50 p-5 font-semibold text-red-800 ring-1 ring-red-200"
           >
             <TriangleAlert aria-hidden="true" className="h-6 w-6 shrink-0" />
             TESTO DA SOSTITUIRE CON INFORMATIVA UFFICIALE

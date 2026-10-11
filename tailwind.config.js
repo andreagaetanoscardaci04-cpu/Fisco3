@@ -38,12 +38,17 @@ export default {
         button: "0 8px 20px -6px rgba(22, 87, 232, 0.55)",
         float: "0 -4px 24px rgba(15, 23, 42, 0.10)",
       },
-      borderRadius: {
-        "4xl": "2rem",
-      },
       letterSpacing: {
         tightest: "-0.035em",
       },
+    },
+    // Raggi massimi: 6px pulsanti e campi, 10px card e immagini
+    borderRadius: {
+      none: "0",
+      sm: "4px",
+      DEFAULT: "6px",
+      md: "6px",
+      lg: "10px",
     },
   },
   plugins: [],

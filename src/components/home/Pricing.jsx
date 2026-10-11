@@ -22,7 +22,7 @@ export default function Pricing({ bg }) {
         {studio.pricing.map((pkg) => (
           <li
             key={pkg.name}
-            className="flex flex-col rounded-3xl bg-white p-7 shadow-card ring-1 ring-slate-900/5 md:p-8"
+            className="flex flex-col rounded-lg bg-white p-7 shadow-card ring-1 ring-slate-900/5 md:p-8"
           >
             <h3 className="text-xl font-semibold">{pkg.name}</h3>
             <p className="mt-1 text-sm text-slate-500">{pkg.target}</p>

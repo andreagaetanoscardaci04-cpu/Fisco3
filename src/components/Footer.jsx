@@ -45,13 +45,13 @@ function MapEmbed() {
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         allowFullScreen
-        className="aspect-[4/3] w-full rounded-2xl border-0"
+        className="aspect-[4/3] w-full rounded-lg border-0"
       />
     );
   }
 
   return (
-    <div className="rounded-2xl bg-white/5 p-5 ring-1 ring-inset ring-white/10">
+    <div className="rounded-lg bg-white/5 p-5 ring-1 ring-inset ring-white/10">
       <MapPin aria-hidden="true" className="h-6 w-6 text-brand-300" />
       <p className="mt-3 text-sm text-slate-400">
         La mappa è fornita da Google, che riceverà alcuni dati della tua
@@ -106,7 +106,7 @@ export default function Footer() {
                       aria-label={label}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-brand-600"
+                      className="flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white transition-colors hover:bg-brand-600"
                     >
                       <Icon aria-hidden="true" className="h-5 w-5" />
                     </a>
@@ -117,7 +117,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Pagine del sito" className="lg:col-span-2">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <h2 className="text-base font-semibold text-white">
               Pagine
             </h2>
             <ul className="mt-5 space-y-3">
@@ -132,7 +132,7 @@ export default function Footer() {
           </nav>
 
           <div className="lg:col-span-3">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <h2 className="text-base font-semibold text-white">
               Contatti
             </h2>
             <address className="mt-5 space-y-4 not-italic">
@@ -175,7 +175,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <h2 className="text-base font-semibold text-white">
               Dove siamo
             </h2>
             <div className="mt-5">
@@ -188,8 +188,8 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()}{" "}
             {studio.legalName ??
-              `${studio.brandName} · Studio associato di commercialisti`}
-            {studio.piva && ` · P.IVA ${studio.piva}`}
+              `${studio.brandName}, Studio associato di commercialisti`}
+            {studio.piva && `, P.IVA ${studio.piva}`}
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             <li>

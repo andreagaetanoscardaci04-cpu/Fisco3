@@ -19,7 +19,7 @@ export default function Reviews({ bg }) {
         <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {studio.reviews.map((r) => (
             <li key={r.author + r.date}>
-              <figure className="flex h-full flex-col rounded-3xl bg-white p-7 shadow-card ring-1 ring-slate-900/5">
+              <figure className="flex h-full flex-col rounded-lg bg-white p-7 shadow-card ring-1 ring-slate-900/5">
                 <div
                   className="flex gap-0.5"
                   role="img"

@@ -64,7 +64,7 @@ export default function CookieBanner() {
   return (
     <section
       aria-label="Preferenze cookie"
-      className="fixed inset-x-0 bottom-0 z-50 rounded-t-3xl bg-white shadow-elevated ring-1 ring-slate-900/10 md:inset-x-auto md:bottom-6 md:right-6 md:max-w-md md:rounded-3xl"
+      className="fixed inset-x-0 bottom-0 z-50 rounded-t-lg bg-white shadow-elevated ring-1 ring-slate-900/10 md:inset-x-auto md:bottom-6 md:right-6 md:max-w-md md:rounded-lg"
     >
       <div className="max-h-[85vh] overflow-y-auto p-6 md:p-7">
         <h2 className="text-lg font-bold">Rispettiamo la tua privacy</h2>

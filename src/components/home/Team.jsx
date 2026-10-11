@@ -6,7 +6,7 @@ import { namedProfessionals } from "../../config/studio";
 
 function Profile({ p }) {
   return (
-    <li className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-slate-900/5">
+    <li className="flex flex-col overflow-hidden rounded-lg bg-white shadow-card ring-1 ring-slate-900/5">
       {p.photo && (
         <img
           src={p.photo}
