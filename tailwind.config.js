@@ -63,7 +63,6 @@ export default {
         "card-hover":
           "0 2px 4px rgba(15, 23, 42, 0.05), 0 16px 40px -8px rgba(15, 23, 42, 0.14)",
         elevated: "0 30px 60px -20px rgba(15, 23, 42, 0.30)",
-        button: "0 8px 20px -6px rgba(22, 87, 232, 0.55)",
         float: "0 -4px 24px rgba(15, 23, 42, 0.10)",
       },
       letterSpacing: {

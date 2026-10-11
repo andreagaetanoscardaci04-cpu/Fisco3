@@ -39,7 +39,7 @@ export default function HowItWorks({ bg }) {
           >
             <span
               aria-hidden="true"
-              className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-md bg-brand-600 text-lg font-bold text-white shadow-button"
+              className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-md bg-brand-600 text-lg font-bold text-white"
             >
               {i + 1}
             </span>

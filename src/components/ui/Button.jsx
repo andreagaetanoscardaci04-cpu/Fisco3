@@ -10,7 +10,7 @@ const SIZES = {
 
 const VARIANTS = {
   primary:
-    "bg-brand-600 text-white shadow-button hover:bg-brand-700",
+    "bg-brand-600 text-white hover:bg-brand-700",
   secondary:
     "bg-white text-slate-900 ring-1 ring-inset ring-slate-200 hover:bg-slate-50 hover:ring-slate-300",
   ghost: "text-brand-600 hover:bg-brand-50",
