@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
   CircleCheck,
-  ShieldCheck,
   Smile,
   Sparkles,
   Star,
   TrendingUp,
 } from "lucide-react";
-import { SERVICES } from "../data/services.jsx";
+import { SERVICES } from "../data/services.js";
+import Hero from "../components/home/Hero.jsx";
+import TrustStrip from "../components/home/TrustStrip.jsx";
 
 const DEBT_TOPICS = [
   "Rottamazione 5",
@@ -24,32 +24,6 @@ const WHY_FISCO3 = [
   "Trasparenza Totale: Costi chiari e risultati misurabili.",
   "Velocità Digitale: Risposte rapide via mail o WhatsApp.",
 ];
-
-function HeroImage({ scrollY }) {
-  return (
-    <div className="relative group max-w-5xl mx-auto w-full">
-      <div className="relative z-10 rounded-md overflow-hidden shadow-2xl transition-all duration-500 bg-carta">
-        <img
-          src="/team-hero.png"
-          alt="Il Team di Fisco3"
-          className="w-full h-[25rem] md:h-[35rem] object-cover object-top transition-transform duration-700 group-hover:scale-105"
-        />
-      </div>
-      <div
-        className="absolute -bottom-6 right-10 bg-bianco p-5 md:p-6 rounded-md shadow-2xl flex items-center gap-4 z-20 border border-pietra"
-        style={{ transform: `translateY(${scrollY * -0.05}px)` }}
-      >
-        <div className="bg-conferma p-3 rounded-md">
-          <ShieldCheck className="text-conferma w-8 h-8" />
-        </div>
-        <div>
-          <p className="text-sm font-bold text-inchiostro">Pace della Mente</p>
-          <p className="text-xs text-basalto-tenue">Tasse sotto controllo</p>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function DebtCard() {
   return (
@@ -167,48 +141,13 @@ function OptimizationBanner() {
   );
 }
 
-function Hero() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.pageYOffset);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
+function LegacyBlocks() {
   return (
-    <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-40">
-      <div
-        className="absolute -top-40 -right-40 w-[40rem] h-[40rem] bg-carta rounded-full blur-[120px] opacity-60 pointer-events-none"
-        style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-      />
-      <div
-        className="absolute top-1/2 -left-40 w-[30rem] h-[30rem] bg-carta rounded-full blur-[100px] opacity-40 pointer-events-none"
-        style={{ transform: `translateY(${scrollY * -0.1}px)` }}
-      />
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="flex flex-col items-center space-y-16 md:space-y-24">
-          <div className="text-center space-y-4 order-1">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-inchiostro tracking-tighter leading-none">
-              Fisco<span className="text-blu">3</span>
-            </h1>
-            <p className="text-2xl md:text-3xl lg:text-4xl text-basalto-tenue font-medium italic">
-              Il team lo scegli tu!
-            </p>
-          </div>
-          <div className="order-2 w-full">
-            <HeroImage scrollY={scrollY} />
-          </div>
-          <div className="order-3 w-full">
-            <DebtCard />
-          </div>
-          <div className="order-4 w-full">
-            <SocialProofCta />
-          </div>
-          <div className="order-5 w-full">
-            <OptimizationBanner />
-          </div>
-        </div>
+    <section className="py-16">
+      <div className="container mx-auto px-4 md:px-8 space-y-16">
+        <DebtCard />
+        <SocialProofCta />
+        <OptimizationBanner />
       </div>
     </section>
   );
@@ -237,13 +176,8 @@ function ValueProposition() {
               key={i}
               className="bg-bianco p-8 rounded-md shadow-sm border border-pietra transition-all hover:shadow-xl hover:-translate-y-2 group"
             >
-              <div className="mb-6 p-4 bg-carta w-fit rounded-md group-hover:bg-blu transition-colors">
-                <div className="group-hover:text-bianco transition-colors">
-                  {service.icon}
-                </div>
-              </div>
               <h3 className="text-xl font-bold text-inchiostro mb-4">
-                {service.title}
+                {service.label}
               </h3>
               <p className="text-basalto leading-relaxed">
                 {service.description}
@@ -327,6 +261,8 @@ export default function Home() {
   return (
     <div>
       <Hero />
+      <TrustStrip />
+      <LegacyBlocks />
       <ValueProposition />
       <FinalCta />
     </div>
