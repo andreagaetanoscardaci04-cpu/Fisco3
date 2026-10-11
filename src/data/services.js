@@ -7,6 +7,7 @@ export const SERVICES = [
     situation: "Ho ricevuto una cartella esattoriale",
     description:
       "Leggiamo la cartella con te, verifichiamo gli importi e ti diciamo se conviene la rottamazione o la rateizzazione.",
+    ctaLabel: "Richiedi l'analisi della cartella",
     formLabel: "Cartelle Esattoriali / Rottamazione",
   },
   {
@@ -15,6 +16,7 @@ export const SERVICES = [
     situation: "Ho o voglio aprire una partita IVA forfettaria",
     description:
       "Verifichiamo se puoi accedere al forfettario, apriamo la partita IVA e teniamo sotto controllo scadenze e versamenti.",
+    ctaLabel: "Richiedi l'analisi per la partita IVA",
     formLabel: "Regime Forfettario",
   },
   {
@@ -23,6 +25,7 @@ export const SERVICES = [
     situation: "Devo fare il 730",
     description:
       "Prepariamo e inviamo il tuo 730, controllando con te le spese detraibili da inserire.",
+    ctaLabel: "Richiedi l'analisi per il 730",
     formLabel: "Modello 730 / Rimborsi",
   },
   {
@@ -31,6 +34,7 @@ export const SERVICES = [
     situation: "Voglio aprire un'attività con Resto al Sud",
     description:
       "Verifichiamo se hai i requisiti e ti seguiamo nella preparazione della domanda.",
+    ctaLabel: "Richiedi l'analisi per Resto al Sud",
     formLabel: "Resto al Sud / Finanziamenti",
   },
 ];
