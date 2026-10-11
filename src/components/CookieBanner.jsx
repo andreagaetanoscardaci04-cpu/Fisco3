@@ -64,7 +64,7 @@ export default function CookieBanner() {
   return (
     <section
       aria-label="Preferenze cookie"
-      className="fixed inset-x-0 bottom-0 z-50 rounded-t-lg bg-white shadow-elevated ring-1 ring-slate-900/10 md:inset-x-auto md:bottom-6 md:right-6 md:max-w-md md:rounded-lg"
+      className="fixed inset-x-0 bottom-0 z-50 rounded-t-lg bg-white shadow-elevated ring-1 ring-pietra-scura md:inset-x-auto md:bottom-6 md:right-6 md:max-w-md md:rounded-lg"
     >
       <div className="max-h-[85vh] overflow-y-auto p-6 md:p-7">
         <h2 className="text-lg font-bold">Rispettiamo la tua privacy</h2>
@@ -79,7 +79,7 @@ export default function CookieBanner() {
         </p>
 
         {customizing && (
-          <fieldset className="mt-4 space-y-3 border-t border-slate-200 pt-4">
+          <fieldset className="mt-4 space-y-3 border-t border-pietra pt-4">
             <legend className="sr-only">Scegli quali cookie accettare</legend>
             <div className="flex gap-3">
               <input
@@ -87,10 +87,10 @@ export default function CookieBanner() {
                 checked
                 disabled
                 id={`${marketingId}-tecnici`}
-                className="mt-1 h-5 w-5 shrink-0 accent-brand-600"
+                className="mt-1 h-5 w-5 shrink-0 accent-fisco"
               />
               <label htmlFor={`${marketingId}-tecnici`} className="text-sm">
-                <span className="font-medium text-slate-900">Tecnici</span>
+                <span className="font-medium text-inchiostro">Tecnici</span>
                 <br />
                 Sempre attivi: servono al funzionamento del sito e a ricordare
                 questa scelta.
@@ -102,10 +102,10 @@ export default function CookieBanner() {
                 id={marketingId}
                 checked={marketing}
                 onChange={(e) => setMarketing(e.target.checked)}
-                className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-brand-600"
+                className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-fisco"
               />
               <label htmlFor={marketingId} className="cursor-pointer text-sm">
-                <span className="font-medium text-slate-900">Marketing</span>
+                <span className="font-medium text-inchiostro">Marketing</span>
                 <br />
                 Meta Pixel: misura le visite arrivate dalle nostre inserzioni
                 su Facebook e Instagram.

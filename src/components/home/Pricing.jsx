@@ -22,23 +22,23 @@ export default function Pricing({ bg }) {
         {studio.pricing.map((pkg) => (
           <li
             key={pkg.name}
-            className="flex flex-col rounded-lg bg-white p-7 shadow-card ring-1 ring-slate-900/5 md:p-8"
+            className="flex flex-col rounded-lg bg-white p-7 shadow-card ring-1 ring-pietra md:p-8"
           >
             <h3 className="text-xl font-semibold">{pkg.name}</h3>
-            <p className="mt-1 text-sm text-slate-500">{pkg.target}</p>
-            <p className="mt-6 text-slate-600">
+            <p className="mt-1 text-sm text-basalto">{pkg.target}</p>
+            <p className="mt-6 text-basalto">
               a partire da
-              <span className="mt-1 block text-4xl font-bold tracking-tight text-slate-900">
+              <span className="mt-1 block text-4xl font-bold tracking-tight text-inchiostro">
                 {formatEuro(pkg.priceFrom)}
-                <span className="text-base font-medium text-slate-500">/anno</span>
+                <span className="text-base font-medium text-basalto">/anno</span>
               </span>
             </p>
-            <ul className="mt-6 flex-1 space-y-3 border-t border-slate-100 pt-6">
+            <ul className="mt-6 flex-1 space-y-3 border-t border-pietra pt-6">
               {pkg.includes.map((item) => (
                 <li key={item} className="flex gap-3">
                   <Check
                     aria-hidden="true"
-                    className="mt-1 h-4 w-4 shrink-0 text-brand-600"
+                    className="mt-1 h-4 w-4 shrink-0 text-inchiostro"
                   />
                   {item}
                 </li>
@@ -51,7 +51,7 @@ export default function Pricing({ bg }) {
         ))}
       </ul>
       {studio.pricingNote && (
-        <p className="mt-8 text-center text-sm text-slate-500">
+        <p className="mt-8 text-center text-sm text-basalto">
           {studio.pricingNote}
         </p>
       )}

@@ -4,27 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Blu Fisco3 (#1657E8) e la sua scala
-        brand: {
-          50: "#EEF4FF",
-          100: "#DDE8FE",
-          200: "#BCD1FD",
-          300: "#8DB0FA",
-          400: "#5584F3",
-          500: "#2E66EC",
-          600: "#1657E8",
-          700: "#1146C4",
-          800: "#123A9C",
-          900: "#132F75",
-        },
-        // Blu notte per sezioni scure e footer
-        navy: {
-          800: "#14234A",
-          900: "#0C1733",
-          950: "#081026",
-        },
-
-        // Nuova palette (in prova su /anteprima-colori, non ancora applicata)
+        // Palette del sito
         inchiostro: {
           DEFAULT: "#14213D", // titoli, sezioni scure, footer
           profondo: "#0E182D", // solo punto finale dei gradienti scuri
@@ -34,6 +14,7 @@ export default {
           DEFAULT: "#1657E8", // solo pulsanti, link, focus
           hover: "#1148C4",
           tenue: "#E8EEFD", // stati selezionati, piccoli evidenziatori
+          chiaro: "#8DB0FA", // solo il "3" del logo su fondo scuro
         },
         carta: {
           DEFAULT: "#F6F7F5", // sfondo pagina

@@ -19,7 +19,7 @@ export default function Reviews({ bg }) {
         <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {studio.reviews.map((r) => (
             <li key={r.author + r.date}>
-              <figure className="flex h-full flex-col rounded-lg bg-white p-7 shadow-card ring-1 ring-slate-900/5">
+              <figure className="flex h-full flex-col rounded-lg bg-white p-7 shadow-card ring-1 ring-pietra">
                 <div
                   className="flex gap-0.5"
                   role="img"
@@ -29,18 +29,18 @@ export default function Reviews({ bg }) {
                     <Star
                       key={i}
                       aria-hidden="true"
-                      className="h-4 w-4 fill-amber-400 text-amber-400"
+                      className="h-4 w-4 fill-ocra text-ocra"
                     />
                   ))}
                 </div>
-                <blockquote className="mt-4 flex-1 leading-relaxed text-slate-700">
+                <blockquote className="mt-4 flex-1 leading-relaxed text-basalto">
                   <p>{r.text}</p>
                 </blockquote>
                 <figcaption className="mt-5 text-sm">
-                  <span className="font-semibold text-slate-900">
+                  <span className="font-semibold text-inchiostro">
                     {r.author}
                   </span>
-                  <span className="text-slate-500"> · {r.date}</span>
+                  <span className="text-basalto"> · {r.date}</span>
                 </figcaption>
               </figure>
             </li>

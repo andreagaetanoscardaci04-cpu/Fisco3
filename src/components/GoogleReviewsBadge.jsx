@@ -13,18 +13,18 @@ export default function GoogleReviewsBadge() {
       href={profileUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-white px-6 py-4 shadow-card ring-1 ring-slate-900/5 transition-colors hover:ring-brand-300"
+      className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-white px-6 py-4 shadow-card ring-1 ring-pietra transition-colors hover:ring-fisco"
     >
-      <span className="text-3xl font-bold text-slate-900">
+      <span className="text-3xl font-bold text-inchiostro">
         {rating.toLocaleString("it-IT")}
       </span>
       <span>
         <span className="flex gap-0.5" aria-hidden="true">
           {Array.from({ length: 5 }, (_, i) => (
-            <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+            <Star key={i} className="h-4 w-4 fill-ocra text-ocra" />
           ))}
         </span>
-        <span className="mt-1 block text-sm text-slate-600">
+        <span className="mt-1 block text-sm text-basalto">
           {reviewCount} recensioni su Google
         </span>
       </span>

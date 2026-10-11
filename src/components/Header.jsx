@@ -56,8 +56,8 @@ export default function Header() {
               className={({ isActive }) =>
                 `rounded-lg px-4 py-2 text-[15px] font-medium transition-colors ${
                   isActive
-                    ? "text-brand-600"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    ? "text-fisco"
+                    : "text-basalto hover:bg-carta hover:text-inchiostro"
                 }`
               }
             >
@@ -69,9 +69,9 @@ export default function Header() {
         <div className="hidden items-center gap-5 lg:flex">
           <a
             href={phoneHref}
-            className="inline-flex items-center gap-2 text-[15px] font-medium text-slate-700 transition-colors hover:text-brand-600"
+            className="inline-flex items-center gap-2 text-[15px] font-medium text-basalto transition-colors hover:text-fisco"
           >
-            <Phone aria-hidden="true" className="h-4 w-4 text-brand-600" />
+            <Phone aria-hidden="true" className="h-4 w-4 text-fisco" />
             {studio.phone}
           </a>
           <Button to="/consulenze" className="!px-6">
@@ -81,7 +81,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="-mr-2 inline-flex h-12 w-12 items-center justify-center rounded-md text-slate-900 hover:bg-slate-100 lg:hidden"
+          className="-mr-2 inline-flex h-12 w-12 items-center justify-center rounded-md text-inchiostro hover:bg-carta lg:hidden"
           aria-expanded={menuOpen}
           aria-controls="menu-mobile"
           aria-label={menuOpen ? "Chiudi il menu" : "Apri il menu"}
@@ -99,7 +99,7 @@ export default function Header() {
         <nav
           id="menu-mobile"
           aria-label="Menu"
-          className="absolute inset-x-0 top-full border-t border-slate-100 bg-white px-5 pb-6 pt-3 shadow-elevated lg:hidden"
+          className="absolute inset-x-0 top-full border-t border-pietra bg-white px-5 pb-6 pt-3 shadow-elevated lg:hidden"
         >
           <ul className="space-y-1">
             {NAV_LINKS.map((link) => (
@@ -110,8 +110,8 @@ export default function Header() {
                   className={({ isActive }) =>
                     `flex min-h-12 items-center rounded-md px-4 text-lg font-medium ${
                       isActive
-                        ? "bg-brand-50 text-brand-700"
-                        : "text-slate-700 hover:bg-slate-50"
+                        ? "bg-fisco-tenue text-inchiostro"
+                        : "text-basalto hover:bg-carta"
                     }`
                   }
                 >
@@ -120,7 +120,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <div className="mt-4 space-y-3 border-t border-slate-100 pt-5">
+          <div className="mt-4 space-y-3 border-t border-pietra pt-5">
             <Button href={phoneHref} variant="secondary" className="w-full">
               <Phone aria-hidden="true" className="h-4 w-4" />
               Chiama {studio.phone}

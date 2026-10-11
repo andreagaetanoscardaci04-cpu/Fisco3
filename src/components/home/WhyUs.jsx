@@ -41,7 +41,7 @@ export default function WhyUs({ bg }) {
         <ul className="grid gap-8 sm:grid-cols-3 lg:col-span-8 lg:gap-10">
           {REASONS.map(({ Icon, title, text }) => (
             <li key={title}>
-              <span className="flex h-11 w-11 items-center justify-center rounded-md bg-brand-50 text-brand-600">
+              <span className="flex h-11 w-11 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro">
                 <Icon aria-hidden="true" className="h-5 w-5" />
               </span>
               <h3 className="mt-4 text-lg font-semibold">{title}</h3>

@@ -31,19 +31,19 @@ export default function Needs({ bg }) {
             <li key={s.slug}>
               <Link
                 to={`/consulenze?tema=${s.slug}`}
-                className="group flex h-full gap-5 rounded-lg bg-white p-6 shadow-card ring-1 ring-slate-900/5 transition-colors duration-200 hover:ring-brand-300 md:p-8"
+                className="group flex h-full gap-5 rounded-lg bg-white p-6 shadow-card ring-1 ring-pietra transition-colors duration-200 hover:ring-fisco md:p-8"
               >
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-fisco-tenue text-inchiostro transition-colors group-hover:bg-inchiostro group-hover:text-white">
                   <Icon aria-hidden="true" className="h-7 w-7" />
                 </span>
                 <span className="flex flex-1 flex-col">
                   <h3 className="text-xl font-semibold leading-snug">
                     {s.situation}
                   </h3>
-                  <span className="mt-2 block flex-1 leading-relaxed text-slate-600">
+                  <span className="mt-2 block flex-1 leading-relaxed text-basalto">
                     {s.description}
                   </span>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-brand-600">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-fisco">
                     {s.ctaLabel}
                     <ArrowRight aria-hidden="true" className="h-4 w-4" />
                   </span>

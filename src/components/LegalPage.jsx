@@ -8,7 +8,7 @@ export default function LegalPage({ title, children }) {
   return (
     <>
       <PageHero title={title} />
-      <section className="bg-white pb-20 md:pb-28">
+      <section className="bg-carta pb-20 md:pb-28">
         <Container className="max-w-3xl">
           <p
             role="note"

@@ -54,7 +54,7 @@ function MapEmbed() {
   return (
     <div className="rounded-lg bg-white/5 p-5 ring-1 ring-inset ring-white/10">
       <MapPin aria-hidden="true" className="h-6 w-6 text-su-scuro" />
-      <p className="mt-3 text-sm text-slate-400">
+      <p className="mt-3 text-sm text-su-scuro">
         La mappa è fornita da Google, che riceverà alcuni dati della tua
         navigazione.
       </p>

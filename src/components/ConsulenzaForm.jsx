@@ -11,9 +11,9 @@ const WEB3FORMS_ACCESS_KEY = "42a317e3-dcef-4a16-abd3-7e30c6373cd0";
 const NO_PREFERENCE = "Nessuna preferenza";
 
 const INPUT =
-  "w-full rounded-md border bg-slate-50 px-4 py-3.5 text-slate-900 transition-colors placeholder:text-slate-400 hover:border-slate-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-100";
+  "w-full rounded-md border bg-carta px-4 py-3.5 text-inchiostro transition-colors placeholder:text-basalto/60 hover:border-basalto focus:border-fisco focus:bg-white focus:outline-none focus:ring-4 focus:ring-fisco-tenue";
 const borderFor = (error) =>
-  error ? "border-red-500 bg-red-50/40" : "border-slate-300";
+  error ? "border-red-500 bg-red-50/40" : "border-grafite";
 
 function validate(data) {
   const errors = {};
@@ -44,10 +44,10 @@ function validate(data) {
 function Field({ id, label, optional, error, children }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
+      <label htmlFor={id} className="block text-sm font-semibold text-basalto">
         {label}
         {optional && (
-          <span className="font-normal text-slate-500"> (facoltativo)</span>
+          <span className="font-normal text-basalto"> (facoltativo)</span>
         )}
       </label>
       <div className="mt-2">{children}</div>
@@ -79,7 +79,7 @@ function Select({ id, name, defaultValue, children }) {
       </select>
       <ChevronDown
         aria-hidden="true"
-        className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
+        className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-basalto"
       />
     </div>
   );
@@ -150,7 +150,7 @@ export default function ConsulenzaForm({ params }) {
     return (
       <div
         role="status"
-        className="rounded-lg bg-white p-8 text-center shadow-card ring-1 ring-slate-900/5 md:p-14"
+        className="rounded-lg bg-white p-8 text-center shadow-card ring-1 ring-pietra md:p-14"
       >
         <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-emerald-50 text-emerald-600">
           <CircleCheckBig aria-hidden="true" className="h-8 w-8" />
@@ -178,7 +178,7 @@ export default function ConsulenzaForm({ params }) {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="space-y-6 rounded-lg bg-white p-6 shadow-card ring-1 ring-slate-900/5 md:p-10"
+      className="space-y-6 rounded-lg bg-white p-6 shadow-card ring-1 ring-pietra md:p-10"
     >
       <div className="grid gap-6 md:grid-cols-2">
         <Field id="nome" label="Nome e cognome" error={errors.nome}>
@@ -264,7 +264,7 @@ export default function ConsulenzaForm({ params }) {
             type="checkbox"
             name="privacy"
             value="si"
-            className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-brand-600"
+            className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-fisco"
             {...errorProps("privacy", errors.privacy)}
           />
           <label htmlFor="privacy" className="cursor-pointer text-[15px]">
@@ -310,7 +310,7 @@ export default function ConsulenzaForm({ params }) {
             </>
           )}
         </Button>
-        <p className="mt-4 text-center text-sm text-slate-500">
+        <p className="mt-4 text-center text-sm text-basalto">
           Gratuita e senza impegno. Rispondiamo entro {studio.responseTime}.
         </p>
       </div>
