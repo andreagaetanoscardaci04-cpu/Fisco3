@@ -10,12 +10,14 @@ import Contabilita from "./pages/Contabilita.jsx";
 import { trackPath } from "./lib/navigation.js";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     trackPath(pathname);
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const target = hash && document.getElementById(hash.slice(1));
+    if (target) target.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }, [pathname, hash]);
 
   return null;
 }

@@ -1,6 +1,9 @@
 import { studio } from "../config/studio";
 
 const { clientPortal, fullyDigital } = studio.features;
+const hasPricing = studio.pricing.length > 0;
+
+// `link` facoltativo: mostrato sotto la risposta
 
 export const FAQ_ITEMS = [
   {
@@ -11,7 +14,13 @@ export const FAQ_ITEMS = [
   {
     question: "Quanto costa il servizio?",
     answer:
-      "La consulenza iniziale è sempre gratuita. Successivamente, offriamo diversi pacchetti annuali in base al regime fiscale e ai servizi richiesti, con prezzi trasparenti e senza sorprese.",
+      "La consulenza iniziale è sempre gratuita. Successivamente, offriamo diversi pacchetti annuali in base al regime fiscale e ai servizi richiesti, con prezzi trasparenti e senza sorprese." +
+      (hasPricing
+        ? " Trovi i pacchetti con il prezzo di partenza nella homepage."
+        : ""),
+    link: hasPricing
+      ? { to: "/#pacchetti", label: "Vedi i pacchetti e i prezzi" }
+      : null,
   },
   {
     question: "Posso aprire la Partita IVA con voi?",

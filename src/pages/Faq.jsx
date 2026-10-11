@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import Button from "../components/ui/Button.jsx";
 import Section from "../components/ui/Section.jsx";
@@ -27,7 +28,14 @@ export default function Faq() {
                     className="h-5 w-5 shrink-0 text-basalto-tenue group-open:rotate-180"
                   />
                 </summary>
-                <div className="max-w-prose pb-6">{item.answer}</div>
+                <div className="max-w-prose pb-6">
+                  <p>{item.answer}</p>
+                  {item.link && (
+                    <Link to={item.link.to} className="link mt-3 inline-block">
+                      {item.link.label}
+                    </Link>
+                  )}
+                </div>
               </details>
             ))}
           </div>

@@ -4,6 +4,7 @@ import Needs from "../components/home/Needs.jsx";
 import HowItWorks from "../components/home/HowItWorks.jsx";
 import Team, { hasTeam } from "../components/home/Team.jsx";
 import Reviews, { hasReviews } from "../components/home/Reviews.jsx";
+import Pricing, { hasPricing } from "../components/home/Pricing.jsx";
 import FinalCta from "../components/home/FinalCta.jsx";
 
 // Le sezioni nascoste (dati mancanti) non devono rompere l'alternanza
@@ -13,6 +14,7 @@ const SECTIONS = [
   { key: "how", Component: HowItWorks, visible: true },
   { key: "team", Component: Team, visible: hasTeam },
   { key: "reviews", Component: Reviews, visible: hasReviews },
+  { key: "pricing", Component: Pricing, visible: hasPricing },
 ].filter((s) => s.visible);
 
 export default function Home() {

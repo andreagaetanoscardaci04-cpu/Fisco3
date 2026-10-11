@@ -16,7 +16,7 @@ export type Professional = {
 export type PricingPackage = {
   name: string;
   target: string; // a chi è rivolto
-  priceFrom: number; // euro/anno, IVA esclusa
+  priceFrom: number; // euro/anno
   includes: string[];
 };
 
@@ -94,6 +94,7 @@ export const studio = {
   ] as Professional[],
 
   pricing: [] as PricingPackage[], // TODO: pacchetti con prezzo "a partire da"
+  pricingNote: null as string | null, // TODO: es. "Prezzi IVA esclusa" (da confermare)
 
   // Funzionalità da mostrare solo se verificate con lo studio
   features: {
