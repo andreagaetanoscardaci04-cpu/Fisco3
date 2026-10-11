@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Calculator, Clock, Lock } from "lucide-react";
+import { studio } from "../config/studio";
 
 const FEATURES = [
   {
@@ -50,13 +51,13 @@ export default function Contabilita() {
                 </a>
               </div>
             </div>
-            <div className="relative">
+            {studio.images.office && (
               <img
-                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
-                alt="Gestione contabile"
-                className="rounded-md shadow-2xl"
+                src={studio.images.office}
+                alt="Lo studio Fisco3"
+                className="rounded-md"
               />
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -84,19 +85,6 @@ export default function Contabilita() {
         </div>
       </section>
 
-      <section className="bg-inchiostro py-24 text-center">
-        <div className="container mx-auto px-4">
-          <blockquote className="max-w-4xl mx-auto space-y-8">
-            <p className="text-2xl md:text-4xl font-light italic text-pietra leading-relaxed">
-              "Fisco3 non è solo uno studio, è il respiro di sollievo che ogni
-              imprenditore merita di avere."
-            </p>
-            <cite className="block text-blu text-xl font-bold not-italic">
-              — Il team di Fisco3
-            </cite>
-          </blockquote>
-        </div>
-      </section>
     </div>
   );
 }

@@ -13,6 +13,11 @@ export default function FinalCta() {
           La prima analisi è gratuita e non ti impegna a nulla. Ti
           ricontattiamo entro {studio.responseTime}.
         </p>
+        {studio.clientCount && (
+          <p className="mt-2">
+            Oggi seguiamo {studio.clientCount.toLocaleString("it-IT")} clienti.
+          </p>
+        )}
         <Button to="/consulenze" variant="inverse" className="mt-8">
           Richiedi l'analisi gratuita
         </Button>
