@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import CookieBanner from "./components/CookieBanner.jsx";
@@ -10,7 +10,9 @@ import Faq from "./pages/Faq.jsx";
 import Contabilita from "./pages/Contabilita.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import CookiePolicy from "./pages/CookiePolicy.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import { trackPath } from "./lib/navigation.js";
+import { useSeo } from "./seo/useSeo.js";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -25,9 +27,12 @@ function ScrollToTop() {
   return null;
 }
 
+// Il router (BrowserRouter o StaticRouter) è fornito da main.jsx o
+// entry-server.jsx, così la stessa app viene prerenderizzata e idratata.
 export default function App() {
+  useSeo();
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <div className="flex min-h-screen flex-col">
         <Header />
@@ -39,12 +44,13 @@ export default function App() {
             <Route path="/contabilita" element={<Contabilita />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
         <MobileActionBar />
         <CookieBanner />
       </div>
-    </BrowserRouter>
+    </>
   );
 }

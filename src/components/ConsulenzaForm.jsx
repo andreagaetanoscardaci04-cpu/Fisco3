@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ChevronDown, LoaderCircle } from "lucide-react";
 import Button from "./ui/Button.jsx";
 import { studio, namedProfessionals, phoneHref } from "../config/studio";
@@ -84,15 +84,16 @@ function Select({ id, name, defaultValue, children }) {
   );
 }
 
-export default function ConsulenzaForm() {
-  const [searchParams] = useSearchParams();
+// `params`: query string della pagina (?prof=, ?tema=), letta dopo
+// l'idratazione da Consulenze.jsx
+export default function ConsulenzaForm({ params }) {
   const [status, setStatus] = useState("idle"); // idle | sending | sent
   const [sendError, setSendError] = useState("");
   const [errors, setErrors] = useState({});
 
-  const selectedService = findService(searchParams.get("tema"));
+  const selectedService = findService(params.get("tema"));
   const selectedProfessional = namedProfessionals.find(
-    (p) => p.slug === searchParams.get("prof"),
+    (p) => p.slug === params.get("prof"),
   );
 
   const handleSubmit = async (e) => {
@@ -111,6 +112,11 @@ export default function ConsulenzaForm() {
     setStatus("sending");
     setSendError("");
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("pagina_provenienza", getSourcePage());
+    formData.append(
+      "pagina_modulo",
+      window.location.pathname + window.location.search,
+    );
     formData.set("privacy", "Accettata");
 
     try {
@@ -297,13 +303,6 @@ export default function ConsulenzaForm() {
           )}
         </Button>
       </div>
-
-      <input type="hidden" name="pagina_provenienza" value={getSourcePage()} />
-      <input
-        type="hidden"
-        name="pagina_modulo"
-        value={`/consulenze${searchParams.toString() ? `?${searchParams}` : ""}`}
-      />
     </form>
   );
 }

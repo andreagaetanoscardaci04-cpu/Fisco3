@@ -2,6 +2,9 @@ import { useSearchParams } from "react-router-dom";
 import ConsulenzaForm from "../components/ConsulenzaForm.jsx";
 import Section from "../components/ui/Section.jsx";
 import { studio, phoneHref } from "../config/studio";
+import { useHydrated } from "../lib/useHydrated.js";
+
+const NO_PARAMS = new URLSearchParams();
 
 const NEXT_STEPS = [
   `Ti ricontattiamo entro ${studio.responseTime}.`,
@@ -11,6 +14,7 @@ const NEXT_STEPS = [
 
 export default function Consulenze() {
   const [searchParams] = useSearchParams();
+  const params = useHydrated() ? searchParams : NO_PARAMS;
 
   return (
     <Section bg="carta" className="!pt-10 md:!pt-16">
@@ -27,7 +31,7 @@ export default function Consulenze() {
       <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-8">
           {/* la chiave rimonta il modulo se cambiano ?prof= o ?tema= */}
-          <ConsulenzaForm key={searchParams.toString()} />
+          <ConsulenzaForm key={params.toString()} params={params} />
         </div>
 
         <aside className="lg:col-span-4" aria-labelledby="dopo-titolo">
