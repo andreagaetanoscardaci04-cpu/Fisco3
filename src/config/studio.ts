@@ -105,6 +105,10 @@ export const studio = {
   },
 
   images: {
+    // TODO: immagine generata con AI, usata provvisoriamente su richiesta.
+    // Sostituire con una foto reale dei tre professionisti.
+    team: "/team-hero.webp" as string | null, // 1536x1024
+    teamSmall: "/team-hero-768.webp" as string | null, // 768x512, per mobile
     // TODO: foto reale dello studio, es. "/studio.jpg". /team-office.png è
     // un'immagine generata con AI (volti non reali): non usarla.
     office: null as string | null,

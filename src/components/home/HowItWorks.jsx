@@ -1,4 +1,4 @@
-import Section from "../ui/Section.jsx";
+import Section, { SectionHeader } from "../ui/Section.jsx";
 import { studio } from "../../config/studio";
 
 const STEPS = [
@@ -7,36 +7,45 @@ const STEPS = [
     text: "Compili il modulo o chiami lo studio e ci racconti in poche righe la tua situazione.",
   },
   {
-    title: "Parli con il professionista che hai scelto",
-    text: `Ti ricontattiamo entro ${studio.responseTime} per fissare il colloquio.`,
+    title: "Parli con lo specialista",
+    text: `Ti ricontattiamo entro ${studio.responseTime} e parli con il professionista che segue il tuo caso.`,
   },
   {
-    title: "Ricevi una proposta chiara con il prezzo",
-    text: "Ti diciamo cosa c'è da fare e quanto costa prima di iniziare. Decidi tu se procedere.",
+    title: "Ricevi una proposta chiara",
+    text: "Ti diciamo cosa c'è da fare e quanto costa, prima di iniziare. Decidi tu se procedere.",
   },
   {
-    title: "Ti seguiamo durante l'anno",
-    text: "Ti avvisiamo per tempo di scadenze e versamenti e hai sempre lo stesso professionista come riferimento.",
+    title: "Ti seguiamo tutto l'anno",
+    text: "Ti avvisiamo per tempo di scadenze e versamenti, con lo stesso professionista come riferimento.",
   },
 ];
 
 export default function HowItWorks({ bg }) {
   return (
     <Section bg={bg} aria-labelledby="come-funziona-titolo">
-      <h2 id="come-funziona-titolo" className="text-h2 md:text-h2-lg">
-        Come funziona
-      </h2>
-      <ol className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <SectionHeader
+        id="come-funziona-titolo"
+        title="Come funziona"
+        lead="Dal primo contatto alla gestione di tutto l'anno, in quattro passaggi."
+      />
+      <ol className="relative mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <span
+          aria-hidden="true"
+          className="absolute left-[12.5%] right-[12.5%] top-[3.25rem] hidden h-px bg-gradient-to-r from-brand-200 via-brand-300 to-brand-200 lg:block"
+        />
         {STEPS.map((step, i) => (
-          <li key={step.title} className="border-t-2 border-inchiostro pt-5">
+          <li
+            key={step.title}
+            className="relative rounded-3xl bg-white p-6 text-center shadow-card ring-1 ring-slate-900/5 md:p-7"
+          >
             <span
               aria-hidden="true"
-              className="font-serif text-h3 font-semibold text-inchiostro"
+              className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white shadow-button"
             >
               {i + 1}
             </span>
-            <h3 className="mt-2 text-h3">{step.title}</h3>
-            <p className="mt-2">{step.text}</p>
+            <h3 className="mt-5 text-lg font-semibold">{step.title}</h3>
+            <p className="mt-2 text-[15px] leading-relaxed">{step.text}</p>
           </li>
         ))}
       </ol>

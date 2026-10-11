@@ -5,11 +5,11 @@ import { studio, emailHref } from "../config/studio";
 export default function LegalPage({ title, children }) {
   return (
     <Section bg="carta" className="!pt-10 md:!pt-16">
-      <div className="max-w-prose">
-        <h1 className="text-display md:text-display-lg">{title}</h1>
+      <div className="max-w-2xl">
+        <h1 className="text-4xl md:text-6xl">{title}</h1>
         <p
           role="note"
-          className="mt-8 rounded-md border-2 border-errore bg-bianco p-5 font-semibold text-errore"
+          className="mt-8 rounded-2xl border-2 border-red-600 bg-white p-5 font-semibold text-red-700"
         >
           TESTO DA SOSTITUIRE CON INFORMATIVA UFFICIALE
         </p>

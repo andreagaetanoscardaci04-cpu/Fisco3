@@ -9,20 +9,25 @@ export default function GoogleReviewsBadge() {
   if (!hasGoogleRating) return null;
   const { rating, reviewCount, profileUrl } = studio.google;
   return (
-    <div className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-md border border-pietra bg-bianco px-5 py-4">
-      <span className="inline-flex items-center gap-2 font-serif text-h3 font-semibold text-inchiostro">
-        <Star aria-hidden="true" className="h-5 w-5 fill-inchiostro" />
+    <a
+      href={profileUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl bg-white px-6 py-4 shadow-card ring-1 ring-slate-900/5 transition hover:shadow-card-hover"
+    >
+      <span className="text-3xl font-bold text-slate-900">
         {rating.toLocaleString("it-IT")}
       </span>
-      <span>su Google, {reviewCount} recensioni</span>
-      <a
-        href={profileUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="link"
-      >
-        Leggi le recensioni su Google
-      </a>
-    </div>
+      <span>
+        <span className="flex gap-0.5" aria-hidden="true">
+          {Array.from({ length: 5 }, (_, i) => (
+            <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+          ))}
+        </span>
+        <span className="mt-1 block text-sm text-slate-600">
+          {reviewCount} recensioni su Google
+        </span>
+      </span>
+    </a>
   );
 }

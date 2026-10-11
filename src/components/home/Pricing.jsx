@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
-import Section from "../ui/Section.jsx";
+import Section, { SectionHeader } from "../ui/Section.jsx";
+import Button from "../ui/Button.jsx";
 import { studio } from "../../config/studio";
 
 export const hasPricing = studio.pricing.length > 0;
@@ -13,47 +13,45 @@ export default function Pricing({ bg }) {
   if (!hasPricing) return null;
   return (
     <Section bg={bg} id="pacchetti" aria-labelledby="pacchetti-titolo">
-      <h2 id="pacchetti-titolo" className="text-h2 md:text-h2-lg">
-        Pacchetti
-      </h2>
-      <p className="mt-4 max-w-prose">
-        Il prezzo definitivo te lo diciamo dopo l'analisi gratuita, prima di
-        iniziare.
-      </p>
-      <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <SectionHeader
+        id="pacchetti-titolo"
+        title="Pacchetti"
+        lead="Il prezzo definitivo te lo diciamo dopo l'analisi gratuita, prima di iniziare."
+      />
+      <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {studio.pricing.map((pkg) => (
           <li
             key={pkg.name}
-            className="flex flex-col rounded-md border border-pietra bg-bianco p-6"
+            className="flex flex-col rounded-3xl bg-white p-7 shadow-card ring-1 ring-slate-900/5 md:p-8"
           >
-            <h3 className="text-h3">{pkg.name}</h3>
-            <p className="mt-1 text-small text-basalto-tenue">{pkg.target}</p>
-            <p className="mt-5 text-inchiostro">
-              a partire da{" "}
-              <span className="font-serif text-h2 font-semibold">
+            <h3 className="text-xl font-semibold">{pkg.name}</h3>
+            <p className="mt-1 text-sm text-slate-500">{pkg.target}</p>
+            <p className="mt-6 text-slate-600">
+              a partire da
+              <span className="mt-1 block text-4xl font-bold tracking-tight text-slate-900">
                 {formatEuro(pkg.priceFrom)}
+                <span className="text-base font-medium text-slate-500">/anno</span>
               </span>
-              /anno
             </p>
-            <ul className="mt-5 flex-1 space-y-2">
+            <ul className="mt-6 flex-1 space-y-3 border-t border-slate-100 pt-6">
               {pkg.includes.map((item) => (
-                <li key={item} className="flex gap-2">
+                <li key={item} className="flex gap-3">
                   <Check
                     aria-hidden="true"
-                    className="mt-1 h-4 w-4 shrink-0 text-inchiostro"
+                    className="mt-1 h-4 w-4 shrink-0 text-brand-600"
                   />
                   {item}
                 </li>
               ))}
             </ul>
-            <Link to="/consulenze" className="link mt-6">
-              Chiedi un preventivo per {pkg.name}
-            </Link>
+            <Button to="/consulenze" variant="secondary" className="mt-8 w-full">
+              Chiedi un preventivo
+            </Button>
           </li>
         ))}
       </ul>
       {studio.pricingNote && (
-        <p className="mt-6 text-small text-basalto-tenue">
+        <p className="mt-8 text-center text-sm text-slate-500">
           {studio.pricingNote}
         </p>
       )}

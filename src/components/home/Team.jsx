@@ -1,27 +1,24 @@
 import { Link } from "react-router-dom";
-import Section from "../ui/Section.jsx";
+import { ArrowRight, PlayCircle } from "lucide-react";
+import Section, { SectionHeader } from "../ui/Section.jsx";
 import Tag from "../ui/Tag.jsx";
 import { namedProfessionals } from "../../config/studio";
 
 function Profile({ p }) {
   return (
-    <li className="grid gap-6 border-t border-pietra py-10 first:border-t-0 first:pt-0 md:grid-cols-12 md:gap-10">
+    <li className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-slate-900/5">
       {p.photo && (
         <img
           src={p.photo}
           alt={p.name}
           loading="lazy"
-          className="aspect-[3/4] w-full max-w-xs rounded-md bg-pietra object-cover md:col-span-4"
+          className="aspect-[4/5] w-full bg-slate-100 object-cover object-top"
         />
       )}
-      <div className={p.photo ? "md:col-span-8" : "md:col-span-12"}>
-        <h3 className="text-h3 md:text-h3-lg">{p.name}</h3>
-        {p.role && (
-          <p className="mt-1 font-medium text-inchiostro">{p.role}</p>
-        )}
-        {p.albo && (
-          <p className="mt-1 text-small text-basalto-tenue">{p.albo}</p>
-        )}
+      <div className="flex flex-1 flex-col p-6 md:p-7">
+        <h3 className="text-xl font-semibold">{p.name}</h3>
+        {p.role && <p className="mt-1 font-medium text-brand-600">{p.role}</p>}
+        {p.albo && <p className="mt-1 text-sm text-slate-500">{p.albo}</p>}
         {p.specialties.length > 0 && (
           <ul className="mt-4 flex flex-wrap gap-2">
             {p.specialties.map((s) => (
@@ -31,19 +28,24 @@ function Profile({ p }) {
             ))}
           </ul>
         )}
-        {p.bio && <p className="mt-4 max-w-prose">{p.bio}</p>}
-        <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-          <Link to={`/consulenze?prof=${p.slug}`} className="link">
-            Parla con {p.name}
+        {p.bio && <p className="mt-4 flex-1 leading-relaxed">{p.bio}</p>}
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <Link
+            to={`/consulenze?prof=${p.slug}`}
+            className="inline-flex items-center gap-1.5 font-semibold text-brand-600 hover:text-brand-700"
+          >
+            Parla con {p.name.split(" ")[0]}
+            <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
           {p.videoUrl && (
             <a
               href={p.videoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="link"
+              className="inline-flex items-center gap-1.5 font-medium text-slate-600 hover:text-slate-900"
             >
-              Guarda il video di presentazione
+              <PlayCircle aria-hidden="true" className="h-4 w-4" />
+              Guarda il video
             </a>
           )}
         </div>
@@ -58,10 +60,12 @@ export default function Team({ bg }) {
   if (!hasTeam) return null;
   return (
     <Section bg={bg} id="chi-siamo" aria-labelledby="chi-siamo-titolo">
-      <h2 id="chi-siamo-titolo" className="text-h2 md:text-h2-lg">
-        Chi siamo
-      </h2>
-      <ul className="mt-10">
+      <SectionHeader
+        id="chi-siamo-titolo"
+        title="Chi siamo"
+        lead="Tre professionisti, tre specialità. Scegli tu con chi parlare."
+      />
+      <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {namedProfessionals.map((p) => (
           <Profile key={p.slug} p={p} />
         ))}

@@ -1,7 +1,7 @@
-@import "@fontsource/source-serif-4/latin-600.css";
-@import "@fontsource/ibm-plex-sans/latin-400.css";
-@import "@fontsource/ibm-plex-sans/latin-500.css";
-@import "@fontsource/ibm-plex-sans/latin-600.css";
+@import "@fontsource/poppins/latin-400.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
 
 @tailwind base;
 @tailwind components;
@@ -10,49 +10,65 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
   }
 
   body {
-    @apply bg-carta font-sans text-body text-basalto antialiased md:text-body-lg;
+    @apply bg-white font-sans text-base leading-relaxed text-slate-600 antialiased md:text-[17px];
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-serif font-semibold text-inchiostro;
+    @apply font-semibold tracking-tight text-slate-900;
   }
 
-  /* Focus visibile su tutto */
+  .on-dark h1,
+  .on-dark h2,
+  .on-dark h3,
+  .on-dark h4 {
+    @apply text-white;
+  }
+
   :focus-visible {
-    outline: 2px solid theme("colors.blu.DEFAULT");
+    outline: 3px solid theme("colors.brand.300");
     outline-offset: 2px;
+    border-radius: 6px;
   }
 
   .on-dark :focus-visible {
-    outline-color: theme("colors.bianco");
+    outline-color: theme("colors.white");
   }
 
-  a {
-    @apply transition-colors;
+  ::selection {
+    @apply bg-brand-100 text-brand-900;
   }
 }
 
 @layer components {
   .link {
-    @apply font-medium text-blu underline underline-offset-4 hover:text-blu-scuro;
+    @apply font-medium text-brand-600 underline decoration-brand-200 decoration-2 underline-offset-4 transition-colors hover:text-brand-700 hover:decoration-brand-600;
   }
 
-  .on-dark .link {
-    @apply text-bianco hover:text-pietra;
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-700 ring-1 ring-inset ring-brand-100;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-tight text-slate-900 md:text-[2.5rem] md:leading-[1.15];
+  }
+
+  .section-lead {
+    @apply mt-4 text-lg leading-relaxed text-slate-600;
   }
 }
 
-/* Unica animazione automatica: comparsa dell'hero al caricamento */
+/* Comparsa dell'hero al caricamento */
 @keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -61,7 +77,11 @@
 }
 
 .reveal {
-  animation: reveal 400ms ease-out both;
+  animation: reveal 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-delay {
+  animation-delay: 120ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -72,11 +92,4 @@
     transition: none !important;
     scroll-behavior: auto !important;
   }
-}
-
-.on-dark h1,
-.on-dark h2,
-.on-dark h3,
-.on-dark h4 {
-  color: theme("colors.bianco");
 }

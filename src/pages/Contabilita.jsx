@@ -30,10 +30,10 @@ export default function Contabilita() {
       <Section bg="carta" className="!pt-10 md:!pt-16">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <div className={studio.images.office ? "lg:col-span-6" : "lg:col-span-8"}>
-            <h1 className="text-balance text-display md:text-display-lg">
+            <h1 className="text-balance text-4xl md:text-6xl">
               Contabilità per partite IVA e attività
             </h1>
-            <p className="mt-5 max-w-prose text-lead md:text-lead-lg">
+            <p className="mt-5 max-w-2xl text-lg md:text-xl">
               Teniamo la tua contabilità durante tutto l'anno, con un
               professionista di riferimento che conosce la tua situazione.
             </p>
@@ -45,24 +45,24 @@ export default function Contabilita() {
             <img
               src={studio.images.office}
               alt="Lo studio Fisco3"
-              className="aspect-[4/3] w-full rounded-md object-cover lg:col-span-6"
+              className="aspect-[4/3] w-full rounded-2xl object-cover lg:col-span-6"
             />
           )}
         </div>
       </Section>
 
       <Section bg="bianco" aria-labelledby="servizi-contabilita">
-        <h2 id="servizi-contabilita" className="text-h2 md:text-h2-lg">
+        <h2 id="servizi-contabilita" className="text-3xl font-bold md:text-4xl">
           Cosa facciamo per te
         </h2>
-        <ul className="mt-10 border-b border-pietra">
+        <ul className="mt-10 border-b border-slate-200">
           {FEATURES.map((f) => (
             <li
               key={f.title}
-              className="grid gap-2 border-t border-pietra py-6 md:grid-cols-12 md:gap-8"
+              className="grid gap-2 border-t border-slate-200 py-6 md:grid-cols-12 md:gap-8"
             >
-              <h3 className="text-h3 md:col-span-5">{f.title}</h3>
-              <p className="max-w-prose md:col-span-7">{f.desc}</p>
+              <h3 className="text-xl font-semibold md:col-span-5">{f.title}</h3>
+              <p className="max-w-2xl md:col-span-7">{f.desc}</p>
             </li>
           ))}
         </ul>

@@ -2,59 +2,47 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    colors: {
-      transparent: "transparent",
-      current: "currentColor",
-      inchiostro: "#14213D",
-      blu: { DEFAULT: "#1657E8", scuro: "#0F45BD" },
-      basalto: { DEFAULT: "#33363B", tenue: "#5B5E64" },
-      carta: "#F6F7F5",
-      pietra: { DEFAULT: "#DAD8D2", scura: "#8A877F" },
-      bianco: "#FFFFFF",
-      errore: "#B42318",
-      conferma: "#1E6B3A",
-    },
-    fontFamily: {
-      serif: ['"Source Serif 4"', "Georgia", '"Times New Roman"', "serif"],
-      sans: [
-        '"IBM Plex Sans"',
-        "system-ui",
-        '"Segoe UI"',
-        "Arial",
-        "sans-serif",
-      ],
-    },
-    fontSize: {
-      // mobile first; le classi md: alzano i titoli su desktop
-      small: ["0.9375rem", { lineHeight: "1.5" }], // 15
-      body: ["1.0625rem", { lineHeight: "1.6" }], // 17
-      "body-lg": ["1.125rem", { lineHeight: "1.6" }], // 18
-      lead: ["1.1875rem", { lineHeight: "1.5" }], // 19
-      "lead-lg": ["1.3125rem", { lineHeight: "1.5" }], // 21
-      h3: ["1.3125rem", { lineHeight: "1.3" }], // 21
-      "h3-lg": ["1.5rem", { lineHeight: "1.3" }], // 24
-      h2: ["1.75rem", { lineHeight: "1.2" }], // 28
-      "h2-lg": ["2.25rem", { lineHeight: "1.2" }], // 36
-      display: ["2.125rem", { lineHeight: "1.1" }], // 34
-      "display-lg": ["3.25rem", { lineHeight: "1.1" }], // 52
-    },
-    borderRadius: {
-      none: "0",
-      sm: "6px",
-      md: "10px",
-      full: "9999px", // solo per le foto tonde dei professionisti
-    },
-    boxShadow: {
-      none: "none",
-      float: "0 -2px 16px rgba(20, 33, 61, 0.12)",
-    },
     extend: {
+      colors: {
+        // Blu Fisco3 (#1657E8) e la sua scala
+        brand: {
+          50: "#EEF4FF",
+          100: "#DDE8FE",
+          200: "#BCD1FD",
+          300: "#8DB0FA",
+          400: "#5584F3",
+          500: "#2E66EC",
+          600: "#1657E8",
+          700: "#1146C4",
+          800: "#123A9C",
+          900: "#132F75",
+        },
+        // Blu notte per sezioni scure e footer
+        navy: {
+          800: "#14234A",
+          900: "#0C1733",
+          950: "#081026",
+        },
+      },
+      fontFamily: {
+        sans: ["Poppins", "system-ui", '"Segoe UI"', "Arial", "sans-serif"],
+      },
       maxWidth: {
         container: "75rem", // 1200px
-        prose: "65ch",
       },
-      transitionDuration: {
-        DEFAULT: "150ms",
+      boxShadow: {
+        card: "0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.08)",
+        "card-hover":
+          "0 2px 4px rgba(15, 23, 42, 0.05), 0 16px 40px -8px rgba(15, 23, 42, 0.14)",
+        elevated: "0 30px 60px -20px rgba(15, 23, 42, 0.30)",
+        button: "0 8px 20px -6px rgba(22, 87, 232, 0.55)",
+        float: "0 -4px 24px rgba(15, 23, 42, 0.10)",
+      },
+      borderRadius: {
+        "4xl": "2rem",
+      },
+      letterSpacing: {
+        tightest: "-0.035em",
       },
     },
   },

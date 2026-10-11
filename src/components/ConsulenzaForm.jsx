@@ -11,8 +11,8 @@ const WEB3FORMS_ACCESS_KEY = "42a317e3-dcef-4a16-abd3-7e30c6373cd0";
 const NO_PREFERENCE = "Nessuna preferenza";
 
 const INPUT =
-  "w-full rounded-sm border bg-bianco px-4 py-3 text-inchiostro placeholder:text-basalto-tenue";
-const borderFor = (error) => (error ? "border-errore" : "border-pietra-scura");
+  "w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500";
+const borderFor = (error) => (error ? "border-red-600" : "border-slate-300");
 
 function validate(data) {
   const errors = {};
@@ -43,15 +43,15 @@ function validate(data) {
 function Field({ id, label, optional, error, children }) {
   return (
     <div>
-      <label htmlFor={id} className="block font-medium text-inchiostro">
+      <label htmlFor={id} className="block font-medium text-slate-900">
         {label}
         {optional && (
-          <span className="font-normal text-basalto-tenue"> (facoltativo)</span>
+          <span className="font-normal text-slate-500"> (facoltativo)</span>
         )}
       </label>
       <div className="mt-2">{children}</div>
       {error && (
-        <p id={`${id}-errore`} className="mt-2 text-small text-errore">
+        <p id={`${id}-errore`} className="mt-2 text-sm text-red-700">
           {error}
         </p>
       )}
@@ -78,7 +78,7 @@ function Select({ id, name, defaultValue, children }) {
       </select>
       <ChevronDown
         aria-hidden="true"
-        className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-basalto-tenue"
+        className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
       />
     </div>
   );
@@ -149,10 +149,10 @@ export default function ConsulenzaForm({ params }) {
     return (
       <div
         role="status"
-        className="rounded-md border border-pietra bg-bianco p-6 md:p-10"
+        className="rounded-2xl border border-slate-200 bg-white p-6 md:p-10"
       >
-        <h2 className="text-h2">Richiesta inviata</h2>
-        <p className="mt-4 max-w-prose">
+        <h2 className="text-3xl font-bold">Richiesta inviata</h2>
+        <p className="mt-4 max-w-2xl">
           Grazie. Ti contatteremo entro {studio.responseTime} per l'analisi
           gratuita della tua situazione.
         </p>
@@ -174,7 +174,7 @@ export default function ConsulenzaForm({ params }) {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="space-y-6 rounded-md border border-pietra bg-bianco p-6 md:p-10"
+      className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 md:p-10"
     >
       <div className="grid gap-6 md:grid-cols-2">
         <Field id="nome" label="Nome e cognome" error={errors.nome}>
@@ -260,7 +260,7 @@ export default function ConsulenzaForm({ params }) {
             type="checkbox"
             name="privacy"
             value="si"
-            className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-blu"
+            className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-brand-600"
             {...errorProps("privacy", errors.privacy)}
           />
           <label htmlFor="privacy" className="cursor-pointer">
@@ -272,14 +272,14 @@ export default function ConsulenzaForm({ params }) {
           </label>
         </div>
         {errors.privacy && (
-          <p id="privacy-errore" className="mt-2 text-small text-errore">
+          <p id="privacy-errore" className="mt-2 text-sm text-red-700">
             {errors.privacy}
           </p>
         )}
       </div>
 
       {sendError && (
-        <p role="alert" className="text-errore">
+        <p role="alert" className="text-red-700">
           {sendError}{" "}
           <a href={phoneHref} className="link">
             {studio.phone}

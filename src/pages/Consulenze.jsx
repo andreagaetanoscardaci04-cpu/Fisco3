@@ -18,8 +18,8 @@ export default function Consulenze() {
 
   return (
     <Section bg="carta" className="!pt-10 md:!pt-16">
-      <div className="max-w-prose">
-        <h1 className="text-display md:text-display-lg">
+      <div className="max-w-2xl">
+        <h1 className="text-4xl md:text-6xl">
           Richiedi l'analisi gratuita
         </h1>
       </div>
@@ -31,8 +31,8 @@ export default function Consulenze() {
         </div>
 
         <aside className="lg:col-span-4" aria-labelledby="dopo-titolo">
-          <div className="rounded-md border border-pietra bg-bianco p-6 lg:sticky lg:top-28">
-            <h2 id="dopo-titolo" className="text-h3">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 lg:sticky lg:top-28">
+            <h2 id="dopo-titolo" className="text-xl font-semibold">
               Cosa succede dopo l'invio
             </h2>
             <ol className="mt-4 space-y-4">
@@ -40,7 +40,7 @@ export default function Consulenze() {
                 <li key={i} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="font-serif font-semibold text-inchiostro"
+                    className=" font-semibold text-slate-900"
                   >
                     {i + 1}
                   </span>
@@ -48,7 +48,7 @@ export default function Consulenze() {
                 </li>
               ))}
             </ol>
-            <p className="mt-6 border-t border-pietra pt-5">
+            <p className="mt-6 border-t border-slate-200 pt-5">
               Preferisci parlarne a voce?{" "}
               <a href={phoneHref} className="link">
                 Chiama lo studio

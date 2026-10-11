@@ -2,22 +2,23 @@ import { Link } from "react-router-dom";
 import { MessageCircle, Phone } from "lucide-react";
 import { phoneHref, whatsappHref } from "../config/studio";
 
-// Altezza riservata in fondo alla pagina su mobile (vedi App.jsx)
-export const MOBILE_BAR_SPACE = "pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0";
+// Spazio riservato in fondo al footer su mobile, per non coprire contenuti
+export const MOBILE_BAR_SPACE =
+  "pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-0";
 
 const ITEM =
-  "flex min-h-12 flex-1 items-center justify-center gap-2 rounded-sm px-2 text-small font-medium";
+  "flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl px-2 text-sm font-semibold transition-colors";
 
 export default function MobileActionBar() {
   return (
     <nav
       aria-label="Contatti rapidi"
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-pietra bg-bianco px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-float md:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-100 bg-white/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-elevated backdrop-blur lg:hidden"
     >
       <div className="flex gap-2">
         <a
           href={phoneHref}
-          className={`${ITEM} border border-pietra-scura text-inchiostro hover:bg-carta`}
+          className={`${ITEM} bg-slate-100 text-slate-900 hover:bg-slate-200`}
         >
           <Phone aria-hidden="true" className="h-4 w-4" />
           Chiama
@@ -25,7 +26,7 @@ export default function MobileActionBar() {
         {whatsappHref && (
           <a
             href={whatsappHref}
-            className={`${ITEM} border border-pietra-scura text-inchiostro hover:bg-carta`}
+            className={`${ITEM} bg-slate-100 text-slate-900 hover:bg-slate-200`}
           >
             <MessageCircle aria-hidden="true" className="h-4 w-4" />
             WhatsApp
@@ -33,7 +34,7 @@ export default function MobileActionBar() {
         )}
         <Link
           to="/consulenze"
-          className={`${ITEM} flex-[1.4] bg-blu text-bianco hover:bg-blu-scuro`}
+          className={`${ITEM} flex-[1.5] bg-brand-600 text-white hover:bg-brand-700`}
         >
           Analisi gratuita
         </Link>

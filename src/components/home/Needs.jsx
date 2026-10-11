@@ -1,37 +1,60 @@
 import { Link } from "react-router-dom";
-import Section from "../ui/Section.jsx";
+import {
+  ArrowRight,
+  Briefcase,
+  FileText,
+  ShieldCheck,
+  TrendingUp,
+} from "lucide-react";
+import Section, { SectionHeader } from "../ui/Section.jsx";
 import { SERVICES } from "../../data/services.js";
+
+const ICONS = {
+  cartelle: ShieldCheck,
+  forfettario: Briefcase,
+  730: FileText,
+  "resto-al-sud": TrendingUp,
+};
 
 export default function Needs({ bg }) {
   return (
     <Section bg={bg} id="servizi" aria-labelledby="servizi-titolo">
-      <h2 id="servizi-titolo" className="text-h2 md:text-h2-lg">
-        Di cosa hai bisogno?
-      </h2>
-      <p className="mt-4 max-w-prose">
-        Parti dalla tua situazione: ti risponde il professionista che se ne
-        occupa.
-      </p>
-      <ul className="mt-10 border-b border-pietra">
-        {SERVICES.map((s) => (
-          <li
-            key={s.slug}
-            className="grid gap-3 border-t border-pietra py-6 md:grid-cols-12 md:gap-8 md:py-8"
-          >
-            <h3 className="text-h3 md:col-span-5 md:text-h3-lg">
-              {s.situation}
-            </h3>
-            <div className="md:col-span-7">
-              <p className="max-w-prose">{s.description}</p>
+      <SectionHeader
+        id="servizi-titolo"
+        title="Di cosa hai bisogno?"
+        lead="Parti dalla tua situazione: ti risponde il professionista che se ne occupa ogni giorno."
+      />
+      <ul className="mt-14 grid gap-5 md:grid-cols-2 md:gap-6">
+        {SERVICES.map((s) => {
+          const Icon = ICONS[s.slug];
+          return (
+            <li key={s.slug}>
               <Link
                 to={`/consulenze?tema=${s.slug}`}
-                className="link mt-3 inline-block"
+                className="group flex h-full gap-5 rounded-3xl bg-white p-6 shadow-card ring-1 ring-slate-900/5 transition duration-200 hover:-translate-y-0.5 hover:shadow-card-hover md:p-8"
               >
-                {s.ctaLabel}
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                  <Icon aria-hidden="true" className="h-7 w-7" />
+                </span>
+                <span className="flex flex-1 flex-col">
+                  <h3 className="text-xl font-semibold leading-snug">
+                    {s.situation}
+                  </h3>
+                  <span className="mt-2 block flex-1 leading-relaxed text-slate-600">
+                    {s.description}
+                  </span>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-brand-600">
+                    {s.ctaLabel}
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                    />
+                  </span>
+                </span>
               </Link>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </Section>
   );
