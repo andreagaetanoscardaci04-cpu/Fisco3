@@ -44,6 +44,14 @@ export default {
         "su-scuro": "#C9D2E3", // testo secondario su sfondo scuro
         ocra: "#B07D2A", // solo piccoli elementi decorativi, mai testo
       },
+      // Gli unici gradienti consentiti: tonali, stessa tinta, verticali.
+      // Vietati su pulsanti e testo; niente radial, bagliori o blur.
+      backgroundImage: {
+        "tonale-chiaro": "linear-gradient(to bottom, #F6F7F5, #EEF1F6)", // hero
+        "tonale-scuro": "linear-gradient(to bottom, #14213D, #0E182D)", // cartelle, CTA finale, footer
+        // solo se c'è testo sopra la foto del team
+        "velo-foto": "linear-gradient(to bottom, transparent, rgba(14, 24, 45, 0.55))",
+      },
       fontFamily: {
         sans: ["Poppins", "system-ui", '"Segoe UI"', "Arial", "sans-serif"],
       },
