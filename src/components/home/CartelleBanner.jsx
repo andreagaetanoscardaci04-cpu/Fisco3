@@ -37,13 +37,18 @@ export default function CartelleBanner({
   tema = TEMA_SITO,
   idSuffix = "",
   titleAs: Title = "h2",
+  ariaLabel,
 }) {
   const s = STYLES[isNuovaPalette(tema) ? "nuova" : "attuale"];
   const icon = hasOcra(tema) ? "text-ocra" : s.icon;
   const titleId = `cartelle-titolo${idSuffix}`;
 
   return (
-    <section aria-labelledby={titleId} className={s.section}>
+    <section
+      aria-labelledby={ariaLabel ? undefined : titleId}
+      aria-label={ariaLabel}
+      className={s.section}
+    >
       <Container>
         <div className={s.box}>
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">

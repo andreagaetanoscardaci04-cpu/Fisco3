@@ -74,7 +74,12 @@ export default function AnteprimaColori() {
             <p className="mt-1 text-[15px]">{nota}</p>
           </Container>
           <Hero tema={tema} titleAs="h3" subtitleAs="h4" />
-          <CartelleBanner tema={tema} idSuffix={`-${tema}`} titleAs="h3" />
+          <CartelleBanner
+            tema={tema}
+            idSuffix={`-${tema}`}
+            titleAs="h3"
+            ariaLabel={`Sezione cartelle, variante ${tema}`}
+          />
           {tema === "C" && <EsempioOcra />}
         </section>
       ))}
