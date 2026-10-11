@@ -1,10 +1,12 @@
 import { studio } from "../config/studio";
 
+const { clientPortal, fullyDigital } = studio.features;
+
 export const FAQ_ITEMS = [
   {
     question: "Cos'è Fisco3 e come funziona?",
     answer:
-      "Fisco3 è un servizio online che offre consulenze fiscali gratuite e supporto continuo per professionisti, freelance e imprenditori che vogliono gestire la loro Partita IVA in modo semplice e digitale.",
+      "Fisco3 è uno studio associato di commercialisti a Catania, che segue clienti in studio e anche a distanza.",
   },
   {
     question: "Quanto costa il servizio?",
@@ -14,7 +16,8 @@ export const FAQ_ITEMS = [
   {
     question: "Posso aprire la Partita IVA con voi?",
     answer:
-      "Certamente. Uno dei nostri commercialisti ti guiderà passo-passo nell’apertura della Partita IVA, spiegandoti i costi, i tempi e le pratiche da seguire, il tutto in modo 100% digitale.",
+      "Certamente. Uno dei nostri commercialisti ti guiderà passo-passo nell’apertura della Partita IVA, spiegandoti i costi, i tempi e le pratiche da seguire" +
+      (fullyDigital ? ", il tutto in modo 100% digitale." : "."),
   },
   {
     question: "Seguite anche regimi forfettari, semplificati e ordinari?",
@@ -24,7 +27,9 @@ export const FAQ_ITEMS = [
   {
     question: "Fornite anche assistenza per fatturazione elettronica?",
     answer:
-      "Assolutamente. Offriamo una piattaforma facile da usare per la creazione e l’invio di fatture elettroniche, compatibile con l’Agenzia delle Entrate, oltre a supporto per qualsiasi dubbio tecnico o fiscale.",
+      clientPortal
+        ? "Sì. Offriamo una piattaforma facile da usare per la creazione e l’invio di fatture elettroniche, compatibile con l’Agenzia delle Entrate, oltre a supporto per qualsiasi dubbio tecnico o fiscale."
+        : "Sì. Ti assistiamo nell’emissione e nella ricezione delle fatture elettroniche e rispondiamo ai dubbi tecnici e fiscali.",
   },
   {
     question: "Quanto tempo ci vuole per ricevere una risposta?",

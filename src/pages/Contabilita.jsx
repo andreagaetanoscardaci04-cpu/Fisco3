@@ -6,19 +6,21 @@ const FEATURES = [
   {
     icon: <Calculator className="w-10 h-10 text-blu" />,
     title: "Fatturazione Elettronica",
-    desc: "Invio e ricezione fatture direttamente tramite il nostro portale dedicato.",
+    desc: studio.features.clientPortal
+      ? "Invio e ricezione fatture direttamente tramite il nostro portale dedicato."
+      : "Ti assistiamo nell'emissione e nella ricezione delle fatture elettroniche.",
   },
   {
     icon: <Clock className="w-10 h-10 text-blu" />,
     title: "Scadenziario Fiscale",
     desc: "Mai più multe per dimenticanze. Ti avvisiamo noi in tempo per ogni pagamento F24.",
   },
-  {
+  studio.features.encryptedArchive && {
     icon: <Lock className="w-10 h-10 text-blu" />,
     title: "Archiviazione Sicura",
     desc: "Documenti salvati su server criptati e accessibili h24 da qualsiasi dispositivo.",
   },
-];
+].filter(Boolean);
 
 export default function Contabilita() {
   return (
