@@ -69,6 +69,7 @@ export const studio = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.675005886616!2d15.093719476451233!3d37.5147695481955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDMwJzUzLjIiTiAxNcKwMDUnNDYuNyJF!5e0!3m2!1sit!2sit!4v1740000000000!5m2!1sit!2sit",
 
   responseTime: "48/72 ore lavorative",
+  metaPixelId: "1220073356884574", // caricato solo con consenso marketing
   foundedYear: null as number | null, // TODO
   openingHours: null as OpeningHours[] | null, // TODO
   clientCount: null as number | null, // TODO: numero reale di clienti seguiti

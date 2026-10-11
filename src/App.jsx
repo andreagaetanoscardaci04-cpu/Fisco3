@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import CookieBanner from "./components/CookieBanner.jsx";
 import MobileActionBar, { MOBILE_BAR_SPACE } from "./components/MobileActionBar.jsx";
 import Home from "./pages/Home.jsx";
 import Consulenze from "./pages/Consulenze.jsx";
@@ -38,6 +39,7 @@ export default function App() {
         </main>
         <Footer />
         <MobileActionBar />
+        <CookieBanner />
       </div>
     </BrowserRouter>
   );
