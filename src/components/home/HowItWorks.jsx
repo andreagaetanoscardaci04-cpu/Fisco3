@@ -1,5 +1,4 @@
 import Section, { SectionHeader } from "../ui/Section.jsx";
-import { studio } from "../../config/studio";
 
 const STEPS = [
   {
@@ -8,7 +7,7 @@ const STEPS = [
   },
   {
     title: "Parli con lo specialista",
-    text: `Ti ricontattiamo entro ${studio.responseTime} e parli con il professionista che segue il tuo caso.`,
+    text: "Ti ricontattiamo e parli con il professionista che segue il tuo caso.",
   },
   {
     title: "Ricevi una proposta chiara",

@@ -1,4 +1,4 @@
-import { Check, MessageSquareText, Receipt, Timer, Users } from "lucide-react";
+import { Check, MessageSquareText, Receipt, Users } from "lucide-react";
 import Button from "../ui/Button.jsx";
 import Section from "../ui/Section.jsx";
 import { studio } from "../../config/studio";
@@ -18,11 +18,6 @@ const REASONS = [
     Icon: Receipt,
     title: "Prezzo chiaro prima di iniziare",
     text: "Dopo l'analisi sai cosa c'è da fare e quanto costa. Nessuna sorpresa.",
-  },
-  {
-    Icon: Timer,
-    title: "Risposte in tempi certi",
-    text: `Ti rispondiamo entro ${studio.responseTime}.`,
   },
 ];
 

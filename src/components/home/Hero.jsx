@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Briefcase,
-  CircleCheck,
   FileText,
   Phone,
   ShieldCheck,
@@ -22,12 +21,6 @@ const SPECIALTY_ICONS = {
   forfettario: Briefcase,
   730: FileText,
 };
-
-const REASSURANCE = [
-  "Prima analisi gratuita",
-  `Risposta entro ${studio.responseTime}`,
-  "Nessun impegno",
-];
 
 // Una scheda per specialità (o per professionista, quando ci sono i dati)
 function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
@@ -124,17 +117,9 @@ export default function Hero() {
             )}
           </div>
 
-          <ul className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-600">
-            {REASSURANCE.map((item) => (
-              <li key={item} className="inline-flex items-center gap-1.5">
-                <CircleCheck
-                  aria-hidden="true"
-                  className="h-4 w-4 text-brand-600"
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-5 text-[15px] text-slate-600">
+            Ti ricontattiamo entro {studio.responseTime}.
+          </p>
         </div>
 
         <div className="reveal reveal-delay mx-auto mt-14 max-w-5xl md:mt-16">
