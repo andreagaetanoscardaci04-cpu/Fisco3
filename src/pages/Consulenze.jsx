@@ -1,7 +1,8 @@
+import { studio } from "../config/studio";
 import ConsulenzaForm from "../components/ConsulenzaForm.jsx";
 
 const PROMISES = [
-  "Risposta entro 24/48 ore lavorative",
+  `Risposta entro ${studio.responseTime}`,
   "Analisi personalizzata e dettagliata",
   "Riservatezza assoluta garantita",
   "Nessun obbligo di acquisto",

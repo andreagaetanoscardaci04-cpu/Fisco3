@@ -1,3 +1,5 @@
+import { studio } from "../config/studio";
+
 export const FAQ_ITEMS = [
   {
     question: "Cos'è Fisco3 e come funziona?",
@@ -27,7 +29,7 @@ export const FAQ_ITEMS = [
   {
     question: "Quanto tempo ci vuole per ricevere una risposta?",
     answer:
-      "Rispondiamo di norma entro 24/48 ore lavorative. Durante l’orario di ufficio, potresti ricevere risposta anche entro poche ore. Puoi contattarci via email, telefono o direttamente tramite il nostro sito.",
+      `Rispondiamo entro ${studio.responseTime}. Puoi contattarci via email, telefono o direttamente tramite il nostro sito.`,
   },
   {
     question: "Posso fare una consulenza gratuita senza impegno?",

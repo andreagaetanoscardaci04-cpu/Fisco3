@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CircleCheckBig, LoaderCircle, Send } from "lucide-react";
+import { studio } from "../config/studio";
 
 const WEB3FORMS_ACCESS_KEY = "42a317e3-dcef-4a16-abd3-7e30c6373cd0";
 
@@ -48,8 +49,8 @@ export default function ConsulenzaForm() {
           Richiesta Inviata!
         </h2>
         <p className="text-lg text-basalto max-w-md mx-auto">
-          Un nostro esperto ti contatterà entro le prossime 24/48 ore
-          lavorative per l'analisi gratuita dei tuoi quesiti fiscali.
+          Ti contatteremo entro {studio.responseTime} per l'analisi gratuita
+          della tua situazione.
         </p>
         <button
           onClick={() => setSubmitted(false)}
