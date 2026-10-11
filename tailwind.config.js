@@ -23,6 +23,26 @@ export default {
           900: "#0C1733",
           950: "#081026",
         },
+
+        // Nuova palette (in prova su /anteprima-colori, non ancora applicata)
+        inchiostro: {
+          DEFAULT: "#14213D", // titoli, sezioni scure, footer
+          profondo: "#0E182D", // solo punto finale dei gradienti scuri
+          bordo: "#1E2D4F", // separatore tra sezioni scure adiacenti
+        },
+        fisco: {
+          DEFAULT: "#1657E8", // solo pulsanti, link, focus
+          hover: "#1148C4",
+          tenue: "#E8EEFD", // stati selezionati, piccoli evidenziatori
+        },
+        carta: {
+          DEFAULT: "#F6F7F5", // sfondo pagina
+          fredda: "#EEF1F6", // solo punto finale del gradiente dell'hero
+        },
+        pietra: "#E6E3DC", // sezioni alternate, bordi
+        basalto: "#33363B", // testo
+        "su-scuro": "#C9D2E3", // testo secondario su sfondo scuro
+        ocra: "#B07D2A", // solo piccoli elementi decorativi, mai testo
       },
       fontFamily: {
         sans: ["Poppins", "system-ui", '"Segoe UI"', "Arial", "sans-serif"],
