@@ -39,7 +39,11 @@ export default {
           DEFAULT: "#F6F7F5", // sfondo pagina
           fredda: "#EEF1F6", // solo punto finale del gradiente dell'hero
         },
-        pietra: "#E6E3DC", // sezioni alternate, bordi
+        pietra: {
+          DEFAULT: "#E6E3DC", // sezioni alternate, bordi
+          scura: "#CFCBC1", // bordi dei pulsanti secondari
+        },
+        grafite: "#85878B", // bordi dei campi del modulo (contrasto 3:1)
         basalto: "#33363B", // testo
         "su-scuro": "#C9D2E3", // testo secondario su sfondo scuro
         ocra: "#B07D2A", // solo piccoli elementi decorativi, mai testo

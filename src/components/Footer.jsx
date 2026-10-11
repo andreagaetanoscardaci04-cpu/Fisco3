@@ -13,13 +13,7 @@ import Logo from "./Logo.jsx";
 import { OPEN_COOKIE_SETTINGS } from "./CookieBanner.jsx";
 import { MOBILE_BAR_SPACE } from "./MobileActionBar.jsx";
 import { studio, phoneHref, emailHref } from "../config/studio";
-import { TEMA_SITO, isNuovaPalette } from "../config/tema.js";
 
-// Con la nuova palette CTA finale e footer sono entrambi scuri: il bordo
-// inchiostro-bordo (#1E2D4F) li separa.
-const FOOTER_BG = isNuovaPalette(TEMA_SITO)
-  ? "bg-tonale-scuro text-su-scuro border-t border-inchiostro-bordo"
-  : "bg-navy-950 text-slate-400";
 
 const SOCIALS = [
   { href: studio.socials.instagram, label: "Instagram", Icon: Instagram },
@@ -59,7 +53,7 @@ function MapEmbed() {
 
   return (
     <div className="rounded-lg bg-white/5 p-5 ring-1 ring-inset ring-white/10">
-      <MapPin aria-hidden="true" className="h-6 w-6 text-brand-300" />
+      <MapPin aria-hidden="true" className="h-6 w-6 text-su-scuro" />
       <p className="mt-3 text-sm text-slate-400">
         La mappa è fornita da Google, che riceverà alcuni dati della tua
         navigazione.
@@ -88,7 +82,7 @@ function MapEmbed() {
 export default function Footer() {
   return (
     <footer
-      className={`on-dark pt-20 ${FOOTER_BG} ${MOBILE_BAR_SPACE}`}
+      className={`on-dark border-t border-inchiostro-bordo bg-tonale-scuro pt-20 text-su-scuro ${MOBILE_BAR_SPACE}`}
     >
       <Container>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
@@ -113,7 +107,7 @@ export default function Footer() {
                       aria-label={label}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white transition-colors hover:bg-brand-600"
+                      className="flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white transition-colors hover:bg-white/20"
                     >
                       <Icon aria-hidden="true" className="h-5 w-5" />
                     </a>
@@ -146,14 +140,14 @@ export default function Footer() {
               <p className="flex gap-3">
                 <MapPin
                   aria-hidden="true"
-                  className="mt-1 h-4 w-4 shrink-0 text-brand-300"
+                  className="mt-1 h-4 w-4 shrink-0 text-su-scuro"
                 />
                 {studio.address.full}
               </p>
               <p className="flex gap-3">
                 <Phone
                   aria-hidden="true"
-                  className="mt-1 h-4 w-4 shrink-0 text-brand-300"
+                  className="mt-1 h-4 w-4 shrink-0 text-su-scuro"
                 />
                 <a href={phoneHref} className={LINK}>
                   {studio.phone}
@@ -162,7 +156,7 @@ export default function Footer() {
               <p className="flex gap-3">
                 <Mail
                   aria-hidden="true"
-                  className="mt-1 h-4 w-4 shrink-0 text-brand-300"
+                  className="mt-1 h-4 w-4 shrink-0 text-su-scuro"
                 />
                 <a href={emailHref} className={`${LINK} break-all`}>
                   {studio.email}

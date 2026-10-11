@@ -1,29 +1,19 @@
 import Container from "./Container.jsx";
-import { TEMA_SITO, isNuovaPalette } from "../../config/tema.js";
 
+// Ritmo delle sezioni, dall'alto: hero (gradiente chiaro), Carta, Pietra,
+// sezione scura, Carta, Pietra, ..., CTA finale e footer (gradiente scuro).
+// Due sezioni scure non sono mai adiacenti, tranne CTA finale e footer,
+// separati da un bordo.
 const BACKGROUNDS = {
-  white: "bg-white",
-  tint: "bg-slate-50",
-  brand: "on-dark bg-brand-600 text-brand-50",
-  navy: "on-dark bg-navy-900 text-slate-300",
+  carta: "bg-carta",
+  pietra: "bg-pietra",
+  scuro: "on-dark bg-tonale-scuro text-su-scuro",
 };
 
-// Ruoli del ritmo delle sezioni (src/config/tema.js), per palette
-const ROLES = {
-  attuale: { carta: "bg-white", pietra: "bg-slate-50" },
-  nuova: {
-    carta: "bg-carta",
-    pietra: "bg-pietra",
-    scuro: "on-dark bg-tonale-scuro text-su-scuro",
-  },
-};
-
-export const sectionBg = (bg, tema = TEMA_SITO) =>
-  (isNuovaPalette(tema) ? ROLES.nuova : ROLES.attuale)[bg] ?? BACKGROUNDS[bg];
+export const RITMO_CHIARO = ["carta", "pietra"];
 
 export default function Section({
-  bg = "white",
-  tema = TEMA_SITO,
+  bg = "carta",
   id,
   className = "",
   containerClassName = "",
@@ -33,7 +23,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`py-20 md:py-28 ${sectionBg(bg, tema)} ${className}`}
+      className={`py-20 md:py-28 ${BACKGROUNDS[bg]} ${className}`}
       {...props}
     >
       <Container className={containerClassName}>{children}</Container>
