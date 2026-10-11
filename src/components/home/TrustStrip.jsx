@@ -1,73 +1,72 @@
-import { Star } from "lucide-react";
+import { BadgeCheck, CalendarDays, MapPin, Star } from "lucide-react";
 import Container from "../ui/Container.jsx";
 import { studio, hasAlbo, yearsActive } from "../../config/studio";
 
-// Solo dati veri: ogni voce compare se il dato esiste in studio.ts
-export default function TrustStrip() {
-  const { rating, reviewCount, profileUrl } = studio.google;
+const { rating, reviewCount, profileUrl } = studio.google;
 
-  const items = [
-    rating &&
-      reviewCount &&
-      profileUrl && {
-        value: (
-          <span className="inline-flex items-center gap-2">
-            {rating.toLocaleString("it-IT")}
-            <Star aria-hidden="true" className="h-6 w-6 fill-amber-400 text-amber-400" />
-          </span>
-        ),
-        label: `su Google, ${reviewCount} recensioni`,
-        href: profileUrl,
-      },
-    { value: "3", label: "professionisti, ognuno con la sua specialità" },
-    { value: "Gratis", label: "la prima analisi della tua situazione" },
-    { value: "48/72 h", label: "per ricevere risposta (giorni lavorativi)" },
-    yearsActive && {
-      value: `${yearsActive} anni`,
-      label: `di attività, dal ${studio.foundedYear}`,
+// Solo dati veri da studio.ts. L'indirizzo da solo non basta a mostrare la
+// striscia: compare quando c'è almeno uno degli altri dati.
+const PROOF = [
+  rating &&
+    reviewCount &&
+    profileUrl && {
+      Icon: Star,
+      iconClass: "fill-amber-400 text-amber-400",
+      text: `${rating.toLocaleString("it-IT")} su Google, ${reviewCount} recensioni`,
+      href: profileUrl,
     },
-    hasAlbo && {
-      value: "Albo",
-      label: "iscritti all'Albo dei Dottori Commercialisti",
-    },
-  ]
-    .filter(Boolean)
-    .slice(0, 4);
+  hasAlbo && {
+    Icon: BadgeCheck,
+    text: "Iscritti all'Albo dei Dottori Commercialisti",
+  },
+  yearsActive && {
+    Icon: CalendarDays,
+    text: `${yearsActive} anni di attività, dal ${studio.foundedYear}`,
+  },
+].filter(Boolean);
+
+export const hasTrustStrip = PROOF.length > 0;
+
+const ITEMS = [
+  ...PROOF,
+  { Icon: MapPin, text: studio.address.short },
+];
+
+export default function TrustStrip({ className = "" }) {
+  if (!hasTrustStrip) return null;
 
   return (
-    <section aria-label="Lo studio in breve" className="bg-white pb-6">
+    <section
+      aria-label="Lo studio in breve"
+      className={`border-b border-slate-200 bg-white py-5 ${className}`}
+    >
       <Container>
-        <ul
-          className={`grid gap-y-8 rounded-lg bg-slate-50 px-6 py-8 ring-1 ring-slate-900/5 md:divide-x md:divide-slate-200 md:px-0 ${
-            items.length === 4
-              ? "grid-cols-2 md:grid-cols-4"
-              : "grid-cols-1 md:grid-cols-3"
-          }`}
-        >
-          {items.map((item, i) => {
+        <ul className="flex flex-col gap-3 text-[15px] font-medium text-slate-700 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-x-10">
+          {ITEMS.map(({ Icon, iconClass, text, href }) => {
             const content = (
               <>
-                <span className="block text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-                  {item.value}
-                </span>
-                <span className="mt-1 block text-sm leading-snug text-slate-600">
-                  {item.label}
-                </span>
+                <Icon
+                  aria-hidden="true"
+                  className={`h-5 w-5 shrink-0 ${iconClass ?? "text-brand-600"}`}
+                />
+                {text}
               </>
             );
             return (
-              <li key={i} className="px-2 text-center md:px-6">
-                {item.href ? (
+              <li key={text}>
+                {href ? (
                   <a
-                    href={item.href}
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block hover:opacity-80"
+                    className="inline-flex items-center gap-2 transition-colors hover:text-brand-700"
                   >
                     {content}
                   </a>
                 ) : (
-                  content
+                  <span className="inline-flex items-center gap-2">
+                    {content}
+                  </span>
                 )}
               </li>
             );
