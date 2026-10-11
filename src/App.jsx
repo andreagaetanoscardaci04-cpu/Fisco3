@@ -7,11 +7,13 @@ import Home from "./pages/Home.jsx";
 import Consulenze from "./pages/Consulenze.jsx";
 import Faq from "./pages/Faq.jsx";
 import Contabilita from "./pages/Contabilita.jsx";
+import { trackPath } from "./lib/navigation.js";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    trackPath(pathname);
     window.scrollTo(0, 0);
   }, [pathname]);
 

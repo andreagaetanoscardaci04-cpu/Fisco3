@@ -1,56 +1,62 @@
-import { studio } from "../config/studio";
+import { useSearchParams } from "react-router-dom";
 import ConsulenzaForm from "../components/ConsulenzaForm.jsx";
+import Section from "../components/ui/Section.jsx";
+import { studio, phoneHref } from "../config/studio";
 
-const PROMISES = [
-  `Risposta entro ${studio.responseTime}`,
-  "Analisi personalizzata e dettagliata",
-  "Riservatezza assoluta garantita",
-  "Nessun obbligo di acquisto",
+const NEXT_STEPS = [
+  `Ti ricontattiamo entro ${studio.responseTime}.`,
+  "Parli della tua situazione con il professionista che se ne occupa.",
+  "Ti diciamo cosa c'è da fare e quanto costa. Decidi tu se procedere: l'analisi non ti impegna a nulla.",
 ];
 
 export default function Consulenze() {
+  const [searchParams] = useSearchParams();
+
   return (
-    <div className="min-h-screen bg-carta pt-20 pb-32">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-inchiostro">
-              Inizia la tua{" "}
-              <span className="text-blu">Rivoluzione Fiscale</span>
-            </h1>
-            <p className="text-xl text-basalto max-w-2xl mx-auto">
-              Compila il modulo sottostante per ricevere una prima analisi
-              gratuita della tua situazione. Nessun costo nascosto, solo
-              competenza.
+    <Section bg="carta" className="!pt-10 md:!pt-16">
+      <div className="max-w-prose">
+        <h1 className="text-display md:text-display-lg">
+          Richiedi l'analisi gratuita
+        </h1>
+        <p className="mt-5 text-lead md:text-lead-lg">
+          Raccontaci in poche righe di cosa hai bisogno. La prima analisi è
+          gratuita.
+        </p>
+      </div>
+
+      <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="lg:col-span-8">
+          {/* la chiave rimonta il modulo se cambiano ?prof= o ?tema= */}
+          <ConsulenzaForm key={searchParams.toString()} />
+        </div>
+
+        <aside className="lg:col-span-4" aria-labelledby="dopo-titolo">
+          <div className="rounded-md border border-pietra bg-bianco p-6 lg:sticky lg:top-28">
+            <h2 id="dopo-titolo" className="text-h3">
+              Cosa succede dopo l'invio
+            </h2>
+            <ol className="mt-4 space-y-4">
+              {NEXT_STEPS.map((text, i) => (
+                <li key={i} className="flex gap-3">
+                  <span
+                    aria-hidden="true"
+                    className="font-serif font-semibold text-inchiostro"
+                  >
+                    {i + 1}
+                  </span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-6 border-t border-pietra pt-5">
+              Preferisci parlarne a voce?{" "}
+              <a href={phoneHref} className="link">
+                Chiama lo studio
+              </a>
             </p>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <ConsulenzaForm />
-            </div>
-            <div className="space-y-8">
-              <div className="bg-gradient-to-br from-blu to-blu p-8 rounded-md shadow-xl text-bianco sticky top-32">
-                <h3 className="text-xl font-bold mb-4">La nostra promessa</h3>
-                <ul className="space-y-3 opacity-90">
-                  {PROMISES.map((promise, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span>✓</span> {promise}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 pt-8 border-t border-bianco">
-                  <p className="text-sm italic opacity-80">
-                    "Il nostro obiettivo è la tua tranquillità. Ogni caso
-                    viene analizzato con la massima cura dai nostri tre
-                    esperti."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </aside>
       </div>
-    </div>
+    </Section>
   );
 }

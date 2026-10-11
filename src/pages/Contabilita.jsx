@@ -1,92 +1,74 @@
-import { Link } from "react-router-dom";
-import { Calculator, Clock, Lock } from "lucide-react";
+import Button from "../components/ui/Button.jsx";
+import Section from "../components/ui/Section.jsx";
+import FinalCta from "../components/home/FinalCta.jsx";
 import { studio } from "../config/studio";
 
 const FEATURES = [
   {
-    icon: <Calculator className="w-10 h-10 text-blu" />,
-    title: "Fatturazione Elettronica",
+    title: "Fatturazione elettronica",
     desc: studio.features.clientPortal
       ? "Invio e ricezione fatture direttamente tramite il nostro portale dedicato."
       : "Ti assistiamo nell'emissione e nella ricezione delle fatture elettroniche.",
   },
   {
-    icon: <Clock className="w-10 h-10 text-blu" />,
-    title: "Scadenziario Fiscale",
-    desc: "Mai più multe per dimenticanze. Ti avvisiamo noi in tempo per ogni pagamento F24.",
+    title: "Scadenze e versamenti",
+    desc: "Ti avvisiamo per tempo di ogni scadenza e prepariamo gli F24 da pagare.",
+  },
+  {
+    title: "Registrazioni e dichiarazioni",
+    desc: "Teniamo la contabilità durante l'anno e prepariamo le dichiarazioni fiscali.",
   },
   studio.features.encryptedArchive && {
-    icon: <Lock className="w-10 h-10 text-blu" />,
-    title: "Archiviazione Sicura",
+    title: "Archiviazione sicura",
     desc: "Documenti salvati su server criptati e accessibili h24 da qualsiasi dispositivo.",
   },
 ].filter(Boolean);
 
 export default function Contabilita() {
   return (
-    <div className="min-h-screen bg-bianco">
-      <section className="bg-carta pt-20 pb-20">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h1 className="text-4xl md:text-6xl font-extrabold text-inchiostro">
-                La tua Contabilità{" "}
-                <span className="text-blu">Digitale</span>
-              </h1>
-              <p className="text-xl text-basalto leading-relaxed">
-                Addio faldoni polverosi e scontrini persi. Con Fisco3 la tua
-                contabilità è sempre a portata di click, sicura e aggiornata
-                in tempo reale.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/consulenze"
-                  className="bg-blu text-bianco px-8 py-4 rounded-md font-bold text-lg hover:bg-carta transition-all"
-                >
-                  Inizia ora
-                </Link>
-                <a
-                  href="#dettagli"
-                  className="bg-bianco border border-pietra text-basalto px-8 py-4 rounded-md font-bold text-lg hover:bg-carta transition-all"
-                >
-                  Scopri i dettagli
-                </a>
-              </div>
-            </div>
-            {studio.images.office && (
-              <img
-                src={studio.images.office}
-                alt="Lo studio Fisco3"
-                className="rounded-md"
-              />
-            )}
+    <>
+      <Section bg="carta" className="!pt-10 md:!pt-16">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className={studio.images.office ? "lg:col-span-6" : "lg:col-span-8"}>
+            <h1 className="text-balance text-display md:text-display-lg">
+              Contabilità per partite IVA e attività
+            </h1>
+            <p className="mt-5 max-w-prose text-lead md:text-lead-lg">
+              Teniamo la tua contabilità durante tutto l'anno, con un
+              professionista di riferimento che conosce la tua situazione.
+            </p>
+            <Button to="/consulenze" className="mt-8">
+              Richiedi l'analisi gratuita
+            </Button>
           </div>
+          {studio.images.office && (
+            <img
+              src={studio.images.office}
+              alt="Lo studio Fisco3"
+              className="aspect-[4/3] w-full rounded-md object-cover lg:col-span-6"
+            />
+          )}
         </div>
-      </section>
+      </Section>
 
-      <section id="dettagli" className="py-24">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-inchiostro">
-              Un servizio completo a 360°
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {FEATURES.map((feature, i) => (
-              <div key={i} className="space-y-4">
-                <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-inchiostro">
-                  {feature.title}
-                </h3>
-                <p className="text-basalto leading-relaxed">
-                  {feature.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Section bg="bianco" aria-labelledby="servizi-contabilita">
+        <h2 id="servizi-contabilita" className="text-h2 md:text-h2-lg">
+          Cosa facciamo per te
+        </h2>
+        <ul className="mt-10 border-b border-pietra">
+          {FEATURES.map((f) => (
+            <li
+              key={f.title}
+              className="grid gap-2 border-t border-pietra py-6 md:grid-cols-12 md:gap-8"
+            >
+              <h3 className="text-h3 md:col-span-5">{f.title}</h3>
+              <p className="max-w-prose md:col-span-7">{f.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-    </div>
+      <FinalCta />
+    </>
   );
 }
