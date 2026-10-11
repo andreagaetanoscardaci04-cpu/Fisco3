@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, LoaderCircle } from "lucide-react";
+import { ChevronDown, CircleCheckBig, LoaderCircle, Send } from "lucide-react";
 import Button from "./ui/Button.jsx";
 import { studio, namedProfessionals, phoneHref } from "../config/studio";
 import { SERVICES, OTHER_TOPIC, findService } from "../data/services.js";
@@ -11,8 +11,9 @@ const WEB3FORMS_ACCESS_KEY = "42a317e3-dcef-4a16-abd3-7e30c6373cd0";
 const NO_PREFERENCE = "Nessuna preferenza";
 
 const INPUT =
-  "w-full rounded-xl border bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500";
-const borderFor = (error) => (error ? "border-red-600" : "border-slate-300");
+  "w-full rounded-xl border bg-slate-50 px-4 py-3.5 text-slate-900 transition-colors placeholder:text-slate-400 hover:border-slate-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-100";
+const borderFor = (error) =>
+  error ? "border-red-500 bg-red-50/40" : "border-slate-300";
 
 function validate(data) {
   const errors = {};
@@ -43,7 +44,7 @@ function validate(data) {
 function Field({ id, label, optional, error, children }) {
   return (
     <div>
-      <label htmlFor={id} className="block font-medium text-slate-900">
+      <label htmlFor={id} className="block text-sm font-semibold text-slate-800">
         {label}
         {optional && (
           <span className="font-normal text-slate-500"> (facoltativo)</span>
@@ -51,7 +52,7 @@ function Field({ id, label, optional, error, children }) {
       </label>
       <div className="mt-2">{children}</div>
       {error && (
-        <p id={`${id}-errore`} className="mt-2 text-sm text-red-700">
+        <p id={`${id}-errore`} className="mt-2 text-sm font-medium text-red-700">
           {error}
         </p>
       )}
@@ -149,10 +150,13 @@ export default function ConsulenzaForm({ params }) {
     return (
       <div
         role="status"
-        className="rounded-2xl border border-slate-200 bg-white p-6 md:p-10"
+        className="rounded-3xl bg-white p-8 text-center shadow-card ring-1 ring-slate-900/5 md:p-14"
       >
-        <h2 className="text-3xl font-bold">Richiesta inviata</h2>
-        <p className="mt-4 max-w-2xl">
+        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+          <CircleCheckBig aria-hidden="true" className="h-8 w-8" />
+        </span>
+        <h2 className="mt-6 text-3xl font-bold">Richiesta inviata</h2>
+        <p className="mx-auto mt-4 max-w-md text-lg">
           Grazie. Ti contatteremo entro {studio.responseTime} per l'analisi
           gratuita della tua situazione.
         </p>
@@ -174,7 +178,7 @@ export default function ConsulenzaForm({ params }) {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 md:p-10"
+      className="space-y-6 rounded-3xl bg-white p-6 shadow-card ring-1 ring-slate-900/5 md:p-10"
     >
       <div className="grid gap-6 md:grid-cols-2">
         <Field id="nome" label="Nome e cognome" error={errors.nome}>
@@ -263,7 +267,7 @@ export default function ConsulenzaForm({ params }) {
             className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-brand-600"
             {...errorProps("privacy", errors.privacy)}
           />
-          <label htmlFor="privacy" className="cursor-pointer">
+          <label htmlFor="privacy" className="cursor-pointer text-[15px]">
             Ho letto l'
             <Link to="/privacy-policy" target="_blank" className="link">
               informativa privacy
@@ -279,7 +283,7 @@ export default function ConsulenzaForm({ params }) {
       </div>
 
       {sendError && (
-        <p role="alert" className="text-red-700">
+        <p role="alert" className="rounded-xl bg-red-50 p-4 text-red-800">
           {sendError}{" "}
           <a href={phoneHref} className="link">
             {studio.phone}
@@ -287,11 +291,12 @@ export default function ConsulenzaForm({ params }) {
         </p>
       )}
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="pt-2">
         <Button
           type="submit"
+          size="lg"
           disabled={status === "sending"}
-          className="w-full sm:w-auto"
+          className="w-full"
         >
           {status === "sending" ? (
             <>
@@ -299,9 +304,15 @@ export default function ConsulenzaForm({ params }) {
               Invio in corso
             </>
           ) : (
-            "Richiedi l'analisi gratuita"
+            <>
+              Richiedi l'analisi gratuita
+              <Send aria-hidden="true" className="h-4 w-4" />
+            </>
           )}
         </Button>
+        <p className="mt-4 text-center text-sm text-slate-500">
+          Gratuita e senza impegno. Rispondiamo entro {studio.responseTime}.
+        </p>
       </div>
     </form>
   );

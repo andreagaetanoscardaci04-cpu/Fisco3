@@ -1,18 +1,22 @@
 import Button from "../components/ui/Button.jsx";
-import Section from "../components/ui/Section.jsx";
+import PageHero from "../components/ui/PageHero.jsx";
 
 export default function NotFound() {
   return (
-    <Section bg="carta" className="!pt-10 md:!pt-16">
-      <div className="max-w-2xl">
-        <h1 className="text-4xl md:text-6xl">Pagina non trovata</h1>
-        <p className="mt-5 text-lg md:text-xl">
-          L'indirizzo che hai aperto non esiste o è stato spostato.
-        </p>
-        <Button to="/" variant="secondary" className="mt-8">
-          Torna alla homepage
-        </Button>
-      </div>
-    </Section>
+    <div className="pb-20 md:pb-28">
+      <PageHero
+        eyebrow="Errore 404"
+        title="Pagina"
+        highlight="non trovata"
+        lead="L'indirizzo che hai aperto non esiste o è stato spostato."
+      >
+        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <Button to="/">Torna alla homepage</Button>
+          <Button to="/consulenze" variant="secondary">
+            Richiedi l'analisi gratuita
+          </Button>
+        </div>
+      </PageHero>
+    </div>
   );
 }

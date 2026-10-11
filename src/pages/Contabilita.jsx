@@ -1,68 +1,125 @@
+import {
+  Calculator,
+  CalendarClock,
+  CircleCheck,
+  FileText,
+  Lock,
+} from "lucide-react";
 import Button from "../components/ui/Button.jsx";
-import Section from "../components/ui/Section.jsx";
+import Container from "../components/ui/Container.jsx";
+import Section, { SectionHeader } from "../components/ui/Section.jsx";
 import FinalCta from "../components/home/FinalCta.jsx";
 import { studio } from "../config/studio";
 
 const FEATURES = [
   {
+    Icon: Calculator,
     title: "Fatturazione elettronica",
     desc: studio.features.clientPortal
       ? "Invio e ricezione fatture direttamente tramite il nostro portale dedicato."
-      : "Ti assistiamo nell'emissione e nella ricezione delle fatture elettroniche.",
+      : "Ti assistiamo nell'emissione e nella ricezione delle fatture elettroniche, senza errori.",
   },
   {
-    title: "Scadenze e versamenti",
-    desc: "Ti avvisiamo per tempo di ogni scadenza e prepariamo gli F24 da pagare.",
+    Icon: CalendarClock,
+    title: "Scadenze e F24",
+    desc: "Ti avvisiamo per tempo di ogni scadenza e prepariamo gli F24 da pagare. Niente più multe per dimenticanza.",
   },
   {
+    Icon: FileText,
     title: "Registrazioni e dichiarazioni",
     desc: "Teniamo la contabilità durante l'anno e prepariamo le dichiarazioni fiscali.",
   },
   studio.features.encryptedArchive && {
+    Icon: Lock,
     title: "Archiviazione sicura",
     desc: "Documenti salvati su server criptati e accessibili h24 da qualsiasi dispositivo.",
   },
 ].filter(Boolean);
 
+const INCLUDED = [
+  "Un professionista di riferimento",
+  "Scadenzario fiscale sempre aggiornato",
+  "Preventivo chiaro prima di iniziare",
+  `Risposte entro ${studio.responseTime}`,
+];
+
 export default function Contabilita() {
   return (
     <>
-      <Section bg="carta" className="!pt-10 md:!pt-16">
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className={studio.images.office ? "lg:col-span-6" : "lg:col-span-8"}>
-            <h1 className="text-balance text-4xl md:text-6xl">
-              Contabilità per partite IVA e attività
-            </h1>
-            <p className="mt-5 max-w-2xl text-lg md:text-xl">
-              Teniamo la tua contabilità durante tutto l'anno, con un
-              professionista di riferimento che conosce la tua situazione.
+      <section className="bg-gradient-to-b from-brand-50/70 to-white pb-16 pt-14 md:pb-24 md:pt-20">
+        <Container className="reveal grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <p className="eyebrow">
+              <Calculator aria-hidden="true" className="h-4 w-4" />
+              Contabilità
             </p>
-            <Button to="/consulenze" className="mt-8">
-              Richiedi l'analisi gratuita
-            </Button>
+            <h1 className="mt-5 text-balance text-4xl font-bold leading-[1.1] tracking-tightest text-slate-900 md:text-6xl">
+              La tua contabilità,{" "}
+              <span className="text-brand-600">seguita da vicino.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600 md:text-xl">
+              Partite IVA, ditte individuali e piccole attività: teniamo la tua
+              contabilità tutto l'anno, con un professionista che conosce la tua
+              situazione.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button to="/consulenze" size="lg">
+                Richiedi l'analisi gratuita
+              </Button>
+              <Button href="#servizi-contabilita" variant="secondary" size="lg">
+                Scopri cosa facciamo
+              </Button>
+            </div>
           </div>
-          {studio.images.office && (
-            <img
-              src={studio.images.office}
-              alt="Lo studio Fisco3"
-              className="aspect-[4/3] w-full rounded-2xl object-cover lg:col-span-6"
-            />
-          )}
-        </div>
-      </Section>
 
-      <Section bg="bianco" aria-labelledby="servizi-contabilita">
-        <h2 id="servizi-contabilita" className="text-3xl font-bold md:text-4xl">
-          Cosa facciamo per te
-        </h2>
-        <ul className="mt-10 border-b border-slate-200">
-          {FEATURES.map((f) => (
+          <div className="lg:col-span-5">
+            {studio.images.office ? (
+              <img
+                src={studio.images.office}
+                alt={`Lo studio ${studio.brandName}`}
+                className="aspect-[4/3] w-full rounded-4xl object-cover shadow-elevated"
+              />
+            ) : (
+              <div className="on-dark rounded-4xl bg-navy-900 p-8 shadow-elevated md:p-10">
+                <h2 className="text-xl font-bold">Cosa è incluso</h2>
+                <ul className="mt-6 space-y-4">
+                  {INCLUDED.map((item) => (
+                    <li key={item} className="flex gap-3 text-slate-200">
+                      <CircleCheck
+                        aria-hidden="true"
+                        className="mt-0.5 h-5 w-5 shrink-0 text-brand-300"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </Container>
+      </section>
+
+      <Section bg="tint" id="servizi-contabilita" aria-labelledby="servizi-contabilita-titolo">
+        <SectionHeader
+          id="servizi-contabilita-titolo"
+          title="Un servizio completo"
+          lead="Ci occupiamo noi degli adempimenti, tu pensi al tuo lavoro."
+        />
+        <ul
+          className={`mt-14 grid gap-6 md:grid-cols-2 ${
+            FEATURES.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+          }`}
+        >
+          {FEATURES.map(({ Icon, title, desc }) => (
             <li
-              key={f.title}
-              className="grid gap-2 border-t border-slate-200 py-6 md:grid-cols-12 md:gap-8"
+              key={title}
+              className="rounded-3xl bg-white p-7 shadow-card ring-1 ring-slate-900/5 md:p-8"
             >
-              <h3 className="text-xl font-semibold md:col-span-5">{f.title}</h3>
-              <p className="max-w-2xl md:col-span-7">{f.desc}</p>
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+                <Icon aria-hidden="true" className="h-7 w-7" />
+              </span>
+              <h3 className="mt-6 text-xl font-semibold">{title}</h3>
+              <p className="mt-2 leading-relaxed">{desc}</p>
             </li>
           ))}
         </ul>

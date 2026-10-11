@@ -1,27 +1,32 @@
-import Section from "./ui/Section.jsx";
+import { TriangleAlert } from "lucide-react";
+import Container from "./ui/Container.jsx";
+import PageHero from "./ui/PageHero.jsx";
 import { studio, emailHref } from "../config/studio";
 
 // Segnaposto: il testo legale ufficiale va fornito dallo studio (o da iubenda).
 export default function LegalPage({ title, children }) {
   return (
-    <Section bg="carta" className="!pt-10 md:!pt-16">
-      <div className="max-w-2xl">
-        <h1 className="text-4xl md:text-6xl">{title}</h1>
-        <p
-          role="note"
-          className="mt-8 rounded-2xl border-2 border-red-600 bg-white p-5 font-semibold text-red-700"
-        >
-          TESTO DA SOSTITUIRE CON INFORMATIVA UFFICIALE
-        </p>
-        <p className="mt-6">
-          Per qualsiasi domanda sul trattamento dei tuoi dati puoi scrivere a{" "}
-          <a href={emailHref} className="link">
-            {studio.email}
-          </a>
-          .
-        </p>
-        {children}
-      </div>
-    </Section>
+    <>
+      <PageHero title={title} />
+      <section className="bg-white pb-20 md:pb-28">
+        <Container className="max-w-3xl">
+          <p
+            role="note"
+            className="flex gap-3 rounded-2xl bg-red-50 p-5 font-semibold text-red-800 ring-1 ring-red-200"
+          >
+            <TriangleAlert aria-hidden="true" className="h-6 w-6 shrink-0" />
+            TESTO DA SOSTITUIRE CON INFORMATIVA UFFICIALE
+          </p>
+          <p className="mt-8 text-lg">
+            Per qualsiasi domanda sul trattamento dei tuoi dati puoi scrivere a{" "}
+            <a href={emailHref} className="link">
+              {studio.email}
+            </a>
+            .
+          </p>
+          {children}
+        </Container>
+      </section>
+    </>
   );
 }
