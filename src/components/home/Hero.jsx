@@ -74,38 +74,86 @@ function SpecialtiesPanel() {
   );
 }
 
-export default function Hero() {
+// Riga compatta per mobile: foto tonda, nome, specialità, freccia
+function ProfessionalRow({ professional }) {
   return (
-    <section className="bg-carta pb-16 pt-12 md:pb-24 md:pt-20">
-      <Container className="reveal grid gap-12 lg:grid-cols-12 lg:gap-12">
-        <div className="lg:col-span-6 lg:pt-4">
+    <li className="border-t border-pietra first:border-t-0">
+      <Link
+        to={`/consulenze?prof=${professional.slug}`}
+        className="group flex items-center gap-4 px-4 py-3 hover:bg-carta"
+      >
+        <img
+          src={professional.photo}
+          alt=""
+          className="h-14 w-14 shrink-0 rounded-full bg-pietra object-cover"
+        />
+        <span className="flex-1">
+          <span className="block font-medium text-inchiostro">
+            {professional.name}
+          </span>
+          {professional.specialties[0] && (
+            <span className="block text-small text-basalto-tenue">
+              {professional.specialties[0]}
+            </span>
+          )}
+        </span>
+        <ChevronRight
+          aria-hidden="true"
+          className="h-5 w-5 shrink-0 text-basalto-tenue group-hover:text-blu"
+        />
+      </Link>
+    </li>
+  );
+}
+
+export default function Hero() {
+  const hasPeople = heroProfessionals.length > 0;
+  const textCols = hasPeople ? "lg:col-span-5" : "lg:col-span-6";
+  const peopleCols = hasPeople
+    ? "lg:col-span-7 lg:col-start-6"
+    : "lg:col-span-6 lg:col-start-7";
+
+  return (
+    <section className="bg-carta pb-12 pt-10 md:pb-24 md:pt-20">
+      <Container className="reveal grid items-start gap-8 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-0">
+        <div className={`${textCols} lg:row-start-1 lg:pt-4`}>
           <h1 className="text-balance text-display md:text-display-lg">
             Commercialisti a Catania. Il&nbsp;team lo scegli tu.
           </h1>
-          <p className="mt-6 max-w-prose text-pretty text-lead md:text-lead-lg">
+          <p className="mt-5 max-w-prose text-pretty text-lead md:mt-6 md:text-lead-lg">
             Tre professionisti, tre specialità: cartelle esattoriali e
             rottamazioni, partite IVA e regime forfettario, 730 e contributi.
             Scegli con chi parlare: la prima analisi è gratuita.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button to="/consulenze">Richiedi l'analisi gratuita</Button>
-            {whatsappHref && (
-              <Button href={whatsappHref} variant="secondary">
-                Scrivici su WhatsApp
-              </Button>
-            )}
-          </div>
         </div>
 
-        <div className="lg:col-span-6">
-          {heroProfessionals.length > 0 ? (
-            <ul className="grid grid-cols-3 gap-6">
-              {heroProfessionals.map((p) => (
-                <ProfessionalCard key={p.slug} professional={p} />
-              ))}
-            </ul>
+        <div className={`${peopleCols} lg:row-span-2 lg:row-start-1`}>
+          {hasPeople ? (
+            <>
+              <ul className="rounded-md border border-pietra bg-bianco lg:hidden">
+                {heroProfessionals.map((p) => (
+                  <ProfessionalRow key={p.slug} professional={p} />
+                ))}
+              </ul>
+              <ul className="hidden grid-cols-3 gap-6 lg:grid">
+                {heroProfessionals.map((p) => (
+                  <ProfessionalCard key={p.slug} professional={p} />
+                ))}
+              </ul>
+            </>
           ) : (
             <SpecialtiesPanel />
+          )}
+        </div>
+
+        <div
+          className={`${textCols} flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:row-start-2 lg:mt-8`}
+        >
+          <Button to="/consulenze">Richiedi l'analisi gratuita</Button>
+          {whatsappHref && (
+            <Button href={whatsappHref} variant="secondary">
+              Scrivici su WhatsApp
+            </Button>
           )}
         </div>
       </Container>
