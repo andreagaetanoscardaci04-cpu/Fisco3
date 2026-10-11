@@ -31,7 +31,7 @@ export const FAQ_ITEMS = [
   {
     question: "Seguite anche regimi forfettari, semplificati e ordinari?",
     answer:
-      "Sì. Il nostro team di esperti segue clienti in ogni regime fiscale, incluso forfettario, semplificato, ordinario e speciali (agricolo, minimo, ecc.). Ti aiutiamo a scegliere quello più vantaggioso per te.",
+      "Sì. Seguiamo clienti in regime forfettario, semplificato e ordinario e ti aiutiamo a scegliere quello più adatto alla tua attività.",
   },
   {
     question: "Fornite anche assistenza per fatturazione elettronica?",
@@ -48,11 +48,11 @@ export const FAQ_ITEMS = [
   {
     question: "Posso fare una consulenza gratuita senza impegno?",
     answer:
-      "Sì! La prima consulenza è sempre gratuita e non vincolante. Serve a capire le tue esigenze, valutare il regime fiscale più adatto e spiegarti come lavoriamo.",
+      "Sì. La prima consulenza è sempre gratuita e non vincolante. Serve a capire le tue esigenze, valutare il regime fiscale più adatto e spiegarti come lavoriamo.",
   },
   {
     question: "Cosa succede dopo la consulenza gratuita?",
     answer:
-      "Dopo la consulenza puoi decidere in completa autonomia se attivare uno dei nostri piani. Se scegli di continuare con noi, ci occuperemo di tutto: dalla burocrazia alla gestione della tua contabilità.",
+      "Dopo la consulenza puoi decidere in completa autonomia se attivare uno dei nostri piani. Se scegli di continuare con noi, ci occupiamo degli adempimenti e della tua contabilità, con il professionista che ti ha seguito nell'analisi.",
   },
 ];

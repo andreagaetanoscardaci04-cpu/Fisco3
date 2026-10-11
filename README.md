@@ -9,29 +9,35 @@ Sito web di Fisco3 — Studio Associato Commercialisti (Catania).
 - [Tailwind CSS](https://tailwindcss.com/) (build-time, non via CDN)
 - [lucide-react](https://lucide.dev/) per le icone
 - Form di contatto gestito da [Web3Forms](https://web3forms.com/)
-- Meta Pixel (Facebook) per il tracciamento
+- Meta Pixel (Facebook), caricato solo dopo il consenso marketing
+  (banner in `src/components/CookieBanner.jsx`)
+- Font self-hosted (Source Serif 4, IBM Plex Sans) via `@fontsource`
+
+## Dati dello studio
+
+Tutti i dati (contatti, professionisti, prezzi, recensioni, orari, social…)
+stanno in `src/config/studio.ts`. Ogni valore a `null` non viene mostrato:
+per far comparire un elemento basta compilarlo lì. I `TODO` nel file
+indicano cosa manca.
 
 ## Struttura
 
 ```
 src/
-├── main.jsx              # entry point
-├── App.jsx               # router + layout (Header/Footer)
-├── components/
-│   ├── Header.jsx
-│   ├── Footer.jsx
-│   └── ConsulenzaForm.jsx
-├── pages/
-│   ├── Home.jsx
-│   ├── Consulenze.jsx
-│   ├── Faq.jsx
-│   └── Contabilita.jsx
-└── data/
-    ├── services.jsx
-    └── faq.js
+├── config/studio.ts      # unica fonte dei dati dello studio
+├── main.jsx              # idratazione nel browser (BrowserRouter)
+├── entry-server.jsx      # render per il prerendering (StaticRouter)
+├── App.jsx               # layout + route
+├── components/           # Header, Footer, modulo, banner cookie, ui/, home/
+├── pages/                # Home, Consulenze, Faq, Contabilita, policy, 404
+├── data/                 # servizi e FAQ
+├── lib/                  # consenso cookie, Meta Pixel, utilità
+└── seo/                  # meta tag per pagina e JSON-LD
+scripts/prerender.mjs     # genera l'HTML statico di ogni pagina
 ```
 
-Route disponibili: `/`, `/consulenze`, `/faq`, `/contabilita`.
+Route: `/`, `/consulenze`, `/contabilita`, `/faq`, `/privacy-policy`,
+`/cookie-policy` (più `404.html`).
 
 ## Sviluppo
 
@@ -43,7 +49,7 @@ npm run dev
 ## Build di produzione
 
 ```bash
-npm run build
+npm run build     # build client + SSR + prerendering di ogni pagina
 npm run preview   # per testare la build in locale
 ```
 
@@ -62,3 +68,7 @@ assenti nello scraping iniziale.
 
 Il sito è pensato per essere deployato su [Vercel](https://vercel.com/)
 collegando questo repository e puntando il dominio `fisco3.it` al progetto.
+`vercel.json` usa `cleanUrls`: `/faq` viene servito da `dist/faq.html`.
+
+L'immagine Open Graph (`public/og/fisco3.png`) contiene indirizzo e
+telefono: se cambiano, va rigenerata.

@@ -40,9 +40,6 @@ function SpecialtiesPanel() {
     <div className="rounded-md border border-pietra bg-bianco">
       <div className="px-6 pb-4 pt-6 md:px-8 md:pt-8">
         <h2 className="text-h3 md:text-h3-lg">Scegli con chi parlare</h2>
-        <p className="mt-2 text-basalto-tenue">
-          Ogni specialità ha il suo professionista di riferimento.
-        </p>
       </div>
       <ul>
         {SPECIALTIES.map((s) => (

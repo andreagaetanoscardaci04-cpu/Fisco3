@@ -22,10 +22,6 @@ export default function Consulenze() {
         <h1 className="text-display md:text-display-lg">
           Richiedi l'analisi gratuita
         </h1>
-        <p className="mt-5 text-lead md:text-lead-lg">
-          Raccontaci in poche righe di cosa hai bisogno. La prima analisi è
-          gratuita.
-        </p>
       </div>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-12">

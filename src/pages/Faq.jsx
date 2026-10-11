@@ -11,9 +11,6 @@ export default function Faq() {
       <Section bg="carta" className="!pt-10 md:!pt-16">
         <div className="max-w-3xl">
           <h1 className="text-display md:text-display-lg">Domande frequenti</h1>
-          <p className="mt-5 text-lead md:text-lead-lg">
-            Come lavoriamo, quanto costa e cosa succede dopo la prima analisi.
-          </p>
 
           <div className="mt-10 border-b border-pietra">
             {FAQ_ITEMS.map((item) => (

@@ -105,8 +105,9 @@ export const studio = {
   },
 
   images: {
-    // TODO: immagine generata con AI, sostituire con una foto reale dello studio (o null per nasconderla)
-    office: "/team-office.png" as string | null,
+    // TODO: foto reale dello studio, es. "/studio.jpg". /team-office.png è
+    // un'immagine generata con AI (volti non reali): non usarla.
+    office: null as string | null,
   },
 };
 
