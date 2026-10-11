@@ -1,12 +1,82 @@
+@import "@fontsource/source-serif-4/latin-600.css";
+@import "@fontsource/ibm-plex-sans/latin-400.css";
+@import "@fontsource/ibm-plex-sans/latin-500.css";
+@import "@fontsource/ibm-plex-sans/latin-600.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-carta font-sans text-body text-basalto antialiased md:text-body-lg;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-semibold text-inchiostro;
+  }
+
+  /* Focus visibile su tutto */
+  :focus-visible {
+    outline: 2px solid theme("colors.blu.DEFAULT");
+    outline-offset: 2px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: theme("colors.bianco");
+  }
+
+  a {
+    @apply transition-colors;
+  }
 }
 
-.parallax-bg {
-  transition: transform 0.1s ease-out;
+@layer components {
+  .link {
+    @apply font-medium text-blu underline underline-offset-4 hover:text-blu-scuro;
+  }
+
+  .on-dark .link {
+    @apply text-bianco hover:text-pietra;
+  }
+}
+
+/* Unica animazione automatica: comparsa dell'hero al caricamento */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  animation: reveal 400ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.on-dark h1,
+.on-dark h2,
+.on-dark h3,
+.on-dark h4 {
+  color: theme("colors.bianco");
 }

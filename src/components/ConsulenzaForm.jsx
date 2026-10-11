@@ -40,20 +40,20 @@ export default function ConsulenzaForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white p-12 rounded-[2.5rem] shadow-2xl text-center space-y-6">
+      <div className="bg-bianco p-12 rounded-md shadow-2xl text-center space-y-6">
         <div className="flex justify-center">
-          <CircleCheckBig className="w-20 h-20 text-green-500" />
+          <CircleCheckBig className="w-20 h-20 text-conferma" />
         </div>
-        <h2 className="text-3xl font-bold text-gray-900">
+        <h2 className="text-3xl font-bold text-inchiostro">
           Richiesta Inviata!
         </h2>
-        <p className="text-lg text-gray-600 max-w-md mx-auto">
+        <p className="text-lg text-basalto max-w-md mx-auto">
           Un nostro esperto ti contatterà entro le prossime 24/48 ore
           lavorative per l'analisi gratuita dei tuoi quesiti fiscali.
         </p>
         <button
           onClick={() => setSubmitted(false)}
-          className="text-[#1657e8] font-bold hover:underline"
+          className="text-blu font-bold hover:underline"
         >
           Invia un'altra richiesta
         </button>
@@ -64,11 +64,11 @@ export default function ConsulenzaForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl space-y-6 border border-gray-50"
+      className="bg-bianco p-8 md:p-12 rounded-md shadow-2xl space-y-6 border border-pietra"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-gray-700 ml-1">
+          <label className="text-sm font-bold text-basalto ml-1">
             Nome Completo
           </label>
           <input
@@ -76,11 +76,11 @@ export default function ConsulenzaForm() {
             name="nome"
             required
             placeholder="Es. Mario Rossi"
-            className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-transparent focus:border-[#1657e8] focus:bg-white outline-none transition-all"
+            className="w-full px-6 py-4 rounded-md bg-carta border border-transparent focus:border-blu focus:bg-bianco outline-none transition-all"
           />
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-bold text-gray-700 ml-1">
+          <label className="text-sm font-bold text-basalto ml-1">
             Email
           </label>
           <input
@@ -88,14 +88,14 @@ export default function ConsulenzaForm() {
             name="email"
             required
             placeholder="mario@esempio.it"
-            className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-transparent focus:border-[#1657e8] focus:bg-white outline-none transition-all"
+            className="w-full px-6 py-4 rounded-md bg-carta border border-transparent focus:border-blu focus:bg-bianco outline-none transition-all"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label className="text-sm font-bold text-gray-700 ml-1">
+          <label className="text-sm font-bold text-basalto ml-1">
             Telefono
           </label>
           <input
@@ -103,16 +103,16 @@ export default function ConsulenzaForm() {
             name="telefono"
             required
             placeholder="+39 000 0000000"
-            className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-transparent focus:border-[#1657e8] focus:bg-white outline-none transition-all"
+            className="w-full px-6 py-4 rounded-md bg-carta border border-transparent focus:border-blu focus:bg-bianco outline-none transition-all"
           />
         </div>
         <div className="space-y-2">
-          <label className="text-sm font-bold text-gray-700 ml-1">
+          <label className="text-sm font-bold text-basalto ml-1">
             Tipo di Quesito
           </label>
           <select
             name="tipo_quesito"
-            className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-transparent focus:border-[#1657e8] focus:bg-white outline-none transition-all appearance-none cursor-pointer"
+            className="w-full px-6 py-4 rounded-md bg-carta border border-transparent focus:border-blu focus:bg-bianco outline-none transition-all appearance-none cursor-pointer"
           >
             <option>Cartelle Esattoriali / Rottamazione</option>
             <option>Regime Forfettario</option>
@@ -124,26 +124,26 @@ export default function ConsulenzaForm() {
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-bold text-gray-700 ml-1">
+        <label className="text-sm font-bold text-basalto ml-1">
           Messaggio (Opzionale)
         </label>
         <textarea
           rows={4}
           name="messaggio"
           placeholder="Raccontaci brevemente di cosa hai bisogno..."
-          className="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-transparent focus:border-[#1657e8] focus:bg-white outline-none transition-all resize-none"
+          className="w-full px-6 py-4 rounded-md bg-carta border border-transparent focus:border-blu focus:bg-bianco outline-none transition-all resize-none"
         />
       </div>
 
       {error && (
-        <p className="text-red-500 text-center font-medium">{error}</p>
+        <p className="text-errore text-center font-medium">{error}</p>
       )}
 
       <div className="pt-4">
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#1657e8] text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all hover:bg-blue-700 hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          className="w-full bg-blu text-bianco py-5 rounded-md font-bold text-lg flex items-center justify-center gap-3 transition-all hover:bg-carta hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         >
           {loading ? (
             <>
@@ -155,7 +155,7 @@ export default function ConsulenzaForm() {
             </>
           )}
         </button>
-        <p className="text-center text-xs text-gray-400 mt-4">
+        <p className="text-center text-xs text-basalto-tenue mt-4">
           I tuoi dati sono al sicuro. Ai sensi del GDPR, garantiamo la massima
           riservatezza.
         </p>
