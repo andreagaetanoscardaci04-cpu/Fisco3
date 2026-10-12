@@ -210,6 +210,29 @@
     }
   }
 
+  /* "Perché scegliere": la foto si scopre con una maschera che si apre dal
+     basso, poi i tre principi compaiono in sequenza (fade-rise) */
+  .js .photo-mask::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: theme("colors.carta.DEFAULT");
+    transition: transform 700ms var(--ease-morbido);
+  }
+
+  .js .photo-mask img {
+    transform: scale(1.05);
+    transition: transform 700ms var(--ease-morbido);
+  }
+
+  .js [data-inview] .photo-mask::after {
+    transform: translateY(-100%);
+  }
+
+  .js [data-inview] .photo-mask img {
+    transform: none;
+  }
+
   /* Cartelline dell'hero: salgono e compaiono una dopo l'altra */
   .folder-in {
     animation: reveal 500ms var(--ease-morbido) both;
