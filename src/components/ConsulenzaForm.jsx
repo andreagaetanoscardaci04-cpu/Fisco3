@@ -44,7 +44,7 @@ function validate(data) {
 function Field({ id, label, optional, error, children }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-basalto">
+      <label htmlFor={id} className="block text-sm font-semibold text-basalto">
         {label}
         {optional && (
           <span className="font-normal text-basalto"> (facoltativo)</span>
@@ -155,7 +155,7 @@ export default function ConsulenzaForm({ params }) {
         <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-emerald-50 text-emerald-600">
           <CircleCheckBig aria-hidden="true" className="h-8 w-8" />
         </span>
-        <h2 className="mt-6 text-3xl">Richiesta inviata</h2>
+        <h2 className="mt-6 text-3xl font-bold">Richiesta inviata</h2>
         <p className="mx-auto mt-4 max-w-md text-lg">
           Grazie. Ti contatteremo entro {studio.responseTime} per l'analisi
           gratuita della tua situazione.

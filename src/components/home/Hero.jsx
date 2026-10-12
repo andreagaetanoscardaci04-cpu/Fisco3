@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  FileText,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 import Button from "../ui/Button.jsx";
 import Container from "../ui/Container.jsx";
 import {
@@ -10,77 +16,72 @@ import {
 } from "../../config/studio";
 import { SPECIALTIES } from "../../data/services.js";
 
-// Posizione di ogni cartellina. Desktop: sfalsate sul bordo inferiore della
-// foto (la prima più in alto, la seconda più in basso, la terza a metà).
-// Mobile: un piccolo mazzo di pratiche con le linguette scalate.
-const STAGGER = [
-  { item: "", tab: "ml-3" },
-  { item: "md:mt-14", tab: "ml-[22%] md:ml-3" },
-  { item: "md:mt-7", tab: "ml-[40%] md:ml-3" },
-];
 
-// Una cartellina di pratica: linguetta con il nome, una riga concreta e il link
-function Folder({ to, tab, summary, photo, cta, index }) {
+const SPECIALTY_ICONS = {
+  cartelle: ShieldCheck,
+  forfettario: Briefcase,
+  730: FileText,
+};
+
+// Una scheda per specialità (o per professionista, quando ci sono i dati)
+function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
   return (
-    <li
-      className={`folder-in relative ${index > 0 ? "-mt-3 md:mt-0" : ""} ${STAGGER[index].item}`}
-      style={{ "--delay": `${200 + index * 100}ms`, zIndex: index + 1 }}
+    <Link
+      to={to}
+      className="group flex h-full items-center gap-4 rounded-lg bg-white p-5 shadow-card ring-1 ring-pietra transition-colors duration-200 hover:ring-fisco md:p-6"
     >
-      <Link
-        to={to}
-        className="group block transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 focus-visible:-translate-y-1"
-      >
-        <h3
-          className={`folder-tab relative inline-block max-w-[60%] bg-pietra py-2 pl-4 pr-8 text-base leading-tight text-inchiostro transition-colors duration-200 group-hover:bg-fisco group-hover:text-white group-focus-visible:bg-fisco group-focus-visible:text-white md:max-w-none ${STAGGER[index].tab}`}
-        >
-          {tab}
-        </h3>
-        <span className="flex items-center gap-4 rounded-lg border-t-4 border-pietra bg-white px-5 pb-6 pt-4 shadow-card ring-1 ring-pietra transition-colors duration-200 group-hover:border-fisco group-focus-visible:border-fisco md:px-6">
-          {photo && (
-            <img
-              src={photo}
-              alt=""
-              className="h-14 w-14 shrink-0 rounded-lg bg-pietra object-cover object-top"
-            />
-          )}
-          <span className="min-w-0">
-            <span className="block text-base leading-snug text-basalto">
-              {summary}
-            </span>
-            <span className="mt-3 inline-flex items-center gap-1 text-[15px] font-medium text-fisco">
-              {cta}
-              <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </span>
-          </span>
+      {photo ? (
+        <img
+          src={photo}
+          alt=""
+          className="h-16 w-16 shrink-0 rounded-lg bg-pietra object-cover object-top"
+        />
+      ) : (
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-fisco-tenue transition-colors text-inchiostro group-hover:bg-inchiostro group-hover:text-white">
+          <Icon aria-hidden="true" className="h-6 w-6" />
         </span>
-      </Link>
-    </li>
+      )}
+      <span className="min-w-0 flex-1 text-left">
+        <span className="block font-semibold leading-snug text-inchiostro">
+          {title}
+        </span>
+        {subtitle && (
+          <span className="mt-0.5 block text-sm">
+            {subtitle}
+          </span>
+        )}
+        <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-semibold text-fisco">
+          {cta}
+          <ArrowRight aria-hidden="true" className="h-4 w-4" />
+        </span>
+      </span>
+    </Link>
   );
 }
 
-function Folders() {
+function Choices() {
   if (heroProfessionals.length > 0) {
-    return heroProfessionals.map((p, i) => (
-      <Folder
-        key={p.slug}
-        index={i}
-        to={`/consulenze?prof=${p.slug}`}
-        photo={p.photo}
-        tab={p.name}
-        summary={p.specialties[0]}
-        cta={`Parla con ${p.name.split(" ")[0]}`}
-      />
+    return heroProfessionals.map((p) => (
+      <li key={p.slug}>
+        <ChoiceCard
+          to={`/consulenze?prof=${p.slug}`}
+          photo={p.photo}
+          title={p.name}
+          subtitle={p.specialties[0]}
+          cta={`Parla con ${p.name.split(" ")[0]}`}
+        />
+      </li>
     ));
   }
-  return SPECIALTIES.map((sp, i) => (
-    <Folder
-      key={sp.slug}
-      index={i}
-      to={`/consulenze?tema=${sp.slug}`}
-      tab={sp.tab}
-      summary={sp.summary}
-      cta="Parla con lo specialista"
-    />
+  return SPECIALTIES.map((sp) => (
+    <li key={sp.slug}>
+      <ChoiceCard
+        to={`/consulenze?tema=${sp.slug}`}
+        icon={SPECIALTY_ICONS[sp.slug]}
+        title={sp.label}
+        cta="Parla con lo specialista"
+      />
+    </li>
   ));
 }
 
@@ -88,12 +89,14 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-tonale-chiaro pb-16 pt-14 md:pb-24 md:pt-20">
       <Container className="relative">
-        <div className="reveal mx-auto max-w-4xl text-center">
-          <h1 className="heading-display">
+        <div className="reveal mx-auto max-w-5xl text-center">
+          <h1 className="text-balance text-[2.5rem] font-bold leading-[1.08] tracking-tightest sm:text-6xl lg:text-[4.25rem]">
             <span className="sm:block">Commercialisti a Catania.</span>{" "}
-            <span className="block">Il&nbsp;team lo scegli tu.</span>
+            <span className="block">
+              Il&nbsp;team lo scegli tu.
+            </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg md:text-xl md:leading-[1.6]">
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed md:text-xl">
             Tre professionisti, tre specialità: cartelle esattoriali e
             rottamazioni, partite IVA e regime forfettario, 730 e contributi.
             Scegli con chi parlare: la prima analisi è gratuita.
@@ -120,9 +123,9 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="mx-auto mt-14 flex max-w-5xl flex-col md:mt-16">
+        <div className="reveal reveal-delay mx-auto mt-14 max-w-5xl md:mt-16">
           {studio.images.team && (
-            <div className="reveal reveal-delay order-2 mt-8 overflow-hidden rounded-lg bg-pietra shadow-elevated ring-1 ring-inchiostro/5 md:order-1 md:mt-0">
+            <div className="overflow-hidden rounded-lg bg-pietra shadow-elevated ring-1 ring-inchiostro/5">
               <img
                 src={studio.images.team}
                 srcSet={
@@ -141,13 +144,13 @@ export default function Hero() {
           )}
 
           <div
-            className={`relative order-1 md:order-2 md:px-6 ${
-              studio.images.team ? "md:-mt-20 lg:-mt-24" : ""
+            className={`relative px-0 sm:px-6 ${
+              studio.images.team ? "-mt-10 md:-mt-14" : ""
             }`}
           >
             <h2 className="sr-only">Scegli con chi parlare</h2>
-            <ul className="grid items-start md:grid-cols-3 md:gap-5">
-              <Folders />
+            <ul className="grid gap-3 md:grid-cols-3 md:gap-5">
+              <Choices />
             </ul>
           </div>
         </div>

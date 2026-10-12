@@ -62,7 +62,7 @@ function MapEmbed() {
         <button
           type="button"
           onClick={() => setShow(true)}
-          className="rounded-lg bg-white/10 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20"
+          className="rounded-lg bg-white/10 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/20"
         >
           Mostra la mappa
         </button>
@@ -70,7 +70,7 @@ function MapEmbed() {
           href={mapsSearchUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg px-3 py-2 text-sm font-medium text-white ring-1 ring-inset ring-white/20 transition-colors hover:bg-white/10"
+          className="rounded-lg px-3 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-white/20 transition-colors hover:bg-white/10"
         >
           Apri in Google Maps
         </a>
@@ -118,7 +118,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Pagine del sito" className="lg:col-span-2">
-            <h2 className="text-base text-white">
+            <h2 className="text-base font-semibold text-white">
               Pagine
             </h2>
             <ul className="mt-5 space-y-3">
@@ -133,7 +133,7 @@ export default function Footer() {
           </nav>
 
           <div className="lg:col-span-3">
-            <h2 className="text-base text-white">
+            <h2 className="text-base font-semibold text-white">
               Contatti
             </h2>
             <address className="mt-5 space-y-4 not-italic">
@@ -176,7 +176,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h2 className="text-base text-white">
+            <h2 className="text-base font-semibold text-white">
               Dove siamo
             </h2>
             <div className="mt-5">

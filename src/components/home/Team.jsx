@@ -16,7 +16,7 @@ function Profile({ p }) {
         />
       )}
       <div className="flex flex-1 flex-col p-6 md:p-7">
-        <h3 className="text-xl">{p.name}</h3>
+        <h3 className="text-xl font-semibold">{p.name}</h3>
         {p.role && <p className="mt-1 font-medium text-inchiostro">{p.role}</p>}
         {p.albo && <p className="mt-1 text-sm text-basalto">{p.albo}</p>}
         {p.specialties.length > 0 && (
@@ -32,7 +32,7 @@ function Profile({ p }) {
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
           <Link
             to={`/consulenze?prof=${p.slug}`}
-            className="inline-flex items-center gap-1.5 font-medium text-fisco hover:text-fisco-hover"
+            className="inline-flex items-center gap-1.5 font-semibold text-fisco hover:text-fisco-hover"
           >
             Parla con {p.name.split(" ")[0]}
             <ArrowRight aria-hidden="true" className="h-4 w-4" />

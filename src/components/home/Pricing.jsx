@@ -24,11 +24,11 @@ export default function Pricing({ bg }) {
             key={pkg.name}
             className="flex flex-col rounded-lg bg-white p-7 shadow-card ring-1 ring-pietra md:p-8"
           >
-            <h3 className="text-xl">{pkg.name}</h3>
+            <h3 className="text-xl font-semibold">{pkg.name}</h3>
             <p className="mt-1 text-sm text-basalto">{pkg.target}</p>
             <p className="mt-6 text-basalto">
               a partire da
-              <span className="mt-1 block font-serif text-4xl font-semibold text-inchiostro">
+              <span className="mt-1 block text-4xl font-bold tracking-tight text-inchiostro">
                 {formatEuro(pkg.priceFrom)}
                 <span className="text-base font-medium text-basalto">/anno</span>
               </span>

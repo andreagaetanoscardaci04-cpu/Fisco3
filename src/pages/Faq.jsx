@@ -25,9 +25,9 @@ export default function Faq() {
                 key={item.question}
                 className="group rounded-lg bg-white ring-1 ring-pietra transition-colors open:ring-pietra-scura"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 rounded-lg px-6 py-5 text-left text-[17px] font-medium text-inchiostro hover:text-fisco-hover md:px-7 md:py-6 [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 rounded-lg px-6 py-5 text-left text-[17px] font-semibold text-inchiostro hover:text-fisco-hover md:px-7 md:py-6 [&::-webkit-details-marker]:hidden">
                   {item.question}
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro transition duration-300 group-open:rotate-45 group-open:bg-inchiostro group-open:text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro transition group-open:rotate-45 group-open:bg-inchiostro group-open:text-white">
                     <Plus aria-hidden="true" className="h-4 w-4" />
                   </span>
                 </summary>
@@ -44,7 +44,7 @@ export default function Faq() {
           </div>
 
           <div className="mt-16 rounded-lg bg-pietra p-8 text-center md:p-12">
-            <h2 className="text-2xl md:text-3xl">Hai altre domande?</h2>
+            <h2 className="text-2xl font-bold md:text-3xl">Hai altre domande?</h2>
             <p className="mx-auto mt-3 max-w-md">
               Scrivici dal modulo o chiama lo studio: rispondiamo entro{" "}
               {studio.responseTime}.

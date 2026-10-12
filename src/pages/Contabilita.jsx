@@ -53,7 +53,7 @@ export default function Contabilita() {
               <Calculator aria-hidden="true" className="h-4 w-4" />
               Contabilità
             </p>
-            <h1 className="mt-5 heading-display">
+            <h1 className="mt-5 text-balance text-4xl font-bold leading-[1.1] tracking-tightest text-inchiostro md:text-6xl">
               La tua contabilità, seguita da vicino.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-basalto md:text-xl">
@@ -72,15 +72,15 @@ export default function Contabilita() {
           </div>
 
           <div className="lg:col-span-5">
-            {studio.images.studio ? (
+            {studio.images.office ? (
               <img
-                src={studio.images.studio}
+                src={studio.images.office}
                 alt={`Lo studio ${studio.brandName}`}
                 className="aspect-[4/3] w-full rounded-lg object-cover shadow-elevated"
               />
             ) : (
               <div className="on-dark rounded-lg bg-tonale-scuro p-8 shadow-elevated md:p-10">
-                <h2 className="text-xl">Cosa è incluso</h2>
+                <h2 className="text-xl font-bold">Cosa è incluso</h2>
                 <ul className="mt-6 space-y-4">
                   {INCLUDED.map((item) => (
                     <li key={item} className="flex gap-3 text-white">
@@ -117,7 +117,7 @@ export default function Contabilita() {
               <span className="flex h-14 w-14 items-center justify-center rounded-lg bg-fisco-tenue text-inchiostro">
                 <Icon aria-hidden="true" className="h-7 w-7" />
               </span>
-              <h3 className="mt-6 text-xl">{title}</h3>
+              <h3 className="mt-6 text-xl font-semibold">{title}</h3>
               <p className="mt-2 leading-relaxed">{desc}</p>
             </li>
           ))}

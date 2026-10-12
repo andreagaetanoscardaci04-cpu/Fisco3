@@ -1,75 +1,54 @@
+import { ClipboardList, MessageSquareText, Users } from "lucide-react";
+import Button from "../ui/Button.jsx";
 import Section from "../ui/Section.jsx";
-import { useInView, inViewAttr } from "../../lib/useInView.js";
 import { studio } from "../../config/studio";
 
-// Tre principi, scritti come affermazioni. Il percorso (analisi, proposta,
-// scadenze) è già in "Come funziona": qui non si ripete.
-const PRINCIPLES = [
+// Cosa distingue lo studio e cosa ottieni dalla prima analisi.
+// Il percorso (contatto, proposta, preventivo) è già in "Come funziona".
+const REASONS = [
   {
-    title: "Sai sempre con chi parli.",
-    text: "Ogni pratica la segue un professionista con nome e cognome, dall'inizio alla fine.",
+    Icon: Users,
+    title: "Tre specialisti, un solo studio",
+    text: "Cartelle, partite IVA e 730: ogni pratica la segue chi se ne occupa ogni giorno.",
   },
   {
-    title: "Il prezzo lo conosci prima.",
-    text: "Dopo l'analisi gratuita ricevi una proposta chiara, senza costi a sorpresa.",
+    Icon: MessageSquareText,
+    title: "Parliamo chiaro",
+    text: "Niente linguaggio tecnico incomprensibile: ti spieghiamo cosa succede e perché.",
   },
   {
-    title: "Ti spieghiamo tutto.",
-    text: "Niente linguaggio tecnico incomprensibile: sai cosa succede e perché.",
+    Icon: ClipboardList,
+    title: "Una prima analisi che ti serve",
+    text: "Esci con un quadro chiaro della tua situazione fiscale e le opzioni possibili, spiegate in modo semplice. Gratis e senza impegno.",
   },
 ];
 
-// La maschera ha il colore dello sfondo della sezione
-const MASK_BG = { carta: "#F6F7F5", pietra: "#E6E3DC" };
-
 export default function WhyUs({ bg }) {
-  const [ref, inView] = useInView({ threshold: 0.2 });
-  const { office, officeSmall } = studio.images;
-
   return (
     <Section bg={bg} aria-labelledby="perche-titolo">
-      <div
-        ref={ref}
-        {...inViewAttr(inView)}
-        className={`grid items-center gap-12 lg:gap-16 ${
-          office ? "lg:grid-cols-[55fr_45fr]" : ""
-        }`}
-      >
-        {office && (
-          <div
-            className="photo-mask relative overflow-hidden rounded-lg bg-pietra"
-            style={{ "--mask-bg": MASK_BG[bg] }}
-          >
-            <img
-              src={office}
-              srcSet={officeSmall ? `${officeSmall} 768w, ${office} 1536w` : undefined}
-              sizes="(min-width: 1024px) 660px, 100vw"
-              alt={`Il team di ${studio.brandName} in studio`}
-              width="1536"
-              height="1024"
-              loading="lazy"
-              className="aspect-[3/2] w-full object-cover lg:aspect-[4/3.4]"
-            />
-          </div>
-        )}
-
-        <div className={office ? "" : "max-w-2xl"}>
-          <h2 id="perche-titolo" className="section-title fade-rise">
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-4">
+          <h2 id="perche-titolo" className="section-title text-balance">
             Perché scegliere {studio.brandName}
           </h2>
-          <ul className="mt-8 border-b border-pietra">
-            {PRINCIPLES.map(({ title, text }, i) => (
-              <li
-                key={title}
-                className="fade-rise border-t border-pietra py-6"
-                style={{ "--delay": `${250 + i * 150}ms` }}
-              >
-                <h3 className="text-2xl">{title}</h3>
-                <p className="mt-2 max-w-md">{text}</p>
-              </li>
-            ))}
-          </ul>
+          <p className="section-lead">
+            Uno studio di Catania dove sai sempre con chi stai parlando.
+          </p>
+          <Button to="/consulenze" className="mt-8">
+            Richiedi l'analisi gratuita
+          </Button>
         </div>
+        <ul className="grid gap-8 sm:grid-cols-3 lg:col-span-8 lg:gap-10">
+          {REASONS.map(({ Icon, title, text }) => (
+            <li key={title}>
+              <span className="flex h-11 w-11 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro">
+                <Icon aria-hidden="true" className="h-5 w-5" />
+              </span>
+              <h3 className="mt-4 text-lg font-semibold">{title}</h3>
+              <p className="mt-1.5 text-[15px] leading-relaxed">{text}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </Section>
   );

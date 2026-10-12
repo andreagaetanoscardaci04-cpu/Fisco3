@@ -1,3 +1,8 @@
+@import "@fontsource/poppins/latin-400.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,27 +14,14 @@
   }
 
   body {
-    @apply bg-carta font-sans text-lg lining-nums leading-[1.6] text-basalto antialiased;
+    @apply bg-carta font-sans text-base leading-relaxed text-basalto antialiased md:text-[17px];
   }
 
-  /* Titoli in Source Serif 4: 600 per h1 e h2, 500 per h3 e h4 */
   h1,
   h2,
   h3,
   h4 {
-    @apply font-serif font-medium lining-nums leading-[1.1] text-inchiostro;
-    overflow-wrap: break-word;
-    hyphens: manual;
-  }
-
-  h1,
-  h2 {
-    @apply font-semibold tracking-[-0.01em];
-  }
-
-  h3,
-  h4 {
-    @apply leading-[1.25];
+    @apply font-semibold tracking-tight text-inchiostro;
   }
 
   .on-dark h1,
@@ -60,16 +52,11 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-md bg-fisco-tenue px-3 py-1 text-sm font-medium text-inchiostro;
-  }
-
-  /* h1: circa 56px su desktop, 36px su mobile */
-  .heading-display {
-    @apply text-balance text-[2.25rem] leading-[1.1] md:text-[3.5rem];
+    @apply inline-flex items-center gap-2 rounded-md bg-fisco-tenue px-3 py-1 text-sm font-semibold text-inchiostro;
   }
 
   .section-title {
-    @apply text-balance text-[1.875rem] leading-[1.1] text-inchiostro md:text-[2.5rem];
+    @apply text-3xl font-bold tracking-tight text-inchiostro md:text-[2.5rem] md:leading-[1.15];
   }
 
   .section-lead {
@@ -77,14 +64,7 @@
   }
 }
 
-/* Animazioni: solo transform e opacity, 300-700ms, ognuna parte una volta
-   sola (useInView). Gli stati iniziali nascosti valgono solo con JavaScript
-   attivo (classe .js su <html>) e senza prefers-reduced-motion: in tutti gli
-   altri casi il contenuto è subito visibile, senza movimento. */
-:root {
-  --ease-morbido: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
+/* Comparsa dell'hero al caricamento */
 @keyframes reveal {
   from {
     opacity: 0;
@@ -96,177 +76,12 @@
   }
 }
 
-/* Linguetta delle cartelline dell'hero: lato destro inclinato */
-.folder-tab {
-  border-top-left-radius: 6px;
-  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%);
+.reveal {
+  animation: reveal 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Cartella spiegata: le linee partono dal segnaposto sul foglio */
-.explained {
-  --sheet: 16rem;
-  --gap: 2.5rem;
-}
-
-@media (min-width: 1280px) {
-  .explained {
-    --sheet: 19rem;
-    --gap: 3.5rem;
-  }
-}
-
-.note-line {
-  width: calc(var(--gap) + var(--sheet) * (1 - var(--x)) - 14px);
-  transform-origin: left center;
-}
-
-/* Linea del tempo: si riempie dall'alto su mobile, da sinistra su desktop */
-.timeline-fill {
-  transform-origin: top center;
-}
-
-@media (min-width: 1024px) {
-  .timeline-fill {
-    transform-origin: left center;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* Cambio di contenuto (selettore "Di cosa hai bisogno?") */
-  .fade-in {
-    animation: fade-in 400ms var(--ease-morbido);
-  }
-
-  /* Cartella spiegata: il foglio entra ruotato e si raddrizza, poi le
-     linee si disegnano una dopo l'altra e compaiono le spiegazioni */
-  .js .explained .sheet {
-    opacity: 0;
-    transform: translateY(12px) rotate(-4deg);
-    transition:
-      opacity 700ms var(--ease-morbido),
-      transform 700ms var(--ease-morbido);
-  }
-
-  .js .explained .sheet .sheet-marker {
-    opacity: 0;
-    transform: scale(0.6);
-    transition:
-      opacity 300ms var(--ease-morbido) var(--delay),
-      transform 300ms var(--ease-morbido) var(--delay);
-  }
-
-  .js .explained .note-line {
-    transform: scaleX(0);
-    transition: transform 400ms var(--ease-morbido) var(--delay);
-  }
-
-  .js .explained .note-text {
-    opacity: 0;
-    transition: opacity 400ms var(--ease-morbido) calc(var(--delay) + 300ms);
-  }
-
-  .js .explained[data-inview] .sheet,
-  .js .explained[data-inview] .sheet .sheet-marker,
-  .js .explained[data-inview] .note-line {
-    opacity: 1;
-    transform: none;
-  }
-
-  .js .explained[data-inview] .note-text {
-    opacity: 1;
-  }
-
-  /* Linea del tempo: la linea si riempie di blu a velocità costante e ogni
-     punto si accende quando la linea lo raggiunge */
-  .js .timeline .timeline-fill {
-    transform: scaleY(0);
-    transition: transform var(--segment) linear var(--delay);
-  }
-
-  .js .timeline .timeline-dot {
-    opacity: 0;
-    transform: scale(0.4);
-    transition:
-      opacity 300ms var(--ease-morbido) var(--delay),
-      transform 300ms var(--ease-morbido) var(--delay);
-  }
-
-  .js .timeline[data-inview] .timeline-fill,
-  .js .timeline[data-inview] .timeline-dot {
-    opacity: 1;
-    transform: none;
-  }
-
-  @media (min-width: 1024px) {
-    .js .timeline .timeline-fill {
-      transform: scaleX(0);
-      transition: transform 700ms linear;
-    }
-
-    .js .timeline .timeline-dot {
-      transition-delay: var(--delay-lg);
-    }
-  }
-
-  /* "Perché scegliere": la foto si scopre con una maschera che si apre dal
-     basso, poi i tre principi compaiono in sequenza (fade-rise) */
-  .js .photo-mask::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--mask-bg, theme("colors.carta.DEFAULT"));
-    transition: transform 700ms var(--ease-morbido);
-  }
-
-  .js .photo-mask img {
-    transform: scale(1.05);
-    transition: transform 700ms var(--ease-morbido);
-  }
-
-  .js [data-inview] .photo-mask::after {
-    transform: translateY(-100%);
-  }
-
-  .js [data-inview] .photo-mask img {
-    transform: none;
-  }
-
-  /* Cartelline dell'hero: salgono e compaiono una dopo l'altra */
-  .folder-in {
-    animation: reveal 500ms var(--ease-morbido) both;
-    animation-delay: var(--delay, 0ms);
-  }
-
-  /* Comparsa dell'hero al caricamento */
-  .reveal {
-    animation: reveal 600ms var(--ease-morbido) both;
-  }
-
-  .reveal-delay {
-    animation-delay: 120ms;
-  }
-
-  /* Comparsa dei titoli di sezione */
-  .js .fade-rise {
-    opacity: 0;
-    transform: translateY(12px);
-    transition:
-      opacity 600ms var(--ease-morbido),
-      transform 600ms var(--ease-morbido);
-    transition-delay: var(--delay, 0ms);
-  }
-
-  .js .fade-rise[data-inview],
-  .js [data-inview] .fade-rise {
-    opacity: 1;
-    transform: none;
-  }
+.reveal-delay {
+  animation-delay: 120ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
