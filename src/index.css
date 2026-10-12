@@ -208,6 +208,10 @@
       transform: scaleX(0);
       transition: transform 700ms linear;
     }
+
+    .js .timeline .timeline-dot {
+      transition-delay: var(--delay-lg);
+    }
   }
 
   /* "Perché scegliere": la foto si scopre con una maschera che si apre dal

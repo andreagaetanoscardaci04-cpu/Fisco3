@@ -1,4 +1,5 @@
 import Container from "./Container.jsx";
+import Reveal from "./Reveal.jsx";
 
 // Ritmo delle sezioni, dall'alto: hero (gradiente chiaro), Carta, Pietra,
 // sezione scura, Carta, Pietra, ..., CTA finale e footer (gradiente scuro).
@@ -34,11 +35,11 @@ export default function Section({
 // Intestazione di sezione centrata (titolo + sottotitolo)
 export function SectionHeader({ id, title, lead, className = "" }) {
   return (
-    <div className={`mx-auto max-w-2xl text-center ${className}`}>
+    <Reveal className={`mx-auto max-w-2xl text-center ${className}`}>
       <h2 id={id} className="section-title text-balance">
         {title}
       </h2>
       {lead && <p className="section-lead text-pretty">{lead}</p>}
-    </div>
+    </Reveal>
   );
 }

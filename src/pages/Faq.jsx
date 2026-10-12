@@ -27,7 +27,7 @@ export default function Faq() {
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 rounded-lg px-6 py-5 text-left text-[17px] font-medium text-inchiostro hover:text-fisco-hover md:px-7 md:py-6 [&::-webkit-details-marker]:hidden">
                   {item.question}
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro transition group-open:rotate-45 group-open:bg-inchiostro group-open:text-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro transition duration-300 group-open:rotate-45 group-open:bg-inchiostro group-open:text-white">
                     <Plus aria-hidden="true" className="h-4 w-4" />
                   </span>
                 </summary>

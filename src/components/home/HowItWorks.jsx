@@ -26,10 +26,15 @@ const STEPS = [
   },
 ];
 
-// Ritardo con cui si accende ogni punto: la linea si riempie in 700ms a
-// velocità costante, quindi il punto i si accende a i/3 del percorso.
+// La linea si riempie a velocità costante e il punto i si accende quando la
+// linea lo raggiunge. Desktop: una linea unica in 700ms. Mobile: un tratto
+// da 300ms tra un punto e il successivo.
 const FILL_MS = 700;
-const dotDelay = (i) => `${Math.round((FILL_MS * i) / (STEPS.length - 1))}ms`;
+const SEGMENT_MS = 300;
+const delays = (i) => ({
+  "--delay": `${SEGMENT_MS * i}ms`,
+  "--delay-lg": `${Math.round((FILL_MS * i) / (STEPS.length - 1))}ms`,
+});
 
 export default function HowItWorks({ bg }) {
   const [ref, inView] = useInView({ threshold: 0.4 });
@@ -60,7 +65,7 @@ export default function HowItWorks({ bg }) {
             <li
               key={step.title}
               className="relative pl-10 lg:pl-0 lg:text-center"
-              style={{ "--delay": dotDelay(i) }}
+              style={delays(i)}
             >
               {/* mobile: un tratto verticale fino al punto successivo */}
               {i < STEPS.length - 1 && (
@@ -70,7 +75,7 @@ export default function HowItWorks({ bg }) {
                 >
                   <span
                     className="timeline-fill absolute inset-0 bg-fisco"
-                    style={{ "--segment": `${FILL_MS / (STEPS.length - 1)}ms` }}
+                    style={{ "--segment": `${SEGMENT_MS}ms` }}
                   />
                 </span>
               )}
