@@ -109,8 +109,12 @@ export const studio = {
     // Sostituire con una foto reale dei tre professionisti.
     team: "/team-hero.webp" as string | null, // 1536x1024
     teamSmall: "/team-hero-768.webp" as string | null, // 768x512, per mobile
-    // TODO: foto reale dello studio, es. "/studio.jpg". /team-office.png è
-    // un'immagine generata con AI (volti non reali): non usarla.
+    // TODO: immagine generata con AI (dal sito originale, sezione "Perché
+    // scegliere Fisco3"), usata provvisoriamente su richiesta. Sostituire
+    // con una foto reale del team in studio.
+    teamOffice: "/team-office.webp" as string | null, // 1536x1024
+    teamOfficeSmall: "/team-office-768.webp" as string | null, // 768x512
+    // TODO: foto reale dello studio, es. "/studio.jpg" (mostrata in /contabilita)
     office: null as string | null,
   },
 };

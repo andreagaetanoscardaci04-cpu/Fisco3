@@ -24,31 +24,55 @@ const REASONS = [
 ];
 
 export default function WhyUs({ bg }) {
+  const { teamOffice, teamOfficeSmall } = studio.images;
+
   return (
     <Section bg={bg} aria-labelledby="perche-titolo">
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-4">
+      <div
+        className={`grid items-center gap-10 lg:gap-16 ${
+          teamOffice ? "lg:grid-cols-2" : ""
+        }`}
+      >
+        {teamOffice && (
+          <img
+            src={teamOffice}
+            srcSet={
+              teamOfficeSmall
+                ? `${teamOfficeSmall} 768w, ${teamOffice} 1536w`
+                : undefined
+            }
+            sizes="(min-width: 1024px) 576px, 100vw"
+            alt={`Il team di ${studio.brandName} in studio`}
+            width="1536"
+            height="1024"
+            loading="lazy"
+            className="order-2 aspect-[3/2] w-full rounded-lg object-cover shadow-elevated lg:order-1"
+          />
+        )}
+        <div className="order-1 lg:order-2">
           <h2 id="perche-titolo" className="section-title text-balance">
             Perché scegliere {studio.brandName}
           </h2>
           <p className="section-lead">
             Uno studio di Catania dove sai sempre con chi stai parlando.
           </p>
+          <ul className="mt-8 space-y-6">
+            {REASONS.map(({ Icon, title, text }) => (
+              <li key={title} className="flex gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro">
+                  <Icon aria-hidden="true" className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="text-lg font-semibold">{title}</h3>
+                  <p className="mt-1 text-[15px] leading-relaxed">{text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
           <Button to="/consulenze" className="mt-8">
             Richiedi l'analisi gratuita
           </Button>
         </div>
-        <ul className="grid gap-8 sm:grid-cols-3 lg:col-span-8 lg:gap-10">
-          {REASONS.map(({ Icon, title, text }) => (
-            <li key={title}>
-              <span className="flex h-11 w-11 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro">
-                <Icon aria-hidden="true" className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 text-lg font-semibold">{title}</h3>
-              <p className="mt-1.5 text-[15px] leading-relaxed">{text}</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </Section>
   );
