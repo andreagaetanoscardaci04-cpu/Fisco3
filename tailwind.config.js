@@ -59,6 +59,7 @@ export default {
       DEFAULT: "6px",
       md: "6px",
       lg: "10px",
+      full: "9999px", // solo elementi circolari (segnaposto numerati, punti)
     },
   },
   plugins: [],

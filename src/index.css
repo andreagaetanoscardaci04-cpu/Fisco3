@@ -102,6 +102,24 @@
   clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%);
 }
 
+/* Cartella spiegata: le linee partono dal segnaposto sul foglio */
+.explained {
+  --sheet: 16rem;
+  --gap: 2.5rem;
+}
+
+@media (min-width: 1280px) {
+  .explained {
+    --sheet: 19rem;
+    --gap: 3.5rem;
+  }
+}
+
+.note-line {
+  width: calc(var(--gap) + var(--sheet) * (1 - var(--x)) - 14px);
+  transform-origin: left center;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -112,6 +130,45 @@
   /* Cambio di contenuto (selettore "Di cosa hai bisogno?") */
   .fade-in {
     animation: fade-in 400ms var(--ease-morbido);
+  }
+
+  /* Cartella spiegata: il foglio entra ruotato e si raddrizza, poi le
+     linee si disegnano una dopo l'altra e compaiono le spiegazioni */
+  .js .explained .sheet {
+    opacity: 0;
+    transform: translateY(12px) rotate(-4deg);
+    transition:
+      opacity 700ms var(--ease-morbido),
+      transform 700ms var(--ease-morbido);
+  }
+
+  .js .explained .sheet .sheet-marker {
+    opacity: 0;
+    transform: scale(0.6);
+    transition:
+      opacity 300ms var(--ease-morbido) var(--delay),
+      transform 300ms var(--ease-morbido) var(--delay);
+  }
+
+  .js .explained .note-line {
+    transform: scaleX(0);
+    transition: transform 400ms var(--ease-morbido) var(--delay);
+  }
+
+  .js .explained .note-text {
+    opacity: 0;
+    transition: opacity 400ms var(--ease-morbido) calc(var(--delay) + 300ms);
+  }
+
+  .js .explained[data-inview] .sheet,
+  .js .explained[data-inview] .sheet .sheet-marker,
+  .js .explained[data-inview] .note-line {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .explained[data-inview] .note-text {
+    opacity: 1;
   }
 
   /* Cartelline dell'hero: salgono e compaiono una dopo l'altra */
