@@ -12,7 +12,7 @@ export default function FinalCta() {
       <Container className="text-center">
         <h2
           id="cta-titolo"
-          className="mx-auto max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight md:text-5xl"
+          className="mx-auto max-w-3xl text-balance text-3xl leading-tight tracking-tight md:text-5xl"
         >
           Parliamo della tua situazione
         </h2>

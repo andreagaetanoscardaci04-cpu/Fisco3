@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-md font-semibold leading-tight transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-md font-medium leading-tight transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60";
 
 const SIZES = {
   md: "min-h-12 px-6 py-3 text-[15px]",

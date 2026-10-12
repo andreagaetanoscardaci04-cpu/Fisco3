@@ -42,7 +42,7 @@ function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
         </span>
       )}
       <span className="min-w-0 flex-1 text-left">
-        <span className="block font-semibold leading-snug text-inchiostro">
+        <span className="block font-medium leading-snug text-inchiostro">
           {title}
         </span>
         {subtitle && (
@@ -50,7 +50,7 @@ function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
             {subtitle}
           </span>
         )}
-        <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-semibold text-fisco">
+        <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-medium text-fisco">
           {cta}
           <ArrowRight aria-hidden="true" className="h-4 w-4" />
         </span>
@@ -90,7 +90,7 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-tonale-chiaro pb-16 pt-14 md:pb-24 md:pt-20">
       <Container className="relative">
         <div className="reveal mx-auto max-w-5xl text-center">
-          <h1 className="text-balance text-[2.5rem] font-bold leading-[1.08] tracking-tightest sm:text-6xl lg:text-[4.25rem]">
+          <h1 className="heading-display">
             <span className="sm:block">Commercialisti a Catania.</span>{" "}
             <span className="block">
               Il&nbsp;team lo scegli tu.

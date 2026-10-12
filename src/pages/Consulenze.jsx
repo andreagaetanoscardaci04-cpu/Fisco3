@@ -39,7 +39,7 @@ export default function Consulenze() {
             <aside className="lg:col-span-4" aria-labelledby="dopo-titolo">
               <div className="space-y-5 lg:sticky lg:top-28">
                 <div className="on-dark rounded-lg bg-tonale-scuro p-7 text-su-scuro shadow-elevated md:p-8">
-                  <h2 id="dopo-titolo" className="text-xl font-bold">
+                  <h2 id="dopo-titolo" className="text-xl">
                     Cosa succede dopo l'invio
                   </h2>
                   <ol className="mt-6 space-y-5">
@@ -47,7 +47,7 @@ export default function Consulenze() {
                       <li key={i} className="flex gap-4">
                         <span
                           aria-hidden="true"
-                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-white text-sm font-bold text-inchiostro"
+                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-white text-sm font-medium text-inchiostro"
                         >
                           {i + 1}
                         </span>
@@ -60,12 +60,12 @@ export default function Consulenze() {
                 </div>
 
                 <div className="rounded-lg bg-white p-7 ring-1 ring-pietra">
-                  <p className="font-semibold text-inchiostro">
+                  <p className="font-medium text-inchiostro">
                     Preferisci parlarne a voce?
                   </p>
                   <a
                     href={phoneHref}
-                    className="mt-3 inline-flex items-center gap-2 text-lg font-semibold text-fisco hover:text-fisco-hover"
+                    className="mt-3 inline-flex items-center gap-2 text-lg font-medium text-fisco hover:text-fisco-hover"
                   >
                     <Phone aria-hidden="true" className="h-5 w-5" />
                     {studio.phone}

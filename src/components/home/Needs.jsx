@@ -37,13 +37,13 @@ export default function Needs({ bg }) {
                   <Icon aria-hidden="true" className="h-7 w-7" />
                 </span>
                 <span className="flex flex-1 flex-col">
-                  <h3 className="text-xl font-semibold leading-snug">
+                  <h3 className="text-xl leading-snug">
                     {s.situation}
                   </h3>
                   <span className="mt-2 block flex-1 leading-relaxed text-basalto">
                     {s.description}
                   </span>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-semibold text-fisco">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[15px] font-medium text-fisco">
                     {s.ctaLabel}
                     <ArrowRight aria-hidden="true" className="h-4 w-4" />
                   </span>

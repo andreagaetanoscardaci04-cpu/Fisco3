@@ -38,7 +38,8 @@ export default {
         "velo-foto": "linear-gradient(to bottom, transparent, rgba(14, 24, 45, 0.55))",
       },
       fontFamily: {
-        sans: ["Poppins", "system-ui", '"Segoe UI"', "Arial", "sans-serif"],
+        sans: ['"IBM Plex Sans"', "system-ui", "sans-serif"], // testo e interfaccia
+        serif: ['"Source Serif 4"', "Georgia", "serif"], // titoli
       },
       maxWidth: {
         container: "75rem", // 1200px
@@ -49,9 +50,6 @@ export default {
           "0 2px 4px rgba(15, 23, 42, 0.05), 0 16px 40px -8px rgba(15, 23, 42, 0.14)",
         elevated: "0 30px 60px -20px rgba(15, 23, 42, 0.30)",
         float: "0 -4px 24px rgba(15, 23, 42, 0.10)",
-      },
-      letterSpacing: {
-        tightest: "-0.035em",
       },
     },
     // Raggi massimi: 6px pulsanti e campi, 10px card e immagini

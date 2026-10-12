@@ -37,7 +37,7 @@ export default function Reviews({ bg }) {
                   <p>{r.text}</p>
                 </blockquote>
                 <figcaption className="mt-5 text-sm">
-                  <span className="font-semibold text-inchiostro">
+                  <span className="font-medium text-inchiostro">
                     {r.author}
                   </span>
                   <span className="text-basalto"> · {r.date}</span>

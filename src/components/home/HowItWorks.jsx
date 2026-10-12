@@ -39,11 +39,11 @@ export default function HowItWorks({ bg }) {
           >
             <span
               aria-hidden="true"
-              className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-md border-2 border-ocra bg-white text-lg font-bold text-inchiostro"
+              className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-md border-2 border-ocra bg-white text-lg font-medium text-inchiostro"
             >
               {i + 1}
             </span>
-            <h3 className="mt-5 text-lg font-semibold">{step.title}</h3>
+            <h3 className="mt-5 text-lg">{step.title}</h3>
             <p className="mt-2 text-[15px] leading-relaxed">{step.text}</p>
           </li>
         ))}

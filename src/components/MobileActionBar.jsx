@@ -7,7 +7,7 @@ export const MOBILE_BAR_SPACE =
   "pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-0";
 
 const ITEM =
-  "flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md px-2 text-sm font-semibold transition-colors";
+  "flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md px-2 text-sm font-medium transition-colors";
 
 export default function MobileActionBar() {
   return (

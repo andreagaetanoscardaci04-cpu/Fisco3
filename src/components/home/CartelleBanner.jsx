@@ -18,12 +18,12 @@ export default function CartelleBanner() {
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <p className="inline-flex items-center rounded-md bg-white/10 px-3 py-1 text-sm font-semibold">
+            <p className="inline-flex items-center rounded-md bg-white/10 px-3 py-1 text-sm font-medium">
               Analisi gratuita
             </p>
             <h2
               id="cartelle-titolo"
-              className="mt-5 text-balance text-3xl font-bold leading-tight tracking-tight md:text-[2.5rem]"
+              className="mt-5 text-balance text-3xl leading-tight tracking-tight md:text-[2.5rem]"
             >
               Hai ricevuto una cartella esattoriale?
             </h2>

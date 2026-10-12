@@ -1,8 +1,3 @@
-@import "@fontsource/poppins/latin-400.css";
-@import "@fontsource/poppins/latin-500.css";
-@import "@fontsource/poppins/latin-600.css";
-@import "@fontsource/poppins/latin-700.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,14 +9,27 @@
   }
 
   body {
-    @apply bg-carta font-sans text-base leading-relaxed text-basalto antialiased md:text-[17px];
+    @apply bg-carta font-sans text-lg leading-[1.6] text-basalto antialiased;
   }
 
+  /* Titoli in Source Serif 4: 600 per h1 e h2, 500 per h3 e h4 */
   h1,
   h2,
   h3,
   h4 {
-    @apply font-semibold tracking-tight text-inchiostro;
+    @apply font-serif font-medium lining-nums leading-[1.1] text-inchiostro;
+    overflow-wrap: break-word;
+    hyphens: manual;
+  }
+
+  h1,
+  h2 {
+    @apply font-semibold tracking-[-0.01em];
+  }
+
+  h3,
+  h4 {
+    @apply leading-[1.25];
   }
 
   .on-dark h1,
@@ -52,11 +60,16 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-md bg-fisco-tenue px-3 py-1 text-sm font-semibold text-inchiostro;
+    @apply inline-flex items-center gap-2 rounded-md bg-fisco-tenue px-3 py-1 text-sm font-medium text-inchiostro;
+  }
+
+  /* h1: circa 56px su desktop, 36px su mobile */
+  .heading-display {
+    @apply text-balance text-[2.25rem] leading-[1.1] md:text-[3.5rem];
   }
 
   .section-title {
-    @apply text-3xl font-bold tracking-tight text-inchiostro md:text-[2.5rem] md:leading-[1.15];
+    @apply text-balance text-[1.875rem] leading-[1.1] text-inchiostro md:text-[2.5rem];
   }
 
   .section-lead {
