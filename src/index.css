@@ -216,7 +216,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: theme("colors.carta.DEFAULT");
+    background-color: var(--mask-bg, theme("colors.carta.DEFAULT"));
     transition: transform 700ms var(--ease-morbido);
   }
 

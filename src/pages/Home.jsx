@@ -11,7 +11,8 @@ import FinalCta from "../components/home/FinalCta.jsx";
 import { RITMO_CHIARO } from "../components/ui/Section.jsx";
 
 // Sezioni chiare dopo la sezione cartelle: alternano Carta e Pietra, e le
-// nascoste (dati mancanti) non rompono l'alternanza.
+// nascoste (dati mancanti) non rompono l'alternanza. L'ultima è sempre
+// Carta, perché la CTA finale è su Pietra.
 const AFTER_CARTELLE = [
   { key: "why", Component: WhyUs, visible: true },
   { key: "team", Component: Team, visible: hasTeam },
@@ -20,7 +21,8 @@ const AFTER_CARTELLE = [
 ].filter((s) => s.visible);
 
 // Ritmo: hero, Pietra (selettore), Carta (linea del tempo: i numeri ocra
-// restano leggibili solo su Carta), cartelle (scura), Carta, ..., CTA finale
+// restano leggibili solo su Carta), cartelle (scura), ..., Carta, CTA finale
+// (Pietra), footer (scuro)
 export default function Home() {
   return (
     <>
@@ -30,7 +32,10 @@ export default function Home() {
       <HowItWorks bg="carta" />
       <CartelleBanner />
       {AFTER_CARTELLE.map(({ key, Component }, i) => (
-        <Component key={key} bg={RITMO_CHIARO[i % 2]} />
+        <Component
+          key={key}
+          bg={RITMO_CHIARO[(AFTER_CARTELLE.length - 1 - i) % 2]}
+        />
       ))}
       <FinalCta />
     </>

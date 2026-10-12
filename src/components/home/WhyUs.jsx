@@ -19,6 +19,9 @@ const PRINCIPLES = [
   },
 ];
 
+// La maschera ha il colore dello sfondo della sezione
+const MASK_BG = { carta: "#F6F7F5", pietra: "#E6E3DC" };
+
 export default function WhyUs({ bg }) {
   const [ref, inView] = useInView({ threshold: 0.2 });
   const { office, officeSmall } = studio.images;
@@ -33,7 +36,10 @@ export default function WhyUs({ bg }) {
         }`}
       >
         {office && (
-          <div className="photo-mask relative overflow-hidden rounded-lg bg-pietra">
+          <div
+            className="photo-mask relative overflow-hidden rounded-lg bg-pietra"
+            style={{ "--mask-bg": MASK_BG[bg] }}
+          >
             <img
               src={office}
               srcSet={officeSmall ? `${officeSmall} 768w, ${office} 1536w` : undefined}
