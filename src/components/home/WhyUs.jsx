@@ -54,7 +54,7 @@ export default function WhyUs({ bg }) {
             Perché scegliere {studio.brandName}
           </h2>
           <p className="section-lead">
-            Uno studio di Catania dove sai sempre con chi stai parlando.
+            Un punto di riferimento in Sicilia, con clienti in tutta Italia: sai sempre con chi stai parlando.
           </p>
           {/* Su mobile righe separate da filetti, da md in su icone su riquadro */}
           <ul className="mt-8 border-b border-pietra-scura md:space-y-6 md:border-0">

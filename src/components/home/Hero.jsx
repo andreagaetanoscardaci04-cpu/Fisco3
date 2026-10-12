@@ -97,7 +97,7 @@ export default function Hero() {
       <Container className="relative">
         <div className="reveal mx-auto max-w-5xl text-center">
           <h1 className="text-balance text-[2.5rem] font-bold leading-[1.08] tracking-tightest sm:text-6xl lg:text-[4.25rem]">
-            <span className="sm:block">Commercialisti a Catania.</span>{" "}
+            <span className="sm:block">Commercialisti in Sicilia.</span>{" "}
             <span className="block">
               Il&nbsp;team lo scegli tu.
             </span>
@@ -105,6 +105,7 @@ export default function Hero() {
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed md:text-xl">
             Tre professionisti, tre specialità: cartelle esattoriali e
             rottamazioni, partite IVA e regime forfettario, 730 e contributi.
+            Un punto di riferimento in Sicilia, con clienti in tutta Italia.
             Scegli con chi parlare: la prima analisi è gratuita.
           </p>
 

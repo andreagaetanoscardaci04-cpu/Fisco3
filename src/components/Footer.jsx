@@ -92,8 +92,8 @@ export default function Footer() {
             </Link>
             <p className="mt-5 max-w-xs leading-relaxed">
               {studio.legalName ?? "Studio associato di commercialisti"} a
-              Catania. Tre professionisti, tre specialità: il team lo scegli
-              tu.
+              Catania, punto di riferimento in Sicilia, con clienti in tutta
+              Italia. Il team lo scegli tu.
             </p>
             {studio.piva && (
               <p className="mt-3 text-sm">P.IVA {studio.piva}</p>

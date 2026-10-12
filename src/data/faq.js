@@ -9,7 +9,7 @@ export const FAQ_ITEMS = [
   {
     question: "Cos'è Fisco3 e come funziona?",
     answer:
-      "Fisco3 è uno studio associato di commercialisti a Catania, che segue clienti in studio e anche a distanza.",
+      "Fisco3 è uno studio associato di commercialisti con sede a Catania, un punto di riferimento in Sicilia. Seguiamo clienti in studio e, a distanza, in tutta Italia: i forfettari, ad esempio, li gestiamo ovunque.",
   },
   {
     question: "Quanto costa il servizio?",

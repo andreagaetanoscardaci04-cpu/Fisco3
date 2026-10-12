@@ -7,9 +7,9 @@ export const OG_IMAGE = "/og/fisco3.png"; // 1200x630
 export const ROUTES = [
   {
     path: "/",
-    title: "Commercialisti a Catania | Fisco3, il team lo scegli tu",
+    title: "Commercialisti in Sicilia | Fisco3, il team lo scegli tu",
     description:
-      "Studio associato di commercialisti a Catania: cartelle esattoriali e rottamazioni, partite IVA e regime forfettario, 730. Scegli il professionista, la prima analisi è gratuita.",
+      "Studio di commercialisti a Catania, punto di riferimento in Sicilia con clienti in tutta Italia: cartelle esattoriali e rottamazioni, partite IVA e forfettario, 730. La prima analisi è gratuita.",
   },
   {
     path: "/consulenze",
@@ -20,7 +20,7 @@ export const ROUTES = [
     path: "/contabilita",
     title: "Contabilità per partite IVA e attività | Fisco3 Catania",
     description:
-      "Tenuta della contabilità, fatturazione elettronica, scadenze e F24 con un commercialista di riferimento a Catania.",
+      "Tenuta della contabilità, fatturazione elettronica, scadenze e F24 con un commercialista di riferimento, in Sicilia e in tutta Italia.",
   },
   {
     path: "/faq",
@@ -76,7 +76,10 @@ export function localBusinessJsonLd() {
       addressRegion: studio.address.province,
       addressCountry: "IT",
     },
-    areaServed: "Catania",
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Sicilia" },
+      { "@type": "Country", name: "Italia" },
+    ],
   };
   if (studio.piva) data.vatID = studio.piva;
   if (studio.geo) {
@@ -129,7 +132,7 @@ export function headTags(path) {
     `<meta property="og:image" content="${image}" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="Fisco3, commercialisti a Catania. Il team lo scegli tu." />`,
+    `<meta property="og:image:alt" content="Fisco3, commercialisti in Sicilia. Il team lo scegli tu." />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(route.title)}" />`,
     `<meta name="twitter:description" content="${esc(route.description)}" />`,

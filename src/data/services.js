@@ -15,7 +15,7 @@ export const SERVICES = [
     label: "Partite IVA e regime forfettario",
     situation: "Ho o voglio aprire una partita IVA forfettaria",
     description:
-      "Verifichiamo se puoi accedere al forfettario, apriamo la partita IVA e teniamo sotto controllo scadenze e versamenti.",
+      "Verifichiamo se puoi accedere al forfettario, apriamo la partita IVA e teniamo sotto controllo scadenze e versamenti. Seguiamo forfettari in tutta Italia, anche a distanza.",
     ctaLabel: "Richiedi l'analisi per la partita IVA",
     formLabel: "Regime Forfettario",
   },
