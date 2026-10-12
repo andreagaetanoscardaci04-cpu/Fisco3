@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Briefcase,
+  ChevronRight,
   FileText,
   Phone,
   ShieldCheck,
@@ -23,22 +24,23 @@ const SPECIALTY_ICONS = {
   730: FileText,
 };
 
-// Una scheda per specialità (o per professionista, quando ci sono i dati)
+// Una scheda per specialità (o per professionista, quando ci sono i dati).
+// Su mobile è una riga del pannello unico, da md in su una scheda.
 function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
   return (
     <Link
       to={to}
-      className="group flex h-full items-center gap-4 rounded-lg bg-white p-5 shadow-card ring-1 ring-pietra transition-colors duration-200 hover:ring-fisco md:p-6"
+      className="group flex h-full items-center gap-4 px-5 py-4 transition-colors duration-200 hover:bg-carta md:rounded-lg md:bg-white md:p-6 md:shadow-card md:ring-1 md:ring-pietra md:hover:bg-white md:hover:ring-fisco"
     >
       {photo ? (
         <img
           src={photo}
           alt=""
-          className="h-16 w-16 shrink-0 rounded-lg bg-pietra object-cover object-top"
+          className="h-12 w-12 shrink-0 md:h-16 md:w-16 rounded-lg bg-pietra object-cover object-top"
         />
       ) : (
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-fisco-tenue transition-colors text-inchiostro group-hover:bg-inchiostro group-hover:text-white">
-          <Icon aria-hidden="true" className="h-6 w-6" />
+        <span className="flex shrink-0 items-center justify-center rounded-lg text-inchiostro transition-colors md:h-14 md:w-14 md:bg-fisco-tenue md:group-hover:bg-inchiostro md:group-hover:text-white">
+          <Icon aria-hidden="true" className="h-5 w-5 md:h-6 md:w-6" />
         </span>
       )}
       <span className="min-w-0 flex-1 text-left">
@@ -50,11 +52,15 @@ function ChoiceCard({ to, icon: Icon, photo, title, subtitle, cta }) {
             {subtitle}
           </span>
         )}
-        <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-semibold text-fisco">
+        <span className="mt-1.5 hidden items-center gap-1 text-sm font-semibold text-fisco md:inline-flex">
           {cta}
           <ArrowRight aria-hidden="true" className="h-4 w-4" />
         </span>
       </span>
+      <ChevronRight
+        aria-hidden="true"
+        className="h-5 w-5 shrink-0 text-grafite transition-colors group-hover:text-fisco md:hidden"
+      />
     </Link>
   );
 }
@@ -144,14 +150,19 @@ export default function Hero() {
           )}
 
           <div
-            className={`relative px-0 sm:px-6 ${
+            className={`relative px-3 sm:px-6 ${
               studio.images.team ? "-mt-10 md:-mt-14" : ""
             }`}
           >
-            <h2 className="sr-only">Scegli con chi parlare</h2>
-            <ul className="grid gap-3 md:grid-cols-3 md:gap-5">
-              <Choices />
-            </ul>
+            {/* Su mobile un pannello unico a righe, da md in su tre schede */}
+            <div className="overflow-hidden rounded-lg bg-white shadow-card ring-1 ring-pietra md:overflow-visible md:rounded-none md:bg-transparent md:shadow-none md:ring-0">
+              <h2 className="border-b border-pietra px-5 pb-3 pt-4 text-left text-xs font-semibold uppercase tracking-wider text-basalto md:sr-only md:border-0">
+                Scegli con chi parlare
+              </h2>
+              <ul className="grid divide-y divide-pietra md:grid-cols-3 md:gap-5 md:divide-y-0">
+                <Choices />
+              </ul>
+            </div>
           </div>
         </div>
       </Container>

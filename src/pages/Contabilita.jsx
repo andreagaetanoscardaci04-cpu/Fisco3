@@ -105,19 +105,20 @@ export default function Contabilita() {
           lead="Ci occupiamo noi degli adempimenti, tu pensi al tuo lavoro."
         />
         <ul
-          className={`mt-14 grid gap-6 md:grid-cols-2 ${
+          className={`mt-10 grid border-b border-pietra-scura md:mt-14 md:grid-cols-2 md:gap-6 md:border-0 ${
             FEATURES.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
           }`}
         >
           {FEATURES.map(({ Icon, title, desc }) => (
             <li
               key={title}
-              className="rounded-lg bg-white p-7 shadow-card ring-1 ring-pietra md:p-8"
+              className="grid grid-cols-[1.25rem_1fr] gap-x-3 border-t border-pietra-scura py-6 md:block md:rounded-lg md:border-0 md:bg-white md:p-8 md:shadow-card md:ring-1 md:ring-pietra"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-lg bg-fisco-tenue text-inchiostro">
-                <Icon aria-hidden="true" className="h-7 w-7" />
+              {/* Su mobile icona piccola accanto al titolo, da md in su su riquadro */}
+              <span className="row-span-2 pt-1 text-ocra md:flex md:h-14 md:w-14 md:items-center md:justify-center md:rounded-lg md:bg-fisco-tenue md:pt-0 md:text-inchiostro">
+                <Icon aria-hidden="true" className="h-5 w-5 md:h-7 md:w-7" />
               </span>
-              <h3 className="mt-6 text-xl font-semibold">{title}</h3>
+              <h3 className="text-xl font-semibold md:mt-6">{title}</h3>
               <p className="mt-2 leading-relaxed">{desc}</p>
             </li>
           ))}

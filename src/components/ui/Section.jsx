@@ -23,7 +23,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`py-20 md:py-28 ${BACKGROUNDS[bg]} ${className}`}
+      className={`py-16 md:py-28 ${BACKGROUNDS[bg]} ${className}`}
       {...props}
     >
       <Container className={containerClassName}>{children}</Container>
@@ -34,7 +34,7 @@ export default function Section({
 // Intestazione di sezione centrata (titolo + sottotitolo)
 export function SectionHeader({ id, title, lead, className = "" }) {
   return (
-    <div className={`mx-auto max-w-2xl text-center ${className}`}>
+    <div className={`mx-auto max-w-2xl md:text-center ${className}`}>
       <h2 id={id} className="section-title text-balance">
         {title}
       </h2>

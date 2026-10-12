@@ -46,20 +46,24 @@ export default function WhyUs({ bg }) {
             width="1536"
             height="1024"
             loading="lazy"
-            className="order-2 aspect-[3/2] w-full rounded-lg object-cover shadow-elevated lg:order-1"
+            className="aspect-[3/2] w-full rounded-lg object-cover shadow-card md:order-2 md:shadow-elevated lg:order-1"
           />
         )}
-        <div className="order-1 lg:order-2">
+        <div className="md:order-1 lg:order-2">
           <h2 id="perche-titolo" className="section-title text-balance">
             Perché scegliere {studio.brandName}
           </h2>
           <p className="section-lead">
             Uno studio di Catania dove sai sempre con chi stai parlando.
           </p>
-          <ul className="mt-8 space-y-6">
+          {/* Su mobile righe separate da filetti, da md in su icone su riquadro */}
+          <ul className="mt-8 border-b border-pietra-scura md:space-y-6 md:border-0">
             {REASONS.map(({ Icon, title, text }) => (
-              <li key={title} className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro">
+              <li
+                key={title}
+                className="flex gap-3 border-t border-pietra-scura py-5 md:gap-4 md:border-0 md:py-0"
+              >
+                <span className="flex shrink-0 justify-center pt-0.5 text-ocra md:h-11 md:w-11 md:items-center md:rounded-md md:bg-fisco-tenue md:pt-0 md:text-inchiostro">
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <div>
@@ -69,7 +73,7 @@ export default function WhyUs({ bg }) {
               </li>
             ))}
           </ul>
-          <Button to="/consulenze" className="mt-8">
+          <Button to="/consulenze" className="mt-8 w-full sm:w-auto">
             Richiedi l'analisi gratuita
           </Button>
         </div>

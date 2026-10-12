@@ -7,7 +7,7 @@ export default function FinalCta() {
   return (
     <section
       aria-labelledby="cta-titolo"
-      className="on-dark bg-tonale-scuro py-20 md:py-28"
+      className="on-dark bg-tonale-scuro py-16 md:py-28"
     >
       <Container className="text-center">
         <h2

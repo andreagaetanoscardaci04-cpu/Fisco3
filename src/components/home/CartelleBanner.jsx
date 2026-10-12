@@ -13,7 +13,7 @@ export default function CartelleBanner() {
   return (
     <section
       aria-labelledby="cartelle-titolo"
-      className="on-dark bg-tonale-scuro py-20 text-su-scuro md:py-28"
+      className="on-dark bg-tonale-scuro py-16 text-su-scuro md:py-28"
     >
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
