@@ -19,14 +19,15 @@ const AFTER_CARTELLE = [
   { key: "pricing", Component: Pricing, visible: hasPricing },
 ].filter((s) => s.visible);
 
-// Ritmo: hero, Carta, Pietra, cartelle (scura), Carta, Pietra, ..., CTA finale
+// Ritmo: hero, Pietra (selettore), Carta (linea del tempo: i numeri ocra
+// restano leggibili solo su Carta), cartelle (scura), Carta, ..., CTA finale
 export default function Home() {
   return (
     <>
       <Hero />
       <TrustStrip />
-      <Needs bg="carta" />
-      <HowItWorks bg="pietra" />
+      <Needs bg="pietra" />
+      <HowItWorks bg="carta" />
       <CartelleBanner />
       {AFTER_CARTELLE.map(({ key, Component }, i) => (
         <Component key={key} bg={RITMO_CHIARO[i % 2]} />

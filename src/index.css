@@ -120,6 +120,17 @@
   transform-origin: left center;
 }
 
+/* Linea del tempo: si riempie dall'alto su mobile, da sinistra su desktop */
+.timeline-fill {
+  transform-origin: top center;
+}
+
+@media (min-width: 1024px) {
+  .timeline-fill {
+    transform-origin: left center;
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -169,6 +180,34 @@
 
   .js .explained[data-inview] .note-text {
     opacity: 1;
+  }
+
+  /* Linea del tempo: la linea si riempie di blu a velocità costante e ogni
+     punto si accende quando la linea lo raggiunge */
+  .js .timeline .timeline-fill {
+    transform: scaleY(0);
+    transition: transform var(--segment) linear var(--delay);
+  }
+
+  .js .timeline .timeline-dot {
+    opacity: 0;
+    transform: scale(0.4);
+    transition:
+      opacity 300ms var(--ease-morbido) var(--delay),
+      transform 300ms var(--ease-morbido) var(--delay);
+  }
+
+  .js .timeline[data-inview] .timeline-fill,
+  .js .timeline[data-inview] .timeline-dot {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (min-width: 1024px) {
+    .js .timeline .timeline-fill {
+      transform: scaleX(0);
+      transition: transform 700ms linear;
+    }
   }
 
   /* Cartelline dell'hero: salgono e compaiono una dopo l'altra */

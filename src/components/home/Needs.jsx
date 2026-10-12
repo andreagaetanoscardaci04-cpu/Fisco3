@@ -81,7 +81,7 @@ function Tabs({ selected, onSelect, baseId }) {
               className={`relative border-l-4 py-4 pl-6 pr-2 text-left font-serif text-[1.75rem] font-medium leading-[1.2] transition-colors duration-200 ${
                 active
                   ? "border-ocra text-inchiostro"
-                  : "border-transparent text-grafite hover:text-inchiostro"
+                  : "border-transparent text-basalto/70 hover:text-inchiostro"
               }`}
             >
               {s.situation}
