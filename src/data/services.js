@@ -4,6 +4,8 @@ export const SERVICES = [
   {
     slug: "cartelle",
     label: "Cartelle esattoriali e rottamazioni",
+    tab: "Cartelle esattoriali",
+    summary: "Rottamazione, rateizzazione, verifica degli importi",
     situation: "Ho ricevuto una cartella esattoriale",
     description:
       "Leggiamo la cartella con te, verifichiamo gli importi e ti diciamo se conviene la rottamazione o la rateizzazione.",
@@ -13,6 +15,8 @@ export const SERVICES = [
   {
     slug: "forfettario",
     label: "Partite IVA e regime forfettario",
+    tab: "Partita IVA forfettaria",
+    summary: "Apertura, requisiti del forfettario, scadenze e versamenti",
     situation: "Ho o voglio aprire una partita IVA forfettaria",
     description:
       "Verifichiamo se puoi accedere al forfettario, apriamo la partita IVA e teniamo sotto controllo scadenze e versamenti.",
@@ -22,6 +26,8 @@ export const SERVICES = [
   {
     slug: "730",
     label: "730 e contributi",
+    tab: "730 e contributi",
+    summary: "Dichiarazione, spese detraibili, rimborsi",
     situation: "Devo fare il 730",
     description:
       "Prepariamo e inviamo il tuo 730, controllando con te le spese detraibili da inserire.",
