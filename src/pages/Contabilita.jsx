@@ -72,9 +72,9 @@ export default function Contabilita() {
           </div>
 
           <div className="lg:col-span-5">
-            {studio.images.office ? (
+            {studio.images.studio ? (
               <img
-                src={studio.images.office}
+                src={studio.images.studio}
                 alt={`Lo studio ${studio.brandName}`}
                 className="aspect-[4/3] w-full rounded-lg object-cover shadow-elevated"
               />
