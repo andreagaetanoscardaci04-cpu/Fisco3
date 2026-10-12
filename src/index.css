@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply bg-carta font-sans text-lg leading-[1.6] text-basalto antialiased;
+    @apply bg-carta font-sans text-lg lining-nums leading-[1.6] text-basalto antialiased;
   }
 
   /* Titoli in Source Serif 4: 600 per h1 e h2, 500 per h3 e h4 */
@@ -102,7 +102,18 @@
   clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%);
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  /* Cambio di contenuto (selettore "Di cosa hai bisogno?") */
+  .fade-in {
+    animation: fade-in 400ms var(--ease-morbido);
+  }
+
   /* Cartelline dell'hero: salgono e compaiono una dopo l'altra */
   .folder-in {
     animation: reveal 500ms var(--ease-morbido) both;
