@@ -9,7 +9,9 @@ export const MOBILE_BAR_SPACE =
 const ITEM =
   "flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md px-2 text-sm font-semibold transition-colors";
 
-export default function MobileActionBar() {
+// `formHref`: sulle pagine degli annunci il pulsante porta al modulo della
+// pagina stessa invece che a /consulenze
+export default function MobileActionBar({ formHref }) {
   return (
     <nav
       aria-label="Contatti rapidi"
@@ -32,12 +34,21 @@ export default function MobileActionBar() {
             WhatsApp
           </a>
         )}
-        <Link
-          to="/consulenze"
-          className={`${ITEM} flex-[1.5] bg-fisco text-white hover:bg-fisco-hover`}
-        >
-          Analisi gratuita
-        </Link>
+        {formHref ? (
+          <a
+            href={formHref}
+            className={`${ITEM} flex-[1.5] bg-fisco text-white hover:bg-fisco-hover`}
+          >
+            Analisi gratuita
+          </a>
+        ) : (
+          <Link
+            to="/consulenze"
+            className={`${ITEM} flex-[1.5] bg-fisco text-white hover:bg-fisco-hover`}
+          >
+            Analisi gratuita
+          </Link>
+        )}
       </div>
     </nav>
   );

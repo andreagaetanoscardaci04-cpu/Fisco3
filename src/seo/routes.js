@@ -17,6 +17,15 @@ export const ROUTES = [
     description: `Raccontaci la tua situazione fiscale: ti risponde il professionista che se ne occupa entro ${studio.responseTime}. La prima analisi è gratuita.`,
   },
   {
+    // Pagina per link in bio e annunci: fuori da Google per non fare
+    // concorrenza a /consulenze
+    path: "/analisi-gratuita",
+    title: "Analisi gratuita con un commercialista | Fisco3",
+    description:
+      "Cartelle esattoriali, partita IVA e forfettario, 730: lasciaci i tuoi dati e ti ricontatta il professionista che segue la tua materia. La prima analisi è gratuita.",
+    noindex: true,
+  },
+  {
     path: "/contabilita",
     title: "Contabilità per partite IVA e attività | Fisco3 Catania",
     description:

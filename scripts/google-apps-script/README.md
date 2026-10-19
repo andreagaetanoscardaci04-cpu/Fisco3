@@ -1,7 +1,20 @@
 # Invio del modulo con Google Apps Script
 
-Il modulo di `/consulenze` invia i dati a uno script Google Apps Script
-(`Code.gs`), che li inoltra per email a `DESTINATARIO`.
+I moduli di `/consulenze` e `/analisi-gratuita` inviano i dati a uno script
+Google Apps Script (`Code.gs`), che li inoltra per email a `DESTINATARIO` e
+li aggiunge a un foglio Google ("Richieste sito Fisco3"), con le colonne
+Esito / Diventato cliente? / Note da compilare a mano dopo la telefonata.
+
+Il progetto pubblicato si chiama **Modulo Fisco3** nell'account
+studi.greco@gmail.com. Foglio delle richieste:
+<https://docs.google.com/spreadsheets/d/1_-c7_E73LtCRVgiEYXPiDjWYUl0WnoL55jLe3gsQM_k/edit>
+
+## Link da usare nella bio e negli annunci
+
+`https://www.fisco3.it/analisi-gratuita?utm_source=instagram&utm_medium=bio`
+
+Per gli annunci cambia `utm_medium=ads` e aggiungi `utm_campaign=<nome>` e
+`utm_content=<annuncio>`: finiscono nelle colonne del foglio.
 
 ## Pubblicazione
 
@@ -12,7 +25,9 @@ Il modulo di `/consulenze` invia i dati a uno script Google Apps Script
    - Esegui come: **Me**
    - Chi ha accesso: **Chiunque**
 4. Autorizza i permessi richiesti (invio email).
-5. Copia l'URL che termina con `/exec` e incollalo in `FORM_ENDPOINT` in
+5. Nell'editor scegli la funzione `creaFoglio` e clicca **Esegui**: crea il
+   foglio e chiede il permesso di usare Fogli Google.
+6. Copia l'URL che termina con `/exec` e incollalo in `FORM_ENDPOINT` in
    `src/components/ConsulenzaForm.jsx`.
 
 ## Modifiche successive

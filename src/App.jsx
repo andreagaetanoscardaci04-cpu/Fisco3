@@ -6,6 +6,8 @@ import CookieBanner from "./components/CookieBanner.jsx";
 import MobileActionBar from "./components/MobileActionBar.jsx";
 import Home from "./pages/Home.jsx";
 import Consulenze from "./pages/Consulenze.jsx";
+import AnalisiGratuita, { FORM_ANCHOR } from "./pages/AnalisiGratuita.jsx";
+import { LandingFooter, LandingHeader } from "./components/LandingChrome.jsx";
 import Faq from "./pages/Faq.jsx";
 import Contabilita from "./pages/Contabilita.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
@@ -29,17 +31,22 @@ function ScrollToTop() {
 
 // Il router (BrowserRouter o StaticRouter) è fornito da main.jsx o
 // entry-server.jsx, così la stessa app viene prerenderizzata e idratata.
+// Pagine per link in bio e annunci: intestazione e footer senza menu
+const LANDING_PATHS = ["/analisi-gratuita"];
+
 export default function App() {
   useSeo();
+  const isLanding = LANDING_PATHS.includes(useLocation().pathname);
   return (
     <>
       <ScrollToTop />
       <div className="flex min-h-screen flex-col">
-        <Header />
+        {isLanding ? <LandingHeader /> : <Header />}
         <main id="contenuto" className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/consulenze" element={<Consulenze />} />
+            <Route path="/analisi-gratuita" element={<AnalisiGratuita />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/contabilita" element={<Contabilita />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -47,8 +54,8 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-        <Footer />
-        <MobileActionBar />
+        {isLanding ? <LandingFooter /> : <Footer />}
+        <MobileActionBar formHref={isLanding ? `#${FORM_ANCHOR}` : undefined} />
         <CookieBanner />
       </div>
     </>

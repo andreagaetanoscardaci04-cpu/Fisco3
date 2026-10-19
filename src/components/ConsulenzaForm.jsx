@@ -5,13 +5,21 @@ import Button from "./ui/Button.jsx";
 import { studio, namedProfessionals, phoneHref } from "../config/studio";
 import { SERVICES, OTHER_TOPIC, findService } from "../data/services.js";
 import { hasMarketingConsent } from "../lib/consent.js";
-import { getSourcePage } from "../lib/navigation.js";
+import { getCampaign, getSourcePage } from "../lib/navigation.js";
 
 // URL /exec dell'applicazione web Google Apps Script
 // (vedi scripts/google-apps-script/README.md)
 const FORM_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbwtXwVv_oXyfFfWEmp6uhCRVCaAtqTWVVYve1WLX5RJjbgW-9079yr3TgPkwgwNLaE4zw/exec";
 const NO_PREFERENCE = "Nessuna preferenza";
+
+// Domanda di qualificazione: aiuta lo studio a capire subito chi richiama
+const SITUATIONS = [
+  "Ho già una partita IVA",
+  "Devo aprire una partita IVA",
+  "Sono un privato (dipendente, pensionato…)",
+  "Ho una società",
+];
 
 const INPUT =
   "w-full rounded-md border bg-carta px-4 py-3.5 text-inchiostro transition-colors placeholder:text-basalto/60 hover:border-basalto focus:border-fisco focus:bg-white focus:outline-none focus:ring-4 focus:ring-fisco-tenue";
@@ -36,6 +44,9 @@ function validate(data) {
   } else if (digits.length < 6) {
     errors.telefono =
       "Il numero di telefono è troppo corto: controlla di averlo scritto per intero.";
+  }
+  if (!data.get("situazione")) {
+    errors.situazione = "Scegli l'opzione che descrive meglio la tua situazione.";
   }
   if (!data.get("privacy")) {
     errors.privacy =
@@ -69,14 +80,15 @@ function errorProps(id, error) {
     : {};
 }
 
-function Select({ id, name, defaultValue, children }) {
+function Select({ id, name, defaultValue, error, children }) {
   return (
     <div className="relative">
       <select
         id={id}
         name={name}
         defaultValue={defaultValue}
-        className={`${INPUT} ${borderFor()} cursor-pointer appearance-none pr-10`}
+        className={`${INPUT} ${borderFor(error)} cursor-pointer appearance-none pr-10`}
+        {...errorProps(id, error)}
       >
         {children}
       </select>
@@ -121,6 +133,9 @@ export default function ConsulenzaForm({ params }) {
       window.location.pathname + window.location.search,
     );
     formData.set("privacy", "Accettata");
+    for (const [key, value] of Object.entries(getCampaign())) {
+      formData.append(key, value);
+    }
 
     try {
       // Corpo urlencoded: Apps Script lo legge in e.parameter e il browser
@@ -218,21 +233,39 @@ export default function ConsulenzaForm({ params }) {
             {...errorProps("telefono", errors.telefono)}
           />
         </Field>
-        <Field id="tipo_quesito" label="Di cosa hai bisogno?">
+        <Field id="situazione" label="La tua situazione" error={errors.situazione}>
           <Select
-            id="tipo_quesito"
-            name="tipo_quesito"
-            defaultValue={selectedService?.formLabel ?? SERVICES[0].formLabel}
+            id="situazione"
+            name="situazione"
+            defaultValue=""
+            error={errors.situazione}
           >
-            {SERVICES.map((s) => (
-              <option key={s.slug} value={s.formLabel}>
-                {s.label}
+            <option value="" disabled>
+              Scegli un'opzione
+            </option>
+            {SITUATIONS.map((s) => (
+              <option key={s} value={s}>
+                {s}
               </option>
             ))}
-            <option value={OTHER_TOPIC}>Altro</option>
           </Select>
         </Field>
       </div>
+
+      <Field id="tipo_quesito" label="Di cosa hai bisogno?">
+        <Select
+          id="tipo_quesito"
+          name="tipo_quesito"
+          defaultValue={selectedService?.formLabel ?? SERVICES[0].formLabel}
+        >
+          {SERVICES.map((s) => (
+            <option key={s.slug} value={s.formLabel}>
+              {s.label}
+            </option>
+          ))}
+          <option value={OTHER_TOPIC}>Altro</option>
+        </Select>
+      </Field>
 
       {namedProfessionals.length > 0 && (
         <Field id="professionista" label="Con chi vuoi parlare?">
