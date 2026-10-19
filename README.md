@@ -8,7 +8,8 @@ Sito web di Fisco3 — Studio Associato Commercialisti (Catania).
 - [React Router](https://reactrouter.com/) (routing lato client)
 - [Tailwind CSS](https://tailwindcss.com/) (build-time, non via CDN)
 - [lucide-react](https://lucide.dev/) per le icone
-- Form di contatto gestito da [Web3Forms](https://web3forms.com/)
+- Form di contatto inviato per email tramite Google Apps Script
+  (`scripts/google-apps-script/`)
 - Meta Pixel (Facebook), caricato solo dopo il consenso marketing
   (banner in `src/components/CookieBanner.jsx`)
 - Font self-hosted (Source Serif 4, IBM Plex Sans) via `@fontsource`

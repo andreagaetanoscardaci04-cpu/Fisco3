@@ -7,7 +7,10 @@ import { SERVICES, OTHER_TOPIC, findService } from "../data/services.js";
 import { hasMarketingConsent } from "../lib/consent.js";
 import { getSourcePage } from "../lib/navigation.js";
 
-const WEB3FORMS_ACCESS_KEY = "42a317e3-dcef-4a16-abd3-7e30c6373cd0";
+// URL /exec dell'applicazione web Google Apps Script
+// (vedi scripts/google-apps-script/README.md)
+const FORM_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwtXwVv_oXyfFfWEmp6uhCRVCaAtqTWVVYve1WLX5RJjbgW-9079yr3TgPkwgwNLaE4zw/exec";
 const NO_PREFERENCE = "Nessuna preferenza";
 
 const INPUT =
@@ -112,7 +115,6 @@ export default function ConsulenzaForm({ params }) {
 
     setStatus("sending");
     setSendError("");
-    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
     formData.append("pagina_provenienza", getSourcePage());
     formData.append(
       "pagina_modulo",
@@ -121,9 +123,11 @@ export default function ConsulenzaForm({ params }) {
     formData.set("privacy", "Accettata");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // Corpo urlencoded: Apps Script lo legge in e.parameter e il browser
+      // non fa la richiesta preliminare CORS
+      const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        body: formData,
+        body: new URLSearchParams(formData),
       });
       const result = await response.json();
 
@@ -247,6 +251,16 @@ export default function ConsulenzaForm({ params }) {
           </Select>
         </Field>
       )}
+
+      {/* Campo trappola per i bot, nascosto alle persone */}
+      <input
+        type="text"
+        name="sito_web"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
 
       <Field id="messaggio" label="Raccontaci la tua situazione" optional>
         <textarea
