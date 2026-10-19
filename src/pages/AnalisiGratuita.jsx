@@ -1,92 +1,33 @@
 import { useSearchParams } from "react-router-dom";
-import {
-  BadgeCheck,
-  Briefcase,
-  CircleCheck,
-  FileText,
-  Gift,
-  MapPin,
-  Phone,
-  Plus,
-  Rocket,
-  ShieldCheck,
-} from "lucide-react";
-import ConsulenzaForm from "../components/ConsulenzaForm.jsx";
+import { MapPin, Phone, Plus } from "lucide-react";
+import SituationFlow from "../components/SituationFlow.jsx";
 import HowItWorks from "../components/home/HowItWorks.jsx";
 import Reviews, { hasReviews } from "../components/home/Reviews.jsx";
 import Button from "../components/ui/Button.jsx";
 import Container from "../components/ui/Container.jsx";
 import Section, { SectionHeader } from "../components/ui/Section.jsx";
 import { studio, phoneHref } from "../config/studio";
-import { SERVICES } from "../data/services.js";
 import { FAQ_ITEMS } from "../data/faq.js";
 import { useHydrated } from "../lib/useHydrated.js";
 
-// Pagina per link in bio e annunci: il modulo in apertura, sotto le
-// informazioni che servono a fidarsi. Nessun menu: l'unica azione è
-// richiedere l'analisi (o chiamare).
+// Pagina per link in bio e annunci: si parte dal problema di chi arriva
+// (SituationFlow), sotto le informazioni sullo studio. Nessun menu.
 
 const NO_PARAMS = new URLSearchParams();
 export const FORM_ANCHOR = "modulo";
 
-const PROMISES = [
-  "Gratuita e senza impegno",
-  "Ti risponde il professionista che segue la tua materia",
-  "In studio a Catania o a distanza, in tutta Italia",
-];
-
-const SERVICE_ICONS = {
-  cartelle: ShieldCheck,
-  forfettario: Briefcase,
-  730: FileText,
-  "resto-al-sud": Rocket,
-};
-
 const FAQ_QUESTIONS = [
-  "Posso fare una consulenza gratuita senza impegno?",
+  "Cos'è Fisco3 e come funziona?",
   "Quanto costa il servizio?",
   "Quanto tempo ci vuole per ricevere una risposta?",
   "Cosa succede dopo la consulenza gratuita?",
 ];
 const FAQ = FAQ_ITEMS.filter((f) => FAQ_QUESTIONS.includes(f.question));
 
-function Services() {
-  return (
-    <Section bg="carta" aria-labelledby="servizi-titolo">
-      <SectionHeader
-        id="servizi-titolo"
-        title="Di cosa ci occupiamo"
-        lead="Tre specialisti, un solo studio: ogni pratica la segue chi se ne occupa ogni giorno."
-      />
-      <ul className="mt-10 grid gap-5 md:mt-14 md:grid-cols-2">
-        {SERVICES.map((s) => {
-          const Icon = SERVICE_ICONS[s.slug] ?? BadgeCheck;
-          return (
-            <li
-              key={s.slug}
-              className="flex gap-4 rounded-lg bg-white p-6 shadow-card ring-1 ring-pietra md:p-7"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro">
-                <Icon aria-hidden="true" className="h-5 w-5" />
-              </span>
-              <div>
-                <h3 className="text-lg font-semibold">{s.label}</h3>
-                <p className="mt-1 text-[15px] leading-relaxed">
-                  {s.description}
-                </p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </Section>
-  );
-}
-
 function About() {
   const { teamOffice, teamOfficeSmall } = studio.images;
   return (
-    <Section bg="carta" aria-labelledby="chi-siamo-titolo">
+    <Section bg="pietra" aria-labelledby="chi-siamo-titolo">
       <div
         className={`grid items-center gap-10 lg:gap-16 ${
           teamOffice ? "lg:grid-cols-2" : ""
@@ -163,14 +104,14 @@ function FinalCta() {
           id="cta-titolo"
           className="mx-auto max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight md:text-5xl"
         >
-          Parliamo della tua situazione
+          Partiamo dalla tua situazione
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-su-scuro">
-          La prima analisi è gratuita e non ti impegna a nulla.
+          Ti richiama il professionista che segue la tua materia.
         </p>
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <Button href={`#${FORM_ANCHOR}`} size="lg">
-            Richiedi l'analisi gratuita
+            Scegli la tua situazione
           </Button>
           <Button href={phoneHref} variant="outline-light" size="lg">
             <Phone aria-hidden="true" className="h-4 w-4" />
@@ -189,55 +130,30 @@ export default function AnalisiGratuita() {
   return (
     <>
       <section className="bg-tonale-chiaro pb-16 pt-10 md:pb-24 md:pt-16">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-            <div className="reveal lg:col-span-5 lg:pt-6">
-              <p className="eyebrow">
-                <Gift aria-hidden="true" className="h-4 w-4" />
-                Prima analisi gratuita
-              </p>
-              <h1 className="mt-5 text-balance text-4xl font-bold leading-[1.1] tracking-tightest md:text-5xl">
-                Parla con un commercialista, senza impegno
-              </h1>
-              <p className="mt-5 text-pretty text-lg leading-relaxed">
-                Cartelle esattoriali, partita IVA e forfettario, 730: lasciaci
-                i tuoi dati e ti ricontattiamo per capire insieme la tua
-                situazione.
-              </p>
-              <ul className="mt-7 hidden space-y-3 lg:block">
-                {PROMISES.map((p) => (
-                  <li key={p} className="flex gap-3">
-                    <CircleCheck aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-ocra" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div
-              id={FORM_ANCHOR}
-              className="reveal reveal-delay scroll-mt-6 lg:col-span-7"
-            >
-              <ConsulenzaForm key={params.toString()} params={params} />
-            </div>
-
-            <ul className="space-y-3 lg:hidden">
-              {PROMISES.map((p) => (
-                <li key={p} className="flex gap-3">
-                  <CircleCheck aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-ocra" />
-                  {p}
-                </li>
-              ))}
-            </ul>
+        <Container className="max-w-4xl">
+          <div className="reveal text-center">
+            <p className="text-sm font-semibold text-basalto">
+              {studio.brandName} · Commercialisti in Sicilia, clienti in tutta Italia
+            </p>
+            <h1 className="mt-4 text-balance text-4xl font-bold leading-[1.1] tracking-tightest md:text-6xl">
+              Di cosa hai bisogno?
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-relaxed md:text-xl">
+              Scegli la tua situazione: ti facciamo le domande giuste e ti
+              richiama il professionista che se ne occupa.
+            </p>
+          </div>
+          <div id={FORM_ANCHOR} className="reveal reveal-delay mt-10 scroll-mt-6 md:mt-12">
+            {/* la chiave riparte dal passo giusto se cambia ?tema= */}
+            <SituationFlow key={params.get("tema") ?? ""} params={params} />
           </div>
         </Container>
       </section>
 
-      <Services />
-      <HowItWorks bg="pietra" />
+      <HowItWorks bg="carta" />
       <About />
-      {hasReviews && <Reviews bg="pietra" />}
-      <Faq bg={hasReviews ? "carta" : "pietra"} />
+      {hasReviews && <Reviews bg="carta" />}
+      <Faq bg={hasReviews ? "pietra" : "carta"} />
       <FinalCta />
     </>
   );

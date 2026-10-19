@@ -12,6 +12,7 @@ const CAMPI = [
   ["telefono", "Telefono"],
   ["situazione", "Situazione"],
   ["tipo_quesito", "Di cosa ha bisogno"],
+  ["dettagli", "Dettagli"],
   ["professionista", "Professionista"],
   ["messaggio", "Messaggio"],
   ["privacy", "Privacy"],
@@ -94,6 +95,7 @@ function registraNelFoglio(p) {
   lock.waitLock(10000);
   try {
     const foglio = apriFoglio().getSheets()[0];
+    allineaIntestazioni(foglio);
     foglio.appendRow([
       new Date(),
       ...CAMPI.map(([k]) => p[k] || ""),
@@ -113,16 +115,22 @@ function apriFoglio() {
 
   const ss = SpreadsheetApp.create(NOME_FOGLIO);
   const foglio = ss.getSheets()[0];
-  const intestazioni = [
-    "Data",
-    ...CAMPI.map(([, etichetta]) => etichetta),
-    ...COLONNE_STUDIO,
-  ];
-  foglio.appendRow(intestazioni);
+  allineaIntestazioni(foglio);
   foglio.setFrozenRows(1);
-  foglio.getRange(1, 1, 1, intestazioni.length).setFontWeight("bold");
   props.setProperty("SHEET_ID", ss.getId());
   return ss;
+}
+
+function intestazioni() {
+  return ["Data", ...CAMPI.map(([, etichetta]) => etichetta), ...COLONNE_STUDIO];
+}
+
+// Se CAMPI cambia (nuovo campo del modulo), aggiorna la riga dei titoli
+function allineaIntestazioni(foglio) {
+  const titoli = intestazioni();
+  const riga = foglio.getRange(1, 1, 1, titoli.length);
+  if (riga.getValues()[0].join("|") === titoli.join("|")) return;
+  riga.setValues([titoli]).setFontWeight("bold");
 }
 
 function foglioUrl() {

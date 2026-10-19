@@ -4,13 +4,8 @@ import { ChevronDown, CircleCheckBig, LoaderCircle, Send } from "lucide-react";
 import Button from "./ui/Button.jsx";
 import { studio, namedProfessionals, phoneHref } from "../config/studio";
 import { SERVICES, OTHER_TOPIC, findService } from "../data/services.js";
-import { hasMarketingConsent } from "../lib/consent.js";
-import { getCampaign, getSourcePage } from "../lib/navigation.js";
+import { sendRequest } from "../lib/sendRequest.js";
 
-// URL /exec dell'applicazione web Google Apps Script
-// (vedi scripts/google-apps-script/README.md)
-const FORM_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbwtXwVv_oXyfFfWEmp6uhCRVCaAtqTWVVYve1WLX5RJjbgW-9079yr3TgPkwgwNLaE4zw/exec";
 const NO_PREFERENCE = "Nessuna preferenza";
 
 // Domanda di qualificazione: aiuta lo studio a capire subito chi richiama
@@ -21,12 +16,14 @@ const SITUATIONS = [
   "Ho una società",
 ];
 
-const INPUT =
+// Stili, campi e controlli condivisi con SituationFlow (/analisi-gratuita)
+export const INPUT =
   "w-full rounded-md border bg-carta px-4 py-3.5 text-inchiostro transition-colors placeholder:text-basalto/60 hover:border-basalto focus:border-fisco focus:bg-white focus:outline-none focus:ring-4 focus:ring-fisco-tenue";
-const borderFor = (error) =>
+export const borderFor = (error) =>
   error ? "border-red-500 bg-red-50/40" : "border-grafite";
 
-function validate(data) {
+// Controlli dei dati di contatto
+export function validateContact(data) {
   const errors = {};
   if (!data.get("nome")?.trim()) {
     errors.nome = "Inserisci nome e cognome.";
@@ -45,9 +42,6 @@ function validate(data) {
     errors.telefono =
       "Il numero di telefono è troppo corto: controlla di averlo scritto per intero.";
   }
-  if (!data.get("situazione")) {
-    errors.situazione = "Scegli l'opzione che descrive meglio la tua situazione.";
-  }
   if (!data.get("privacy")) {
     errors.privacy =
       "Per inviare la richiesta devi dichiarare di aver letto l'informativa privacy.";
@@ -55,7 +49,19 @@ function validate(data) {
   return errors;
 }
 
-function Field({ id, label, optional, error, children }) {
+function validate(data) {
+  const errors = validateContact(data);
+  if (!data.get("situazione")) {
+    errors.situazione = "Scegli l'opzione che descrive meglio la tua situazione.";
+  }
+  // Stesso ordine dei campi nel modulo, per spostare il cursore sul primo errore
+  const order = ["nome", "email", "telefono", "situazione", "privacy"];
+  return Object.fromEntries(
+    order.filter((k) => errors[k]).map((k) => [k, errors[k]]),
+  );
+}
+
+export function Field({ id, label, optional, error, children }) {
   return (
     <div>
       <label htmlFor={id} className="block text-sm font-semibold text-basalto">
@@ -74,7 +80,7 @@ function Field({ id, label, optional, error, children }) {
   );
 }
 
-function errorProps(id, error) {
+export function errorProps(id, error) {
   return error
     ? { "aria-invalid": true, "aria-describedby": `${id}-errore` }
     : {};
@@ -127,42 +133,11 @@ export default function ConsulenzaForm({ params }) {
 
     setStatus("sending");
     setSendError("");
-    formData.append("pagina_provenienza", getSourcePage());
-    formData.append(
-      "pagina_modulo",
-      window.location.pathname + window.location.search,
-    );
     formData.set("privacy", "Accettata");
-    for (const [key, value] of Object.entries(getCampaign())) {
-      formData.append(key, value);
-    }
 
-    try {
-      // Corpo urlencoded: Apps Script lo legge in e.parameter e il browser
-      // non fa la richiesta preliminare CORS
-      const response = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        body: new URLSearchParams(formData),
-      });
-      const result = await response.json();
-
-      if (result.success) {
-        if (hasMarketingConsent() && typeof window.fbq === "function") {
-          window.fbq("track", "Lead");
-        }
-        setStatus("sent");
-      } else {
-        setStatus("idle");
-        setSendError(
-          "La richiesta non è stata inviata per un errore del servizio. Riprova tra qualche minuto oppure chiamaci.",
-        );
-      }
-    } catch {
-      setStatus("idle");
-      setSendError(
-        "La richiesta non è stata inviata: controlla la connessione a internet e riprova, oppure chiamaci.",
-      );
-    }
+    const error = await sendRequest(formData);
+    setStatus(error ? "idle" : "sent");
+    setSendError(error ?? "");
   };
 
   if (status === "sent") {
