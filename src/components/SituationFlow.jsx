@@ -56,9 +56,11 @@ function StepHeader({ step, onBack, backLabel }) {
   );
 }
 
+// Le sei situazioni sono il primo clic della pagina: schede-pulsante in blu
+// Fisco3, che al passaggio (o al tocco) si riempiono di blu
 function Choices({ onChoose }) {
   return (
-    <ul className={`${CARD} grid divide-y divide-pietra overflow-hidden md:grid-cols-2 md:gap-4 md:divide-y-0 md:bg-transparent md:shadow-none md:ring-0`}>
+    <ul className="grid gap-3 md:grid-cols-2 md:gap-4">
       {SITUATION_FLOWS.map((flow) => {
         const Icon = ICONS[flow.slug];
         return (
@@ -66,18 +68,17 @@ function Choices({ onChoose }) {
             <button
               type="button"
               onClick={() => onChoose(flow.slug)}
-              className="group flex h-full w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-carta md:rounded-lg md:bg-white md:p-5 md:shadow-card md:ring-1 md:ring-pietra md:hover:bg-white md:hover:ring-fisco"
+              className="group flex h-full w-full items-center gap-4 rounded-lg bg-white p-4 text-left shadow-card ring-2 ring-inset ring-fisco/25 transition duration-200 hover:-translate-y-0.5 hover:bg-fisco hover:shadow-elevated hover:ring-fisco focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-fisco/50 active:translate-y-0 active:bg-fisco-hover md:p-5"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-fisco-tenue text-inchiostro transition-colors group-hover:bg-inchiostro group-hover:text-white">
-                <Icon aria-hidden="true" className="h-5 w-5" />
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-fisco text-white transition-colors duration-200 group-hover:bg-white group-hover:text-fisco group-active:bg-white group-active:text-fisco">
+                <Icon aria-hidden="true" className="h-6 w-6" />
               </span>
-              <span className="flex-1 font-semibold leading-snug text-inchiostro">
+              <span className="flex-1 text-[17px] font-semibold leading-snug text-inchiostro transition-colors duration-200 group-hover:text-white group-active:text-white">
                 {flow.choice}
               </span>
-              <ArrowRight
-                aria-hidden="true"
-                className="h-5 w-5 shrink-0 text-grafite transition-colors group-hover:text-fisco"
-              />
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fisco-tenue text-fisco transition duration-200 group-hover:translate-x-0.5 group-hover:bg-white group-active:bg-white">
+                <ArrowRight aria-hidden="true" className="h-5 w-5" />
+              </span>
             </button>
           </li>
         );
