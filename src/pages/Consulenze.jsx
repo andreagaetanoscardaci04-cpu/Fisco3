@@ -39,7 +39,7 @@ export default function Consulenze() {
             <aside className="lg:col-span-4" aria-labelledby="dopo-titolo">
               <div className="space-y-5 lg:sticky lg:top-28">
                 <div className="on-dark rounded-lg bg-tonale-scuro p-7 text-su-scuro shadow-elevated md:p-8">
-                  <h2 id="dopo-titolo" className="text-xl font-bold">
+                  <h2 id="dopo-titolo" className="text-xl font-semibold">
                     Cosa succede dopo l'invio
                   </h2>
                   <ol className="mt-6 space-y-5">

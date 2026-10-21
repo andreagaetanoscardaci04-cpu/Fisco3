@@ -44,7 +44,7 @@ export default function Faq() {
           </div>
 
           <div className="mt-16 rounded-lg bg-pietra p-8 text-center md:p-12">
-            <h2 className="text-2xl font-bold md:text-3xl">Hai altre domande?</h2>
+            <h2 className="text-2xl font-semibold md:text-3xl">Hai altre domande?</h2>
             <p className="mx-auto mt-3 max-w-md">
               Scrivici dal modulo o chiama lo studio: rispondiamo entro{" "}
               {studio.responseTime}.

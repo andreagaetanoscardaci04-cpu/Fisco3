@@ -93,23 +93,38 @@ function Choices() {
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-tonale-chiaro pb-16 pt-14 md:pb-24 md:pt-20">
+    <section className="relative overflow-hidden bg-tonale-chiaro pb-16 pt-6 md:pb-24 md:pt-10">
       <Container className="relative">
         <div className="reveal mx-auto max-w-5xl text-center">
-          <h1 className="text-balance text-[2.5rem] font-bold leading-[1.08] tracking-tightest sm:text-6xl lg:text-[4.25rem]">
+          <h1 className="text-balance text-[2.375rem] font-semibold leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">
             <span className="sm:block">Commercialisti in Sicilia.</span>{" "}
-            <span className="block">
+            <span className="block text-fisco">
               Il&nbsp;team lo scegli tu.
             </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed md:text-xl">
-            Tre professionisti, tre specialità: cartelle esattoriali e
-            rottamazioni, partite IVA e regime forfettario, 730 e contributi.
-            Un punto di riferimento in Sicilia, con clienti in tutta Italia.
-            Scegli con chi parlare: la prima analisi è gratuita.
-          </p>
+        </div>
 
-          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+        {studio.images.team && (
+          <div className="reveal mx-auto mt-6 max-w-[300px] overflow-hidden sm:max-w-sm md:mt-8 lg:max-w-md rounded-lg bg-pietra shadow-elevated ring-1 ring-inchiostro/5">
+            <img
+              src={studio.images.team}
+              srcSet={
+                studio.images.teamSmall
+                  ? `${studio.images.teamSmall} 768w, ${studio.images.team} 1536w`
+                  : undefined
+              }
+              sizes="(min-width: 1024px) 448px, (min-width: 640px) 384px, 300px"
+              alt={`Il team di ${studio.brandName}`}
+              width="1536"
+              height="1024"
+              fetchPriority="high"
+              className="aspect-[3/2] w-full object-cover"
+            />
+          </div>
+        )}
+
+        <div className="reveal reveal-delay mx-auto max-w-5xl text-center">
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:mt-10">
             <Button to="/consulenze" size="lg">
               Richiedi l'analisi gratuita
             </Button>
@@ -128,33 +143,17 @@ export default function Hero() {
           <p className="mt-5 text-[15px]">
             Ti ricontattiamo entro {studio.responseTime}.
           </p>
+
+          <p className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed md:mt-10 md:text-xl">
+            Tre professionisti, tre specialità: cartelle esattoriali e
+            rottamazioni, partite IVA e regime forfettario, 730 e contributi.
+            Un punto di riferimento in Sicilia, con clienti in tutta Italia.
+            Scegli con chi parlare: la prima analisi è gratuita.
+          </p>
         </div>
 
-        <div className="reveal reveal-delay mx-auto mt-14 max-w-5xl md:mt-16">
-          {studio.images.team && (
-            <div className="overflow-hidden rounded-lg bg-pietra shadow-elevated ring-1 ring-inchiostro/5">
-              <img
-                src={studio.images.team}
-                srcSet={
-                  studio.images.teamSmall
-                    ? `${studio.images.teamSmall} 768w, ${studio.images.team} 1536w`
-                    : undefined
-                }
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                alt={`Il team di ${studio.brandName}`}
-                width="1536"
-                height="1024"
-                fetchPriority="high"
-                className="aspect-[4/3] w-full object-cover object-top sm:aspect-[16/9]"
-              />
-            </div>
-          )}
-
-          <div
-            className={`relative px-3 sm:px-6 ${
-              studio.images.team ? "-mt-10 md:-mt-14" : ""
-            }`}
-          >
+        <div className="reveal reveal-delay mx-auto mt-10 max-w-5xl md:mt-12">
+          <div>
             {/* Su mobile un pannello unico a righe, da md in su tre schede */}
             <div className="overflow-hidden rounded-lg bg-white shadow-card ring-1 ring-pietra md:overflow-visible md:rounded-none md:bg-transparent md:shadow-none md:ring-0">
               <h2 className="border-b border-pietra px-5 pb-3 pt-4 text-left text-xs font-semibold uppercase tracking-wider text-basalto md:sr-only md:border-0">

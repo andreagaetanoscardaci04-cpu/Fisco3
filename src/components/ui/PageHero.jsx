@@ -11,7 +11,7 @@ export default function PageHero({ eyebrow, icon: Icon, title, highlight, lead, 
             {eyebrow}
           </p>
         )}
-        <h1 className="mx-auto mt-5 max-w-3xl text-balance text-4xl font-bold leading-[1.1] tracking-tightest md:text-6xl">
+        <h1 className="mx-auto mt-5 max-w-3xl text-balance text-4xl font-semibold leading-[1.12] tracking-tight md:text-6xl">
           {title}
           {highlight && ` ${highlight}`}
         </h1>

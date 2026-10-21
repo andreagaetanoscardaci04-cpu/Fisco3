@@ -11,7 +11,6 @@ import {
 import Container from "./ui/Container.jsx";
 import Logo from "./Logo.jsx";
 import { OPEN_COOKIE_SETTINGS } from "./CookieBanner.jsx";
-import { MOBILE_BAR_SPACE } from "./MobileActionBar.jsx";
 import { studio, phoneHref, emailHref } from "../config/studio";
 
 
@@ -82,7 +81,7 @@ function MapEmbed() {
 export default function Footer() {
   return (
     <footer
-      className={`on-dark border-t border-inchiostro-bordo bg-tonale-scuro pt-20 text-su-scuro ${MOBILE_BAR_SPACE}`}
+      className={`on-dark border-t border-inchiostro-bordo bg-tonale-scuro pt-20 text-su-scuro`}
     >
       <Container>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">

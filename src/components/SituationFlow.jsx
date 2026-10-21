@@ -155,7 +155,7 @@ function Sent({ flow, onRestart }) {
       <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-emerald-50 text-emerald-600">
         <CircleCheckBig aria-hidden="true" className="h-8 w-8" />
       </span>
-      <h2 className="mt-6 text-3xl font-bold">Richiesta ricevuta</h2>
+      <h2 className="mt-6 text-3xl font-semibold">Richiesta ricevuta</h2>
       <p className="mx-auto mt-4 max-w-md text-lg">
         Ti richiama {flow.specialist} entro {studio.responseTime}.
       </p>
@@ -297,7 +297,7 @@ export default function SituationFlow({ params }) {
             <h2
               ref={headingRef}
               tabIndex={-1}
-              className="text-2xl font-bold outline-none md:text-3xl"
+              className="text-2xl font-semibold outline-none md:text-3xl"
             >
               {flow.title}
             </h2>
@@ -336,7 +336,7 @@ export default function SituationFlow({ params }) {
               <h2
                 ref={headingRef}
                 tabIndex={-1}
-                className="text-2xl font-bold outline-none md:text-3xl"
+                className="text-2xl font-semibold outline-none md:text-3xl"
               >
                 Dove ti ricontattiamo?
               </h2>

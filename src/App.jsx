@@ -3,10 +3,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import CookieBanner from "./components/CookieBanner.jsx";
-import MobileActionBar from "./components/MobileActionBar.jsx";
 import Home from "./pages/Home.jsx";
 import Consulenze from "./pages/Consulenze.jsx";
-import AnalisiGratuita, { FORM_ANCHOR } from "./pages/AnalisiGratuita.jsx";
+import AnalisiGratuita from "./pages/AnalisiGratuita.jsx";
 import { LandingFooter, LandingHeader } from "./components/LandingChrome.jsx";
 import Faq from "./pages/Faq.jsx";
 import Contabilita from "./pages/Contabilita.jsx";
@@ -55,7 +54,6 @@ export default function App() {
           </Routes>
         </main>
         {isLanding ? <LandingFooter /> : <Footer />}
-        <MobileActionBar formHref={isLanding ? `#${FORM_ANCHOR}` : undefined} />
         <CookieBanner />
       </div>
     </>

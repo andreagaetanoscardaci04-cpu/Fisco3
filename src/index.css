@@ -56,7 +56,7 @@
   }
 
   .section-title {
-    @apply text-3xl font-bold tracking-tight text-inchiostro md:text-[2.5rem] md:leading-[1.15];
+    @apply text-3xl font-semibold tracking-tight text-inchiostro md:text-[2.5rem] md:leading-[1.15];
   }
 
   .section-lead {

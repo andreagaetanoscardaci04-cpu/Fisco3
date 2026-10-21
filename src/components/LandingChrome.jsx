@@ -3,7 +3,6 @@ import { Phone } from "lucide-react";
 import Container from "./ui/Container.jsx";
 import Logo from "./Logo.jsx";
 import { OPEN_COOKIE_SETTINGS } from "./CookieBanner.jsx";
-import { MOBILE_BAR_SPACE } from "./MobileActionBar.jsx";
 import { studio, phoneHref, emailHref } from "../config/studio";
 
 // Intestazione e piè di pagina ridotti per le pagine degli annunci:
@@ -32,7 +31,7 @@ const LINK = "transition-colors hover:text-white";
 export function LandingFooter() {
   return (
     <footer
-      className={`on-dark border-t border-inchiostro-bordo bg-tonale-scuro pt-10 text-sm text-su-scuro ${MOBILE_BAR_SPACE}`}
+      className={`on-dark border-t border-inchiostro-bordo bg-tonale-scuro pt-10 text-sm text-su-scuro`}
     >
       <Container className="flex flex-col gap-6 pb-10 md:flex-row md:items-start md:justify-between">
         <div className="space-y-1">

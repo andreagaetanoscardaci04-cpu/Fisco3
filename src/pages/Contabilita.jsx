@@ -53,7 +53,7 @@ export default function Contabilita() {
               <Calculator aria-hidden="true" className="h-4 w-4" />
               Contabilità
             </p>
-            <h1 className="mt-5 text-balance text-4xl font-bold leading-[1.1] tracking-tightest text-inchiostro md:text-6xl">
+            <h1 className="mt-5 text-balance text-4xl font-semibold leading-[1.12] tracking-tight text-inchiostro md:text-6xl">
               La tua contabilità, seguita da vicino.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-basalto md:text-xl">
@@ -80,7 +80,7 @@ export default function Contabilita() {
               />
             ) : (
               <div className="on-dark rounded-lg bg-tonale-scuro p-8 shadow-elevated md:p-10">
-                <h2 className="text-xl font-bold">Cosa è incluso</h2>
+                <h2 className="text-xl font-semibold">Cosa è incluso</h2>
                 <ul className="mt-6 space-y-4">
                   {INCLUDED.map((item) => (
                     <li key={item} className="flex gap-3 text-white">

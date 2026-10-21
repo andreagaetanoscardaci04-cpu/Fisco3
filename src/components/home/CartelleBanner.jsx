@@ -23,7 +23,7 @@ export default function CartelleBanner() {
             </p>
             <h2
               id="cartelle-titolo"
-              className="mt-5 text-balance text-3xl font-bold leading-tight tracking-tight md:text-[2.5rem]"
+              className="mt-5 text-balance text-3xl font-semibold leading-tight tracking-tight md:text-[2.5rem]"
             >
               Hai ricevuto una cartella esattoriale?
             </h2>

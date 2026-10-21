@@ -14,7 +14,7 @@ import { useHydrated } from "../lib/useHydrated.js";
 // (SituationFlow), sotto le informazioni sullo studio. Nessun menu.
 
 const NO_PARAMS = new URLSearchParams();
-export const FORM_ANCHOR = "modulo";
+const FORM_ANCHOR = "modulo";
 
 const FAQ_QUESTIONS = [
   "Cos'è Fisco3 e come funziona?",
@@ -102,7 +102,7 @@ function FinalCta() {
       <Container className="text-center">
         <h2
           id="cta-titolo"
-          className="mx-auto max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight md:text-5xl"
+          className="mx-auto max-w-3xl text-balance text-3xl font-semibold leading-tight tracking-tight md:text-5xl"
         >
           Partiamo dalla tua situazione
         </h2>
@@ -135,7 +135,7 @@ export default function AnalisiGratuita() {
             <p className="text-sm font-semibold text-basalto">
               {studio.brandName} · Commercialisti in Sicilia, clienti in tutta Italia
             </p>
-            <h1 className="mt-4 text-balance text-4xl font-bold leading-[1.1] tracking-tightest md:text-6xl">
+            <h1 className="mt-4 text-balance text-4xl font-semibold leading-[1.12] tracking-tight md:text-6xl">
               Di cosa hai bisogno?
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-pretty text-lg leading-relaxed md:text-xl">
